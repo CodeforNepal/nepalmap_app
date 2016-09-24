@@ -1,0 +1,7 @@
+*.pyc
+*.csv
+node_modules/
+.idea/
+debug
+.vagrant
+/static/
