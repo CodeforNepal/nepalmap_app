@@ -16,7 +16,7 @@ DATABASES['default']['ATOMIC_REQUESTS'] = True
 
 
 # Localise this instance of Wazimap
-WAZIMAP['name'] = 'Nepalmap'
+WAZIMAP['name'] = 'Nepal Map'
 WAZIMAP['url'] = 'http://www.nepalmap.org'
 WAZIMAP['country_code'] = 'NP'
 WAZIMAP['profile_builder'] = 'wazimap_np.profiles.get_census_profile'
