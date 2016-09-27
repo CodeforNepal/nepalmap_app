@@ -36,4 +36,3 @@ python manage.py runserver
 
 # License
 
-MIT License
