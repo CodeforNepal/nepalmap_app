@@ -1,0 +1,32 @@
+{% extends 'profile/profile_detail.html' %}
+
+{% block profile_header_tail %}
+    <div class="column-full">
+        <p class="caption"><strong>Census data:</strong> 2011</p>
+    </div>
+{% endblock %}
+
+{% block profile_detail %}
+<article id="households" class="clearfix">
+    <header class="section-contents">
+        <h1>Households</h1>
+    </header>
+    <div class="section-container">
+
+        <section class="clearfix stat-row">
+            <h2><a class="permalink" href="#households">Households <i class="fa fa-link"></i></a></h2>
+            <div class="column-third">
+                {% include 'profile/_blocks/_stat_list.html' with stat=households.total_households stat_type='number' %}
+            </div>
+        </section>
+        <section class="clearfix stat-row">
+            <h2><a class="permalink" href="#households-cooking-fuel" id="households-cooking-fuel">Main type of cooking fuel <i class="fa fa-link"></i></a></h2>
+            <div class="column-third">
+                {% include 'profile/_blocks/_stat_list.html' with stat=households.cooking_wood stat_type='percentage' %}
+            </div>
+            <div class="column-two-thirds" id="chart-histogram-households-cooking_fuel_distribution" data-stat-type="scaled-percentage" data-chart-title="Households by main type of cooking fuel"></div>
+        </section>
+
+    </div>
+</article>
+{% endblock %}

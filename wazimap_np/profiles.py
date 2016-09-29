@@ -10,7 +10,7 @@ import wazimap_np.tables  # noqa
 
 
 PROFILE_SECTIONS = (
-    'households'
+    'households',
 )
 
 
@@ -46,13 +46,18 @@ def get_households_profile(geo_code, geo_level, session):
         'main type of cooking fuel', geo_level, geo_code, session,
         key_order=['Wood', 'Kerosene', 'LPG', 'Biogas', 'Guitha',
                    'Electricity', 'Others', 'Not stated'])
+    total_wood = cooking_fuel_dict['Wood']['numerators']['this']
 
     return {
         'total_households': {
             'name': 'Households',
             'values': {'this': total_households},
         },
-        # },
+        'cooking_wood': {
+            'name': 'Use wood for cooking',
+            'numerators': {'this': total_wood},
+            'values': {'this': round(total_wood / total_households * 100, 2)},
+        },
         'cooking_fuel_distribution': cooking_fuel_dict
     }
 
