@@ -13,7 +13,7 @@ You will need a Postgres database:
 
 ```
 psql -U postgres
-create user wazimap_np with password wazimap_np;
+create user wazimap_np with password 'wazimap_np';
 create database wazimap_np;
 grant all privileges on database wazimap_np to wazimap_np;
 ```
