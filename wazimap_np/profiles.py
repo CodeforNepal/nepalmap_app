@@ -13,6 +13,19 @@ PROFILE_SECTIONS = (
     'households',
 )
 
+COOKING_FUEL_RECODES = OrderedDict([
+    ('WOOD', 'Wood'),
+    ('LPG', 'LPG'),
+    ('GUITHA', 'Guitha'),
+    ('BIOGAS', 'Biogas'),
+    ('KEROSENE', 'Kerosene'),
+    ('ELECTRICITY', 'Electricity'),
+    ('OTHERS', 'Others'),
+    ('NOT_STATED', 'Not Stated')
+])
+
+
+
 
 def get_census_profile(geo_code, geo_level, profile_name=None):
     session = get_session()
@@ -44,8 +57,8 @@ def get_households_profile(geo_code, geo_level, session):
     # cooking
     cooking_fuel_dict, total_households = get_stat_data(
         'main type of cooking fuel', geo_level, geo_code, session,
-        key_order=['Wood', 'Kerosene', 'LPG', 'Biogas', 'Guitha',
-                   'Electricity', 'Others', 'Not stated'])
+        recode=dict(COOKING_FUEL_RECODES),
+        key_order=COOKING_FUEL_RECODES.values())
     total_wood = cooking_fuel_dict['Wood']['numerators']['this']
 
     return {
