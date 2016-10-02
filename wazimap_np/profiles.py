@@ -102,7 +102,7 @@ def get_education_profile(geo_code, geo_level, session):
 
     total_primary = 0.0
     for key, data in edu_level_reached.iteritems():
-        if key in ['Primary']:
+        if 'Primary' == key:
             total_primary += data['numerators']['this']
 
     all_edu_level_by_sex, _ = get_stat_data(
@@ -111,9 +111,13 @@ def get_education_profile(geo_code, geo_level, session):
             'education level passed': dict(EDUCATION_LEVEL_PASSED_RECODES),
             'sex': dict(GENDER_RECODES)},
         key_order={
-            'education level passed': ['Primary', 'Lower Secondary',
-                                       'Secondary', 'SLC'],
-            'sex': GENDER_RECODES.values()})
+            'education level passed': EDUCATION_LEVEL_PASSED_RECODES.values(),
+            'sex': GENDER_RECODES.values()},
+        exclude={'education level passed': ['INTERMEDIATE', 'BEGINNER',
+                                            'NON_FORMAL', 'GRADUATE',
+                                            'POST_GRADUATE_AND_ABOVE',
+                                            'NOT_STATED',
+                                            'OTHERS']})
 
     edu_level_by_sex = {
         'Primary': all_edu_level_by_sex['Primary'],
