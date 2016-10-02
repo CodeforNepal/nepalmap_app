@@ -39,6 +39,11 @@ EDUCATION_LEVEL_PASSED_RECODES = OrderedDict([
     ('OTHERS', 'Others')
 ])
 
+GENDER_RECODES = OrderedDict([
+    ('female', 'Female'),
+    ('male', 'Male')
+])
+
 
 def get_census_profile(geo_code, geo_level, profile_name=None):
     session = get_session()
@@ -100,6 +105,28 @@ def get_education_profile(geo_code, geo_level, session):
         if key in ['Primary']:
             total_primary += data['numerators']['this']
 
+    all_edu_level_by_sex, _ = get_stat_data(
+        ['education level passed', 'sex'], geo_level, geo_code, session,
+        recode={
+            'education level passed': dict(EDUCATION_LEVEL_PASSED_RECODES),
+            'sex': dict(GENDER_RECODES)},
+        key_order={
+            'education level passed': ['Primary', 'Lower Secondary',
+                                       'Secondary', 'SLC'],
+            'sex': GENDER_RECODES.values()})
+
+    edu_level_by_sex = {
+        'Primary': all_edu_level_by_sex['Primary'],
+        'Lower Secondary': all_edu_level_by_sex['Lower Secondary'],
+        'Secondary': all_edu_level_by_sex['Secondary'],
+        'SLC': all_edu_level_by_sex['SLC'],
+        'metadata': all_edu_level_by_sex['metadata']
+    }
+
+    total_secondary_by_sex = 0.0
+    for data in edu_level_by_sex['Secondary'].itervalues():
+        if 'numerators' in data:
+            total_secondary_by_sex += data['numerators']['this']
     return {
         'aged_five_and_over': {
             'name': 'People Aged 5 and Over',
@@ -112,4 +139,13 @@ def get_education_profile(geo_code, geo_level, session):
             'values': {'this': round(total_primary / pop_five_and_older * 100,
                                      2)}
         },
+        'education_level_by_sex_distribution': edu_level_by_sex,
+        'primary_level_reached_by_sex': {
+            'name': 'Secondary level reached',
+            'numerators': {'this': total_secondary_by_sex},
+            'values': {
+                'this': round(
+                    total_secondary_by_sex / pop_five_and_older * 100,
+                    2)}
+        }
     }
