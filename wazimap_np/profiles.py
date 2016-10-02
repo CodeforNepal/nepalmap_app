@@ -11,6 +11,7 @@ import wazimap_np.tables  # noqa
 
 PROFILE_SECTIONS = (
     'households',
+    'education'
 )
 
 COOKING_FUEL_RECODES = OrderedDict([
@@ -24,7 +25,19 @@ COOKING_FUEL_RECODES = OrderedDict([
     ('NOT_STATED', 'Not Stated')
 ])
 
-
+EDUCATION_LEVEL_PASSED_RECODES = OrderedDict([
+    ('PRIMARY_1_5', 'Primary'),
+    ('LOWER_SECONDARY_6_8', 'Lower Secondary'),
+    ('SECONDARY_9_10', 'Secondary'),
+    ('SLC_AND_EQUIVALENT', 'SLC'),
+    ('INTERMEDIATE', 'Intermed.'),
+    ('BEGINNER', 'Beginner'),
+    ('NON_FORMAL', 'Non-formal'),
+    ('GRADUATE', 'Graduate'),
+    ('POST_GRADUATE_AND_ABOVE', 'Post-graduate and Above'),
+    ('NOT_STATED', 'Not Stated'),
+    ('OTHERS', 'Others')
+])
 
 
 def get_census_profile(geo_code, geo_level, profile_name=None):
@@ -64,7 +77,7 @@ def get_households_profile(geo_code, geo_level, session):
     return {
         'total_households': {
             'name': 'Households',
-            'values': {'this': total_households},
+            'values': {'this': total_households}
         },
         'cooking_wood': {
             'name': 'Use wood for cooking',
@@ -74,3 +87,29 @@ def get_households_profile(geo_code, geo_level, session):
         'cooking_fuel_distribution': cooking_fuel_dict
     }
 
+
+def get_education_profile(geo_code, geo_level, session):
+
+    edu_level_reached, pop_five_and_older = get_stat_data(
+        'education level passed', geo_level, geo_code, session,
+        recode=dict(EDUCATION_LEVEL_PASSED_RECODES),
+        key_order=EDUCATION_LEVEL_PASSED_RECODES.values())
+
+    total_primary = 0.0
+    for key, data in edu_level_reached.iteritems():
+        if key in ['Primary']:
+            total_primary += data['numerators']['this']
+
+    return {
+        'aged_five_and_over': {
+            'name': 'People Aged 5 and Over',
+            'values': {'this': pop_five_and_older}
+        },
+        'education_level_passed_distribution': edu_level_reached,
+        'primary_level_reached': {
+            'name': 'Primary level reached',
+            'numerators': {'this': total_primary},
+            'values': {'this': round(total_primary / pop_five_and_older * 100,
+                                     2)}
+        },
+    }

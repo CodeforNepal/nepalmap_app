@@ -29,4 +29,27 @@
 
     </div>
 </article>
+
+<article id="education" class="clearfix">
+    <header class="section-contents">
+        <h1>Education</h1>
+    </header>
+    <div class="section-container">
+
+        <section class="clearfix stat-row">
+            <h2><a class="permalink" href="#education">Education <i class="fa fa-link"></i></a></h2>
+            <div class="column-third">
+                {% include 'profile/_blocks/_stat_list.html' with stat=education.aged_five_and_over stat_type='number' %}
+            </div>
+        </section>
+        <section class="clearfix stat-row">
+            <h2><a class="permalink" href="#education-level-reached" id="education-level-reached">Education Level Passed <i class="fa fa-link"></i></a></h2>
+            <div class="column-third">
+                {% include 'profile/_blocks/_stat_list.html' with stat=education.primary_level_reached stat_type='percentage' %}
+            </div>
+            <div class="column-two-thirds" id="chart-histogram-education-education_level_passed_distribution" data-stat-type="scaled-percentage" data-chart-title="Population by highest education level reached" data-qualifier="Universe: {{ education.education_level_passed_distribution.metadata.universe }}"></div>
+        </section>
+
+    </div>
+</article>
 {% endblock %}
