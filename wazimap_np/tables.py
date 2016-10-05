@@ -7,3 +7,6 @@ FieldTable(['main type of cooking fuel'], universe='Households',
 
 FieldTable(['education level passed', 'sex'],
            universe='People aged 5 years and older', table_per_level=False)
+
+FieldTable(['disability', 'sex'],
+           universe='Population', table_per_level=False)
