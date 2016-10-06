@@ -10,3 +10,6 @@ FieldTable(['education level passed', 'sex'],
 
 FieldTable(['disability', 'sex'],
            universe='Population', table_per_level=False)
+
+FieldTable(['literacy', 'sex'],
+           universe='People aged 5 years and older', table_per_level=False)
