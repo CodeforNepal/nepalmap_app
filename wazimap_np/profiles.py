@@ -10,6 +10,7 @@ import wazimap_np.tables  # noqa
 
 
 PROFILE_SECTIONS = (
+    'demographics',
     'households',
     'education'
 )
@@ -68,6 +69,24 @@ def get_census_profile(geo_code, geo_level, profile_name=None):
 
     finally:
         session.close()
+
+
+def get_demographics_profile(geo_code, geo_level, session):
+
+    # population by sex
+    sex_dist_data, total_pop = get_stat_data(
+        'sex', geo_level, geo_code, session,
+        table_fields=['disability', 'sex'])
+
+    final_data = {
+        'sex_ratio': sex_dist_data,
+        'total_population': {
+            "name": "People",
+            "values": {"this": total_pop}
+        }
+    }
+
+    return final_data
 
 
 def get_households_profile(geo_code, geo_level, session):
