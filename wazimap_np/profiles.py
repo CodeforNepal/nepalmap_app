@@ -27,7 +27,6 @@ COOKING_FUEL_RECODES = OrderedDict([
 ])
 
 DISABILITY_RECODES = OrderedDict([
-    ('NO_DISABILITY', 'No Disability'),
     ('PHYSICAL', 'Physical'),
     ('BLINDNESS_LOW_VISION', 'Blind/Low Vision'),
     ('DEAF_HEARING', 'Deaf'),
@@ -95,6 +94,7 @@ def get_demographics_profile(geo_code, geo_level, session):
         'disability', geo_level, geo_code, session,
         table_fields=['disability', 'sex'],
         recode=dict(DISABILITY_RECODES),
+        key_order=DISABILITY_RECODES.values(),
         exclude=['NO_DISABILITY'])
 
     final_data = {
