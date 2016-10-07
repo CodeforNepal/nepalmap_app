@@ -26,6 +26,17 @@ COOKING_FUEL_RECODES = OrderedDict([
     ('NOT_STATED', 'Not Stated')
 ])
 
+DISABILITY_RECODES = OrderedDict([
+    ('PHYSICAL', 'Physical'),
+    ('BLINDNESS_LOW_VISION', 'Blind/Low Vision'),
+    ('DEAF_HEARING', 'Deaf'),
+    ('SPEECH_PROBLEM', 'Speech'),
+    ('MULTIPLE_DISABILITY', 'Multiple Disabilities'),
+    ('MENTAL_DISABILITY', 'Mental Disability'),
+    ('INTELLECTUAL_DISABILITY', 'Intellectual'),
+    ('DEAF_BLIND', 'Deaf and Blind')
+])
+
 EDUCATION_LEVEL_PASSED_RECODES = OrderedDict([
     ('PRIMARY_1_5', 'Primary'),
     ('LOWER_SECONDARY_6_8', 'Lower Secondary'),
@@ -80,11 +91,25 @@ def get_demographics_profile(geo_code, geo_level, session):
         'sex', geo_level, geo_code, session,
         table_fields=['disability', 'sex'])
 
+    # population by disability
+    disability_dist_data, total_disabled = get_stat_data(
+        'disability', geo_level, geo_code, session,
+        table_fields=['disability', 'sex'],
+        recode=dict(DISABILITY_RECODES),
+        key_order=DISABILITY_RECODES.values(),
+        exclude=['NO_DISABILITY'])
+
     final_data = {
         'sex_ratio': sex_dist_data,
+        'disability_ratio': disability_dist_data,
         'total_population': {
             "name": "People",
             "values": {"this": total_pop}
+        },
+        'total_disabled': {
+            'name': 'People',
+            'values':
+                {'this': total_disabled},
         }
     }
 
