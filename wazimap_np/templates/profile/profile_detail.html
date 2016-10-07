@@ -88,6 +88,13 @@
             </div>
             <div class="column-two-thirds" id="chart-histogram-households-cooking_fuel_distribution" data-stat-type="scaled-percentage" data-chart-title="Households by main type of cooking fuel"></div>
         </section>
+        <section class="clearfix stat-row">
+            <h2><a class="permalink" href="#households-cooking-fuel" id="households-cooking-fuel">Household foundation type <i class="fa fa-link"></i></a></h2>
+            <div class="column-third">
+                {% include 'profile/_blocks/_stat_list.html' with stat=households.mud_bonded stat_type='percentage' %}
+            </div>
+            <div class="column-two-thirds" id="chart-histogram-households-foundation_type_distribution" data-stat-type="scaled-percentage" data-chart-title="Households by foundation type"></div>
+        </section>
 
     </div>
 </article>
