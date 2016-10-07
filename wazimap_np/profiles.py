@@ -26,6 +26,15 @@ COOKING_FUEL_RECODES = OrderedDict([
     ('NOT_STATED', 'Not Stated')
 ])
 
+FOUNDATION_TYPE_RECODES = OrderedDict([
+    ('MUD_BONDED', 'Mud Bonded'),
+    ('WOODEN_PILLAR', 'Wooden Pillar'),
+    ('CEMENT_BONDED', 'Cement Bonded'),
+    ('RCC_WITH_PILLAR', 'RCC with Pillar'),
+    ('OTHERS', 'Others'),
+    ('NOT_STATED', 'Not Stated')
+])
+
 DISABILITY_RECODES = OrderedDict([
     ('PHYSICAL', 'Physical'),
     ('BLINDNESS_LOW_VISION', 'Blind/Low Vision'),
@@ -118,12 +127,19 @@ def get_demographics_profile(geo_code, geo_level, session):
 
 def get_households_profile(geo_code, geo_level, session):
 
-    # cooking
+    # cooking fuel
     cooking_fuel_dict, total_households = get_stat_data(
         'main type of cooking fuel', geo_level, geo_code, session,
         recode=dict(COOKING_FUEL_RECODES),
         key_order=COOKING_FUEL_RECODES.values())
     total_wood = cooking_fuel_dict['Wood']['numerators']['this']
+
+    # foundation type
+    foundation_type_dict, _ = get_stat_data(
+        'foundation type', geo_level, geo_code, session,
+        recode=dict(FOUNDATION_TYPE_RECODES),
+        key_order=FOUNDATION_TYPE_RECODES.values())
+    total_mud_bonded = foundation_type_dict['Mud Bonded']['numerators']['this']
 
     return {
         'total_households': {
@@ -135,7 +151,13 @@ def get_households_profile(geo_code, geo_level, session):
             'numerators': {'this': total_wood},
             'values': {'this': round(total_wood / total_households * 100, 2)},
         },
-        'cooking_fuel_distribution': cooking_fuel_dict
+        'cooking_fuel_distribution': cooking_fuel_dict,
+        'mud_bonded': {
+            'name': 'Mud Bonded',
+            'numerators': {'this': total_mud_bonded},
+            'values': {'this': round(total_mud_bonded / total_households * 100, 2)},
+        },
+        'foundation_type_distribution': foundation_type_dict
     }
 
 

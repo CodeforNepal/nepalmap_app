@@ -5,6 +5,9 @@ from wazimap.data.tables import FieldTable
 FieldTable(['main type of cooking fuel'], universe='Households',
            table_per_level=False)
 
+FieldTable(['foundation type'], universe='Households',
+           table_per_level=False)
+
 FieldTable(['education level passed', 'sex'],
            universe='People aged 5 years and older', table_per_level=False)
 
