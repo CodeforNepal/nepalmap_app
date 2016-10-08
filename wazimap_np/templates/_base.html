@@ -1,0 +1,61 @@
+{% extends '_base.html' %}{% load staticfiles %}
+
+{% block head_css %}
+{{ block.super }}
+<link rel="stylesheet" href="{% static 'css/custom.css' %}">
+{% endblock head_css %}
+
+{% block favicon %}
+<link rel="shortcut icon" href="{{ STATIC_URL }}img/icons/favicon.ico" />
+{% endblock favicon %}
+
+{% block header_logo %}
+{% endblock %}
+{% block header_branding %}
+{% endblock %}
+
+
+{% block footer_content %}
+<div class="column-quarter">
+    <ul class="ul-icon-list">
+        <li>
+            <i class="fa fa-info"></i> <a href="/about">About {{ WAZIMAP.name }}</a>
+        </li>
+        {% if WAZIMAP.twitter %}
+        <li>
+            <i class="fa fa-twitter"></i> <a href="http://twitter.com/{{ WAZIMAP.twitter }}" target="_blank">{{ WAZIMAP.twitter }}</a>
+        </li>
+        {% endif %}
+    </ul>
+
+</div>
+<div class="column-quarter">
+    <ul class="ul-icon-list">
+        <li>
+            <i class="fa fa-th-list"></i> <a href="http://www.codefornepal.org" target="_blank">Code For Nepal</a>
+        </li>
+        <li>
+            <i class="fa fa-envelope"></i> <a href="mailto:{{ WAZIMAP.email }}">Email us</a>
+        </li>
+    </ul>
+</div>
+<div class="column-quarter">
+    <ul class="ul-icon-list">
+        <li>
+            <i class="fa fa-github"></i> <a href="{{ WAZIMAP.github }}" target="_blank">NepalMap on Github</a>
+        </li>
+        <li>
+            <i class="fa fa-github"></i> Built on <a href="http://censusreporter.org" target="_blank">CensusReporter.org</a>
+        </li>
+    </ul>
+</div>
+<div class="column-quarter">
+    <ul class="ul-icon-list">
+        {% block footer_branding %}
+        <li>
+            <a href="http://www.codefornepal.org/" target="_blank"><img src="{% static 'img/codefornepal-logo-small.png' %}"></a>
+        </li>
+        {% endblock %}
+    </ul>
+</div>
+{% endblock footer_content %}
