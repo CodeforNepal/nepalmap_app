@@ -179,14 +179,14 @@ def get_households_profile(geo_code, geo_level, session):
                 {'this': round(
                     total_mud_bonded_foundation / total_households * 100, 2)},
         },
+        'outer_wall_type_distribution': outer_wall_type_dict,
         'mud_bonded_wall': {
             'name': 'Mud Bonded Wall',
             'numerators': {'this': total_mud_bonded_wall},
             'values':
                 {'this': round(
                     total_mud_bonded_wall / total_households * 100, 2)},
-        },
-        'outer_wall_type_distribution': outer_wall_type_dict
+        }
     }
 
 
