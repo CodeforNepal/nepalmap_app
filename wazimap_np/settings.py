@@ -36,3 +36,8 @@ WAZIMAP['twitter'] = '@codefornepal'
 
 WAZIMAP['map_centre'] = [28.229651, 83.8165328]
 WAZIMAP['map_zoom'] = 7
+
+# Custom Settings
+WAZIMAP['email'] = 'nepalmap@codefornepal.org'
+WAZIMAP['github'] = 'https://github.com/Code4Nepal/nepalmap_app'
+WAZIMAP['tagline'] = 'Explore and understand Nepal using data'
