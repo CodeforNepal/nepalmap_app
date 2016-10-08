@@ -12,6 +12,8 @@ FieldTable(['outer wall type'], universe='Households', table_per_level=False)
 
 FieldTable(['roof type'], universe='Households', table_per_level=False)
 
+FieldTable(['toilet type'], universe='Households', table_per_level=False)
+
 # Education tables
 FieldTable(['education level passed', 'sex'],
            universe='People aged 5 years and older', table_per_level=False)
