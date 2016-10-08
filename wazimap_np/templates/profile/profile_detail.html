@@ -89,11 +89,18 @@
             <div class="column-two-thirds" id="chart-histogram-households-cooking_fuel_distribution" data-stat-type="scaled-percentage" data-chart-title="Households by main type of cooking fuel"></div>
         </section>
         <section class="clearfix stat-row">
-            <h2><a class="permalink" href="#households-cooking-fuel" id="households-cooking-fuel">Household foundation type <i class="fa fa-link"></i></a></h2>
+            <h2><a class="permalink" href="#households-foundation-type" id="households-foundation-type">Household foundation type <i class="fa fa-link"></i></a></h2>
             <div class="column-third">
-                {% include 'profile/_blocks/_stat_list.html' with stat=households.mud_bonded stat_type='percentage' %}
+                {% include 'profile/_blocks/_stat_list.html' with stat=households.mud_bonded_foundation stat_type='percentage' %}
             </div>
             <div class="column-two-thirds" id="chart-histogram-households-foundation_type_distribution" data-stat-type="scaled-percentage" data-chart-title="Households by foundation type"></div>
+        </section>
+        <section class="clearfix stat-row">
+            <h2><a class="permalink" href="#households-outer-wall-type" id="households-outer-wall-type">Household outer wall type <i class="fa fa-link"></i></a></h2>
+            <div class="column-third">
+                {% include 'profile/_blocks/_stat_list.html' with stat=households.mud_bonded_wall stat_type='percentage' %}
+            </div>
+            <div class="column-two-thirds" id="chart-histogram-households-outer_wall_type_distribution" data-stat-type="scaled-percentage" data-chart-title="Households by outer wall type"></div>
         </section>
 
     </div>
