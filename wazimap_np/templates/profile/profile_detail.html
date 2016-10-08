@@ -82,6 +82,12 @@
             </div>
         </section>
         <section class="clearfix stat-row">
+            <h2><a class="permalink" href="#household-construction-materials" id="household-construction-materials">Household construction materials <i class="fa fa-link"></i></a></h2>
+            <div class="column-third" id="chart-pie-households-foundation_type_distribution" data-stat-type="scaled-percentage" data-chart-title="Households by type of foundation"></div>
+            <div class="column-third" id="chart-pie-households-outer_wall_type_distribution" data-stat-type="scaled-percentage" data-chart-title="Households by type of wall"></div>
+            <div class="column-third" id="chart-pie-households-roof_type_distribution" data-stat-type="scaled-percentage" data-chart-title="Households by type of roof"></div>
+        </section>
+        <section class="clearfix stat-row">
             <h2><a class="permalink" href="#households-cooking-fuel" id="households-cooking-fuel">Main type of cooking fuel <i class="fa fa-link"></i></a></h2>
             <div class="column-third">
                 {% include 'profile/_blocks/_stat_list.html' with stat=households.cooking_wood stat_type='percentage' %}
@@ -89,20 +95,12 @@
             <div class="column-two-thirds" id="chart-histogram-households-cooking_fuel_distribution" data-stat-type="scaled-percentage" data-chart-title="Households by main type of cooking fuel"></div>
         </section>
         <section class="clearfix stat-row">
-            <h2><a class="permalink" href="#households-foundation-type" id="households-foundation-type">Household foundation type <i class="fa fa-link"></i></a></h2>
+            <h2><a class="permalink" href="#households-toilet-type" id="households-toilet-type">Household toilet type <i class="fa fa-link"></i></a></h2>
             <div class="column-third">
-                {% include 'profile/_blocks/_stat_list.html' with stat=households.mud_bonded_foundation stat_type='percentage' %}
+                {% include 'profile/_blocks/_stat_list.html' with stat=households.flush_toilet stat_type='percentage' %}
             </div>
-            <div class="column-two-thirds" id="chart-histogram-households-foundation_type_distribution" data-stat-type="scaled-percentage" data-chart-title="Households by foundation type"></div>
+            <div class="column-two-thirds" id="chart-histogram-households-toilet_type_distribution" data-stat-type="scaled-percentage" data-chart-title="Households by toilet type"></div>
         </section>
-        <section class="clearfix stat-row">
-            <h2><a class="permalink" href="#households-outer-wall-type" id="households-outer-wall-type">Household outer wall type <i class="fa fa-link"></i></a></h2>
-            <div class="column-third">
-                {% include 'profile/_blocks/_stat_list.html' with stat=households.mud_bonded_wall stat_type='percentage' %}
-            </div>
-            <div class="column-two-thirds" id="chart-histogram-households-outer_wall_type_distribution" data-stat-type="scaled-percentage" data-chart-title="Households by outer wall type"></div>
-        </section>
-
     </div>
 </article>
 {% endblock %}

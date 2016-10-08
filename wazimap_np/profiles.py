@@ -15,6 +15,7 @@ PROFILE_SECTIONS = (
     'education'
 )
 
+# Household recodes
 COOKING_FUEL_RECODES = OrderedDict([
     ('WOOD', 'Wood'),
     ('LPG', 'LPG'),
@@ -45,6 +46,25 @@ OUTER_WALL_TYPE_RECODES = OrderedDict([
     ('UNBACKED_BRICK', 'Unbacked Brick')
 ])
 
+ROOF_TYPE_RECODES = OrderedDict([
+    ('GALV_IRON', 'Galvanized Iron'),
+    ('TILE_SLATE', 'Slate'),
+    ('RCC', 'Reinforced Concrete'),
+    ('THATCH', 'Thatch'),
+    ('NOT_STATED', 'Not Stated'),
+    ('MUD', 'Mud'),
+    ('WOOD_PLANKS', 'Wood Planks'),
+    ('OTHERS', 'Others')
+])
+
+TOILET_TYPE_RECODES = OrderedDict([
+    ('FLUSH_TOILET', 'Flush'),
+    ('NO_TOILET', 'None'),
+    ('ORDINARY_TOILET', 'Ordinary'),
+    ('NOT_STATED', 'Not stated')
+])
+
+# Demographic recodes
 DISABILITY_RECODES = OrderedDict([
     ('PHYSICAL', 'Physical'),
     ('BLINDNESS_LOW_VISION', 'Blind/Low Vision'),
@@ -56,6 +76,7 @@ DISABILITY_RECODES = OrderedDict([
     ('DEAF_BLIND', 'Deaf and Blind')
 ])
 
+# Education recodes
 EDUCATION_LEVEL_PASSED_RECODES = OrderedDict([
     ('PRIMARY_1_5', 'Primary'),
     ('LOWER_SECONDARY_6_8', 'Lower Secondary'),
@@ -160,6 +181,21 @@ def get_households_profile(geo_code, geo_level, session):
     total_mud_bonded_wall = \
         outer_wall_type_dict['Mud Bonded']['numerators']['this']
 
+    # roof type
+    roof_type_dict, _ = get_stat_data(
+        'roof type', geo_level, geo_code, session,
+        recode=dict(ROOF_TYPE_RECODES),
+        key_order=ROOF_TYPE_RECODES.values())
+    total_galvanized_roof =\
+        roof_type_dict['Galvanized Iron']['numerators']['this']
+
+    # toilet type
+    toilet_type_dict, _ = get_stat_data(
+        'toilet type', geo_level, geo_code, session,
+        recode=dict(TOILET_TYPE_RECODES),
+        key_order=TOILET_TYPE_RECODES.values())
+    total_flush_toilet = toilet_type_dict['Flush']['numerators']['this']
+
     return {
         'total_households': {
             'name': 'Households',
@@ -186,6 +222,22 @@ def get_households_profile(geo_code, geo_level, session):
             'values':
                 {'this': round(
                     total_mud_bonded_wall / total_households * 100, 2)},
+        },
+        'roof_type_distribution': roof_type_dict,
+        'galvanized_roof': {
+            'name': 'Galvanized Iron Roof',
+            'numerators': {'this': total_galvanized_roof},
+            'values':
+                {'this': round(
+                    total_galvanized_roof / total_households * 100, 2)},
+        },
+        'toilet_type_distribution': toilet_type_dict,
+        'flush_toilet': {
+            'name': 'Flush Toilet',
+            'numerators': {'this': total_flush_toilet},
+            'values':
+                {'this': round(
+                    total_flush_toilet / total_households * 100, 2)},
         }
     }
 
