@@ -61,7 +61,34 @@ TOILET_TYPE_RECODES = OrderedDict([
     ('FLUSH_TOILET', 'Flush'),
     ('NO_TOILET', 'None'),
     ('ORDINARY_TOILET', 'Ordinary'),
-    ('NOT_STATED', 'Not stated')
+    ('NOT_STATED', 'Not Stated')
+])
+
+DRINKING_WATER_RECODES = OrderedDict([
+    ('TAP_PIPED', 'Piped Tap'),
+    ('TUBEWELL', 'Tube Well'),
+    ('SPOUT_WATER', 'Spout Water'),
+    ('UNCOVERED_WELL', 'Uncovered Well'),
+    ('COVERED_WELL', 'Covered Well'),
+    ('OTHERS', 'Others'),
+    ('RIVER_STREAM', 'River or Stream'),
+    ('NOT_STATED', 'Not Stated')
+])
+
+LIGHTING_FUEL_RECODES = OrderedDict([
+    ('ELECTRICITY', 'Electricity'),
+    ('KEROSENE', 'Kerosene'),
+    ('SOLAR', 'Solar'),
+    ('OTHERS', 'Others'),
+    ('NOT_STATED', 'Not Stated'),
+    ('BIOGAS', 'Biogas')
+])
+
+HOME_OWNERSHIP_RECODES = OrderedDict([
+    ('OWNED', 'Owned'),
+    ('RENTED', 'Rented'),
+    ('OTHERS', 'Others'),
+    ('INSTITUTIONAL', 'Institutional')
 ])
 
 # Demographic recodes
@@ -196,6 +223,27 @@ def get_households_profile(geo_code, geo_level, session):
         key_order=TOILET_TYPE_RECODES.values())
     total_flush_toilet = toilet_type_dict['Flush']['numerators']['this']
 
+    # drinking water source
+    drinking_water_dict, _ = get_stat_data(
+        'drinking water source', geo_level, geo_code, session,
+        recode=dict(DRINKING_WATER_RECODES),
+        key_order=DRINKING_WATER_RECODES.values())
+    total_piped_tap = drinking_water_dict['Piped Tap']['numerators']['this']
+
+    # lighting fuel
+    lighting_fuel_dict, _ = get_stat_data(
+        'lighting fuel', geo_level, geo_code, session,
+        recode=dict(LIGHTING_FUEL_RECODES),
+        key_order=LIGHTING_FUEL_RECODES.values())
+    total_electricity = lighting_fuel_dict['Electricity']['numerators']['this']
+
+    # home ownership
+    home_ownership_dict, _ = get_stat_data(
+        'home ownership', geo_level, geo_code, session,
+        recode=dict(HOME_OWNERSHIP_RECODES),
+        key_order=HOME_OWNERSHIP_RECODES.values())
+    total_own_home = home_ownership_dict['Owned']['numerators']['this']
+
     return {
         'total_households': {
             'name': 'Households',
@@ -209,7 +257,7 @@ def get_households_profile(geo_code, geo_level, session):
         },
         'foundation_type_distribution': foundation_type_dict,
         'mud_bonded_foundation': {
-            'name': 'Mud Bonded Foundation',
+            'name': 'Have a mud-bonded foundation',
             'numerators': {'this': total_mud_bonded_foundation},
             'values':
                 {'this': round(
@@ -217,7 +265,7 @@ def get_households_profile(geo_code, geo_level, session):
         },
         'outer_wall_type_distribution': outer_wall_type_dict,
         'mud_bonded_wall': {
-            'name': 'Mud Bonded Wall',
+            'name': 'Have mud-bonded walls',
             'numerators': {'this': total_mud_bonded_wall},
             'values':
                 {'this': round(
@@ -225,7 +273,7 @@ def get_households_profile(geo_code, geo_level, session):
         },
         'roof_type_distribution': roof_type_dict,
         'galvanized_roof': {
-            'name': 'Galvanized Iron Roof',
+            'name': 'Have a galvanized iron roof',
             'numerators': {'this': total_galvanized_roof},
             'values':
                 {'this': round(
@@ -233,11 +281,35 @@ def get_households_profile(geo_code, geo_level, session):
         },
         'toilet_type_distribution': toilet_type_dict,
         'flush_toilet': {
-            'name': 'Flush Toilet',
+            'name': 'Have a flush toilet',
             'numerators': {'this': total_flush_toilet},
             'values':
                 {'this': round(
                     total_flush_toilet / total_households * 100, 2)},
+        },
+        'drinking_water_distribution': drinking_water_dict,
+        'piped_tap': {
+            'name': 'Use piped tap water for drinking',
+            'numerators': {'this': total_piped_tap},
+            'values':
+                {'this': round(
+                    total_piped_tap / total_households * 100, 2)},
+        },
+        'lighting_fuel_distribution': lighting_fuel_dict,
+        'lighting_electricity': {
+            'name': 'Use electricity for lighting',
+            'numerators': {'this': total_electricity},
+            'values':
+                {'this': round(
+                    total_electricity / total_households * 100, 2)},
+        },
+        'home_ownership_distribution': home_ownership_dict,
+        'own_home': {
+            'name': 'Own their own home',
+            'numerators': {'this': total_own_home},
+            'values':
+                {'this': round(
+                    total_own_home / total_households * 100, 2)},
         }
     }
 
@@ -295,14 +367,14 @@ def get_education_profile(geo_code, geo_level, session):
         },
         'education_level_passed_distribution': edu_level_reached,
         'primary_level_reached': {
-            'name': 'Primary level reached',
+            'name': 'Have passed the primary level',
             'numerators': {'this': total_primary},
             'values': {'this': round(total_primary / pop_five_and_older * 100,
                                      2)}
         },
         'education_level_by_sex_distribution': edu_level_by_sex,
         'primary_level_reached_by_sex': {
-            'name': 'Secondary level reached',
+            'name': 'Have passed the secondary level',
             'numerators': {'this': total_secondary_by_sex},
             'values': {
                 'this': round(
