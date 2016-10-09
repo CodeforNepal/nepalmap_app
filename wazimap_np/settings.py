@@ -10,7 +10,7 @@ DATABASES['default'] = dj_database_url.parse(DATABASE_URL)
 DATABASES['default']['ATOMIC_REQUESTS'] = True
 
 # Localise this instance of Wazimap
-WAZIMAP['name'] = 'Nepal Map'
+WAZIMAP['name'] = 'NepalMap'
 # NB: this must be https if your site supports HTTPS.
 WAZIMAP['url'] = 'http://www.nepalmap.org'
 WAZIMAP['country_code'] = 'NP'
