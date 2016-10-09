@@ -6,6 +6,9 @@ from wazimap.data.tables import FieldTable
 FieldTable(['main type of cooking fuel'], universe='Households',
            table_per_level=False)
 
+FieldTable(['drinking water source'], universe='Households',
+           table_per_level=False)
+
 FieldTable(['foundation type'], universe='Households', table_per_level=False)
 
 FieldTable(['outer wall type'], universe='Households', table_per_level=False)
