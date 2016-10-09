@@ -92,10 +92,16 @@ EDUCATION_LEVEL_PASSED_RECODES = OrderedDict([
 ])
 
 LITERACY_RECODES = OrderedDict([
-    ('CAN_READ_WRITE', 'Can read and write'),
-    ('CANT_READ_WRITE', 'Not literate'),
-    ('CAN_READ_ONLY', 'Can read'),
-    ('NOT_STATED', 'Not stated')
+    ('CAN_READ_WRITE', 'Can Read and Write'),
+    ('CANT_READ_WRITE', 'Not Literate'),
+    ('CAN_READ_ONLY', 'Can Read'),
+    ('NOT_STATED', 'Not Stated')
+])
+
+SCHOOL_ATTENDANCE_RECODES = OrderedDict([
+    ('SCHOOL_GOING', 'Attending'),
+    ('NOT_GOING', 'Not Attending'),
+    ('ATTENDENCE_NOT_STATED', 'Not Stated')
 ])
 
 
@@ -288,10 +294,27 @@ def get_education_profile(geo_code, geo_level, session):
         recode=dict(LITERACY_RECODES),
         key_order=LITERACY_RECODES.values())
 
-    return {
+    school_attendance_by_sex, pop_five_to_twenty_five = get_stat_data(
+        ['school attendance', 'sex'], geo_level, geo_code, session,
+        recode={'school attendance': dict(SCHOOL_ATTENDANCE_RECODES)},
+        key_order={
+            'school attendance': SCHOOL_ATTENDANCE_RECODES.values(),
+            'sex': ['Female', 'Male']},
+        percent_grouping=['sex'])
+
+    school_attendance_dist, _ = get_stat_data(
+        'school attendance', geo_level, geo_code, session,
+        recode=dict(SCHOOL_ATTENDANCE_RECODES),
+        key_order=SCHOOL_ATTENDANCE_RECODES.values())
+
+    education_stats = {
         'aged_five_and_over': {
             'name': 'People Aged 5 and Over',
             'values': {'this': pop_five_and_older}
+        },
+        'aged_five_to_twenty_five': {
+            'name': 'People Aged 5 to 25',
+            'values': {'this': pop_five_to_twenty_five}
         },
         'education_level_passed_distribution': edu_level_reached,
         'primary_level_reached': {
@@ -310,5 +333,9 @@ def get_education_profile(geo_code, geo_level, session):
                     2)}
         },
         'literacy_by_sex_distribution': literacy_by_sex,
-        'literacy_distribution': literacy_dist
+        'literacy_distribution': literacy_dist,
+        'school_attendance_by_sex_distribution': school_attendance_by_sex,
+        'school_attendance_distribution': school_attendance_dist
     }
+
+    return education_stats
