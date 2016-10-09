@@ -243,7 +243,7 @@ def get_households_profile(geo_code, geo_level, session):
         },
         'foundation_type_distribution': foundation_type_dict,
         'mud_bonded_foundation': {
-            'name': 'Mud Bonded Foundation',
+            'name': 'Have a mud-bonded foundation',
             'numerators': {'this': total_mud_bonded_foundation},
             'values':
                 {'this': round(
@@ -251,7 +251,7 @@ def get_households_profile(geo_code, geo_level, session):
         },
         'outer_wall_type_distribution': outer_wall_type_dict,
         'mud_bonded_wall': {
-            'name': 'Mud Bonded Wall',
+            'name': 'Have mud-bonded walls',
             'numerators': {'this': total_mud_bonded_wall},
             'values':
                 {'this': round(
@@ -259,7 +259,7 @@ def get_households_profile(geo_code, geo_level, session):
         },
         'roof_type_distribution': roof_type_dict,
         'galvanized_roof': {
-            'name': 'Galvanized Iron Roof',
+            'name': 'Have a galvanized iron roof',
             'numerators': {'this': total_galvanized_roof},
             'values':
                 {'this': round(
@@ -267,7 +267,7 @@ def get_households_profile(geo_code, geo_level, session):
         },
         'toilet_type_distribution': toilet_type_dict,
         'flush_toilet': {
-            'name': 'Flush Toilet',
+            'name': 'Have a flush toilet',
             'numerators': {'this': total_flush_toilet},
             'values':
                 {'this': round(
@@ -275,7 +275,7 @@ def get_households_profile(geo_code, geo_level, session):
         },
         'drinking_water_distribution': drinking_water_dict,
         'piped_tap': {
-            'name': 'Piped Tap Water',
+            'name': 'Use piped tap water for drinking',
             'numerators': {'this': total_piped_tap},
             'values':
                 {'this': round(
@@ -345,14 +345,14 @@ def get_education_profile(geo_code, geo_level, session):
         },
         'education_level_passed_distribution': edu_level_reached,
         'primary_level_reached': {
-            'name': 'Primary level reached',
+            'name': 'Have passed the primary level',
             'numerators': {'this': total_primary},
             'values': {'this': round(total_primary / pop_five_and_older * 100,
                                      2)}
         },
         'education_level_by_sex_distribution': edu_level_by_sex,
         'primary_level_reached_by_sex': {
-            'name': 'Secondary level reached',
+            'name': 'Have passed the secondary level',
             'numerators': {'this': total_secondary_by_sex},
             'values': {
                 'this': round(
