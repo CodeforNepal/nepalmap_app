@@ -1,0 +1,34 @@
+<article id="households" class="clearfix">
+    <header class="section-contents">
+        <h1>Households</h1>
+    </header>
+    <div class="section-container">
+
+        <section class="clearfix stat-row">
+            <h2><a class="permalink" href="#households">Households <i class="fa fa-link"></i></a></h2>
+            <div class="column-third">
+                {% include 'profile/_blocks/_stat_list.html' with stat=households.total_households stat_type='number' %}
+            </div>
+        </section>
+        <section class="clearfix stat-row">
+            <h2><a class="permalink" href="#household-construction-materials" id="household-construction-materials">Household construction materials <i class="fa fa-link"></i></a></h2>
+            <div class="column-third" id="chart-pie-households-foundation_type_distribution" data-stat-type="scaled-percentage" data-chart-title="Households by type of foundation"></div>
+            <div class="column-third" id="chart-pie-households-outer_wall_type_distribution" data-stat-type="scaled-percentage" data-chart-title="Households by type of wall"></div>
+            <div class="column-third" id="chart-pie-households-roof_type_distribution" data-stat-type="scaled-percentage" data-chart-title="Households by type of roof"></div>
+        </section>
+        <section class="clearfix stat-row">
+            <h2><a class="permalink" href="#households-cooking-fuel" id="households-cooking-fuel">Main type of cooking fuel <i class="fa fa-link"></i></a></h2>
+            <div class="column-third">
+                {% include 'profile/_blocks/_stat_list.html' with stat=households.cooking_wood stat_type='percentage' %}
+            </div>
+            <div class="column-two-thirds" id="chart-histogram-households-cooking_fuel_distribution" data-stat-type="scaled-percentage" data-chart-title="Households by main type of cooking fuel"></div>
+        </section>
+        <section class="clearfix stat-row">
+            <h2><a class="permalink" href="#households-toilet-type" id="households-toilet-type">Household toilet type <i class="fa fa-link"></i></a></h2>
+            <div class="column-third">
+                {% include 'profile/_blocks/_stat_list.html' with stat=households.flush_toilet stat_type='percentage' %}
+            </div>
+            <div class="column-two-thirds" id="chart-histogram-households-toilet_type_distribution" data-stat-type="scaled-percentage" data-chart-title="Households by toilet type"></div>
+        </section>
+    </div>
+</article>
