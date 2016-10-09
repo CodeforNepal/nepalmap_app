@@ -9,6 +9,9 @@ FieldTable(['main type of cooking fuel'], universe='Households',
 FieldTable(['drinking water source'], universe='Households',
            table_per_level=False)
 
+FieldTable(['lighting fuel'], universe='Households',
+           table_per_level=False)
+
 FieldTable(['foundation type'], universe='Households', table_per_level=False)
 
 FieldTable(['outer wall type'], universe='Households', table_per_level=False)
