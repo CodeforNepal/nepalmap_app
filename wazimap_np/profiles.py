@@ -61,7 +61,18 @@ TOILET_TYPE_RECODES = OrderedDict([
     ('FLUSH_TOILET', 'Flush'),
     ('NO_TOILET', 'None'),
     ('ORDINARY_TOILET', 'Ordinary'),
-    ('NOT_STATED', 'Not stated')
+    ('NOT_STATED', 'Not Stated')
+])
+
+DRINKING_WATER_RECODES = OrderedDict([
+    ('TAP_PIPED', 'Piped Tap'),
+    ('TUBEWELL', 'Tube Well'),
+    ('SPOUT_WATER', 'Spout Water'),
+    ('UNCOVERED_WELL', 'Uncovered Well'),
+    ('COVERED_WELL', 'Covered Well'),
+    ('OTHERS', 'Others'),
+    ('RIVER_STREAM', 'River or Stream'),
+    ('NOT_STATED', 'Not Stated')
 ])
 
 # Demographic recodes
@@ -196,6 +207,13 @@ def get_households_profile(geo_code, geo_level, session):
         key_order=TOILET_TYPE_RECODES.values())
     total_flush_toilet = toilet_type_dict['Flush']['numerators']['this']
 
+    # toilet type
+    drinking_water_dict, _ = get_stat_data(
+        'drinking water source', geo_level, geo_code, session,
+        recode=dict(DRINKING_WATER_RECODES),
+        key_order=DRINKING_WATER_RECODES.values())
+    total_piped_tap = drinking_water_dict['Piped Tap']['numerators']['this']
+
     return {
         'total_households': {
             'name': 'Households',
@@ -238,6 +256,14 @@ def get_households_profile(geo_code, geo_level, session):
             'values':
                 {'this': round(
                     total_flush_toilet / total_households * 100, 2)},
+        },
+        'drinking_water_distribution': drinking_water_dict,
+        'piped_tap': {
+            'name': 'Piped Tap Water',
+            'numerators': {'this': total_piped_tap},
+            'values':
+                {'this': round(
+                    total_piped_tap / total_households * 100, 2)},
         }
     }
 

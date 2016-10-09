@@ -24,6 +24,13 @@
             <div class="column-two-thirds" id="chart-histogram-households-cooking_fuel_distribution" data-stat-type="scaled-percentage" data-chart-title="Households by main type of cooking fuel"></div>
         </section>
         <section class="clearfix stat-row">
+            <h2><a class="permalink" href="#households-drinking-water" id="households-drinking-water">Drinking water source <i class="fa fa-link"></i></a></h2>
+            <div class="column-third">
+                {% include 'profile/_blocks/_stat_list.html' with stat=households.piped_tap stat_type='percentage' %}
+            </div>
+            <div class="column-two-thirds" id="chart-histogram-households-drinking_water_distribution" data-stat-type="scaled-percentage" data-chart-title="Households by drinking water source"></div>
+        </section>
+        <section class="clearfix stat-row">
             <h2><a class="permalink" href="#households-toilet-type" id="households-toilet-type">Household toilet type <i class="fa fa-link"></i></a></h2>
             <div class="column-third">
                 {% include 'profile/_blocks/_stat_list.html' with stat=households.flush_toilet stat_type='percentage' %}
