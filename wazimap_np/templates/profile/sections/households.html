@@ -17,6 +17,13 @@
             <div class="column-third" id="chart-pie-households-roof_type_distribution" data-stat-type="scaled-percentage" data-chart-title="Households by type of roof"></div>
         </section>
         <section class="clearfix stat-row">
+            <h2><a class="permalink" href="#households-home-ownership" id="households-home-ownership">Home ownership <i class="fa fa-link"></i></a></h2>
+            <div class="column-third">
+                {% include 'profile/_blocks/_stat_list.html' with stat=households.own_home stat_type='percentage' %}
+            </div>
+            <div class="column-two-thirds" id="chart-histogram-households-home_ownership_distribution" data-stat-type="scaled-percentage" data-chart-title="Households by ownership"></div>
+        </section>
+        <section class="clearfix stat-row">
             <h2><a class="permalink" href="#households-cooking-fuel" id="households-cooking-fuel">Main type of cooking fuel <i class="fa fa-link"></i></a></h2>
             <div class="column-third">
                 {% include 'profile/_blocks/_stat_list.html' with stat=households.cooking_wood stat_type='percentage' %}

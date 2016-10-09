@@ -84,6 +84,13 @@ LIGHTING_FUEL_RECODES = OrderedDict([
     ('BIOGAS', 'Biogas')
 ])
 
+HOME_OWNERSHIP_RECODES = OrderedDict([
+    ('OWNED', 'Owned'),
+    ('RENTED', 'Rented'),
+    ('OTHERS', 'Others'),
+    ('INSTITUTIONAL', 'Institutional')
+])
+
 # Demographic recodes
 DISABILITY_RECODES = OrderedDict([
     ('PHYSICAL', 'Physical'),
@@ -230,6 +237,13 @@ def get_households_profile(geo_code, geo_level, session):
         key_order=LIGHTING_FUEL_RECODES.values())
     total_electricity = lighting_fuel_dict['Electricity']['numerators']['this']
 
+    # home ownership
+    home_ownership_dict, _ = get_stat_data(
+        'home ownership', geo_level, geo_code, session,
+        recode=dict(HOME_OWNERSHIP_RECODES),
+        key_order=HOME_OWNERSHIP_RECODES.values())
+    total_own_home = home_ownership_dict['Owned']['numerators']['this']
+
     return {
         'total_households': {
             'name': 'Households',
@@ -288,6 +302,14 @@ def get_households_profile(geo_code, geo_level, session):
             'values':
                 {'this': round(
                     total_electricity / total_households * 100, 2)},
+        },
+        'home_ownership_distribution': home_ownership_dict,
+        'own_home': {
+            'name': 'Own their own home',
+            'numerators': {'this': total_own_home},
+            'values':
+                {'this': round(
+                    total_own_home / total_households * 100, 2)},
         }
     }
 
