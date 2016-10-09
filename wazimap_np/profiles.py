@@ -75,6 +75,15 @@ DRINKING_WATER_RECODES = OrderedDict([
     ('NOT_STATED', 'Not Stated')
 ])
 
+LIGHTING_FUEL_RECODES = OrderedDict([
+    ('ELECTRICITY', 'Electricity'),
+    ('KEROSENE', 'Kerosene'),
+    ('SOLAR', 'Solar'),
+    ('OTHERS', 'Others'),
+    ('NOT_STATED', 'Not Stated'),
+    ('BIOGAS', 'Biogas')
+])
+
 # Demographic recodes
 DISABILITY_RECODES = OrderedDict([
     ('PHYSICAL', 'Physical'),
@@ -207,12 +216,19 @@ def get_households_profile(geo_code, geo_level, session):
         key_order=TOILET_TYPE_RECODES.values())
     total_flush_toilet = toilet_type_dict['Flush']['numerators']['this']
 
-    # toilet type
+    # drinking water source
     drinking_water_dict, _ = get_stat_data(
         'drinking water source', geo_level, geo_code, session,
         recode=dict(DRINKING_WATER_RECODES),
         key_order=DRINKING_WATER_RECODES.values())
     total_piped_tap = drinking_water_dict['Piped Tap']['numerators']['this']
+
+    # lighting fuel
+    lighting_fuel_dict, _ = get_stat_data(
+        'lighting fuel', geo_level, geo_code, session,
+        recode=dict(LIGHTING_FUEL_RECODES),
+        key_order=LIGHTING_FUEL_RECODES.values())
+    total_electricity = lighting_fuel_dict['Electricity']['numerators']['this']
 
     return {
         'total_households': {
@@ -264,6 +280,14 @@ def get_households_profile(geo_code, geo_level, session):
             'values':
                 {'this': round(
                     total_piped_tap / total_households * 100, 2)},
+        },
+        'lighting_fuel_distribution': lighting_fuel_dict,
+        'lighting_electricity': {
+            'name': 'Use electricity for lighting',
+            'numerators': {'this': total_electricity},
+            'values':
+                {'this': round(
+                    total_electricity / total_households * 100, 2)},
         }
     }
 
