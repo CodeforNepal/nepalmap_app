@@ -40,3 +40,11 @@ a.action-button,
 .action-links a:hover {
     color: #FA1A2F;
 }
+
+.tan-stripe {
+    background-color: #FFF;
+}
+
+body {
+    background-color: #f7f7f7;
+}
