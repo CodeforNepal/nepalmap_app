@@ -9,11 +9,49 @@
 <link rel="shortcut icon" href="{{ STATIC_URL }}img/icons/favicon.ico" />
 {% endblock favicon %}
 
-{% block header_logo %}
-{% endblock %}
-{% block header_branding %}
-{% endblock %}
 
+{% block header %}
+<header id="page-header">
+    <div id="page-header-title" class="wrapper clearfix">
+        {% if not hide_nav_tools %}
+        <i id="menu-toggle" class="fa fa-bars"></i>
+        {% endif %}
+        <a class="title" href="{% url 'homepage' %}">
+            {% block header_logo %}
+            {% endblock %}
+            {{ WAZIMAP.name }}
+        </a>
+        {% if not hide_nav_tools %}
+            {% block nav_tools %}
+            <div id="menu" class="tool-set clearfix">
+                <div class="tool-group">
+                    <input name="geography_select" id="geography-select" type="text" placeholder="Start typing a place name or address..." autocomplete="off">
+                </div>
+                {% if not hide_nav_compare %}
+                {% comment %}
+                <span class="separator">or</span>
+                <div class="tool-group">
+                    <a class="button" href="{% url 'table_search' %}">
+                        <i class="fa fa-chevron-circle-right"></i>
+                        Search for data
+                    </a>
+                </div>
+                {% endcomment %}
+                {% endif %}
+            </div>
+            {% endblock %}
+        {% endif %}
+        <div class="header-buttons">
+            {% if WAZIMAP.twitter %}
+            <a class="wide-only" href="https://twitter.com/{{ WAZIMAP.twitter }}" title="{{ WAZIMAP.twitter }} on Twitter" target="_blank"><i class="fa fa-2x fa-twitter"></i></a>
+            {% endif %}
+        {% block header_branding %}
+        {% endblock %}
+        </div>
+    </div>
+</header>
+{% block header_content %}{% endblock header_content %}
+{% endblock %}
 
 {% block footer_content %}
 <div class="column-quarter">
