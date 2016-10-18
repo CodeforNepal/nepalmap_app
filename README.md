@@ -36,3 +36,4 @@ python manage.py runserver
 
 # License
 
+NepalMap code is licensed under the MIT License.
