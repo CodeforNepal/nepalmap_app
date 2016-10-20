@@ -9,6 +9,12 @@
             <div class="column-third">
                 {% include 'profile/_blocks/_stat_list.html' with stat=households.total_households stat_type='number' %}
             </div>
+            <div class="column-third">
+                {% include 'profile/_blocks/_stat_list.html' with stat=households.average_household_size decimals='true' %}
+            </div>
+            <div class="column-third">
+                {% include 'profile/_blocks/_stat_list.html' with stat=households.male_to_female_ratio decimals='true' %}
+            </div>
         </section>
         <section class="clearfix stat-row">
             <h2><a class="permalink" href="#household-construction-materials" id="household-construction-materials">Household construction materials <i class="fa fa-link"></i></a></h2>

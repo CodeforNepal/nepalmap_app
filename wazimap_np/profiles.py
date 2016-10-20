@@ -2,12 +2,11 @@ from collections import OrderedDict
 
 from wazimap.geo import geo_data
 from wazimap.data.tables import get_model_from_fields
-from wazimap.data.utils import get_session, calculate_median, merge_dicts, get_stat_data, get_objects_by_geo, group_remainder
-
+from wazimap.data.utils import get_session, calculate_median, merge_dicts, \
+    get_stat_data, get_objects_by_geo, group_remainder
 
 # ensure tables are loaded
 import wazimap_np.tables  # noqa
-
 
 PROFILE_SECTIONS = (
     'demographics',
@@ -148,7 +147,7 @@ def get_census_profile(geo_code, geo_level, profile_name=None):
                 # get profiles for province and/or country
                 for level, code in geo_summary_levels:
                     # merge summary profile into current geo profile
-                    merge_dicts(data[section], func(code, level, session), 
+                    merge_dicts(data[section], func(code, level, session),
                                 level)
 
         return data
@@ -158,7 +157,6 @@ def get_census_profile(geo_code, geo_level, profile_name=None):
 
 
 def get_demographics_profile(geo_code, geo_level, session):
-
     # population by sex
     sex_dist_data, total_pop = get_stat_data(
         'sex', geo_level, geo_code, session,
@@ -172,7 +170,7 @@ def get_demographics_profile(geo_code, geo_level, session):
         key_order=DISABILITY_RECODES.values(),
         exclude=['NO_DISABILITY'])
 
-    final_data = {
+    demographic_data = {
         'sex_ratio': sex_dist_data,
         'disability_ratio': disability_dist_data,
         'total_population': {
@@ -186,10 +184,14 @@ def get_demographics_profile(geo_code, geo_level, session):
         }
     }
 
-    return final_data
+    return demographic_data
 
 
 def get_households_profile(geo_code, geo_level, session):
+    # population status
+    sex_dist_data, total_pop = get_stat_data(
+        'sex', geo_level, geo_code, session,
+        table_fields=['disability', 'sex'])
 
     # cooking fuel
     cooking_fuel_dict, total_households = get_stat_data(
@@ -197,6 +199,12 @@ def get_households_profile(geo_code, geo_level, session):
         recode=dict(COOKING_FUEL_RECODES),
         key_order=COOKING_FUEL_RECODES.values())
     total_wood = cooking_fuel_dict['Wood']['numerators']['this']
+
+    household_size = total_pop / float(total_households)
+    women = sex_dist_data['Female']['numerators']['this']
+    men = sex_dist_data['Male']['numerators']['this']
+    # male_female_ratio = men / float(women)
+    male_female_ratio = round(men / women * 100, 2)
 
     # foundation type
     foundation_type_dict, _ = get_stat_data(
@@ -219,7 +227,7 @@ def get_households_profile(geo_code, geo_level, session):
         'roof type', geo_level, geo_code, session,
         recode=dict(ROOF_TYPE_RECODES),
         key_order=ROOF_TYPE_RECODES.values())
-    total_galvanized_roof =\
+    total_galvanized_roof = \
         roof_type_dict['Galvanized Iron']['numerators']['this']
 
     # toilet type
@@ -250,10 +258,18 @@ def get_households_profile(geo_code, geo_level, session):
         key_order=HOME_OWNERSHIP_RECODES.values())
     total_own_home = home_ownership_dict['Owned']['numerators']['this']
 
-    return {
+    household_stats = {
         'total_households': {
             'name': 'Households',
             'values': {'this': total_households}
+        },
+        'average_household_size': {
+            'name': 'Average household size',
+            'values': {'this': '{0:.2f}'.format(household_size)}
+        },
+        'male_to_female_ratio': {
+            'name': 'Male to female ratio',
+            'values': {'this': '{0:.2f}'.format(male_female_ratio)}
         },
         'cooking_fuel_distribution': cooking_fuel_dict,
         'cooking_wood': {
@@ -318,6 +334,8 @@ def get_households_profile(geo_code, geo_level, session):
                     total_own_home / total_households * 100, 2)},
         }
     }
+
+    return household_stats
 
 
 def get_education_profile(geo_code, geo_level, session):
