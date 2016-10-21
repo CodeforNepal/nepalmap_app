@@ -31,7 +31,7 @@ WAZIMAP['geometry_data'] = {
     'district': 'geo/district.topojson',
 }
 
-WAZIMAP['ga_tracking_id'] = ''
+WAZIMAP['ga_tracking_id'] = os.environ.get('GA_TRACKING_ID')
 WAZIMAP['twitter'] = '@codefornepal'
 
 WAZIMAP['map_centre'] = [28.229651, 83.8165328]
