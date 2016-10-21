@@ -268,7 +268,7 @@ def get_households_profile(geo_code, geo_level, session):
             'values': {'this': '{0:.2f}'.format(household_size)}
         },
         'male_to_female_ratio': {
-            'name': 'Male to female ratio',
+            'name': 'Men per 100 women',
             'values': {'this': '{0:.2f}'.format(male_female_ratio)}
         },
         'cooking_fuel_distribution': cooking_fuel_dict,
