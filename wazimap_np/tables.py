@@ -21,6 +21,9 @@ FieldTable(['toilet type'], universe='Households', table_per_level=False)
 
 FieldTable(['home ownership'], universe='Households', table_per_level=False)
 
+FieldTable(['household facilities'], universe='Households',
+           denominator_key='TOTAL_HOUSEHOLDS')
+
 # Education tables
 FieldTable(['education level passed', 'sex'],
            universe='People aged 5 years and older', table_per_level=False)
