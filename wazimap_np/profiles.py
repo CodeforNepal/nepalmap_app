@@ -90,6 +90,21 @@ HOME_OWNERSHIP_RECODES = OrderedDict([
     ('INSTITUTIONAL', 'Institutional')
 ])
 
+HOUSEHOLD_FACILITIES_RECODE = OrderedDict([
+    ('MOBILE_PHONE', 'Mobile phone'),
+    ('RADIO', 'Radio'),
+    ('TELEVISION', 'Television'),
+    ('CYCLE', 'Bicycle'),
+    ('CABLE_TELEVISION', 'Cable television'),
+    ('MOTORCYCLE', 'Motorcycle'),
+    ('TELEPHONE', 'Telephone'),
+    ('COMPUTER', 'Computer'),
+    ('REFRIGERATOR', 'Refrigerator'),
+    ('INTERNET', 'Internet'),
+    ('MOTOR', 'Motor vehicle'),
+    ('OTHER_VEHICLE', 'Other vehicle')
+])
+
 # Demographic recodes
 DISABILITY_RECODES = OrderedDict([
     ('PHYSICAL', 'Physical'),
@@ -258,6 +273,12 @@ def get_households_profile(geo_code, geo_level, session):
         key_order=HOME_OWNERSHIP_RECODES.values())
     total_own_home = home_ownership_dict['Owned']['numerators']['this']
 
+    # household facilities
+    household_facilities, _ = get_stat_data(
+            'household facilities', geo_level, geo_code, session,
+            recode=dict(HOUSEHOLD_FACILITIES_RECODE),
+            key_order=HOUSEHOLD_FACILITIES_RECODE.values())
+
     household_stats = {
         'total_households': {
             'name': 'Households',
@@ -275,7 +296,7 @@ def get_households_profile(geo_code, geo_level, session):
         'cooking_wood': {
             'name': 'Use wood for cooking',
             'numerators': {'this': total_wood},
-            'values': {'this': round(total_wood / total_households * 100, 2)},
+            'values': {'this': round(total_wood / total_households * 100, 2)}
         },
         'foundation_type_distribution': foundation_type_dict,
         'mud_bonded_foundation': {
@@ -283,7 +304,7 @@ def get_households_profile(geo_code, geo_level, session):
             'numerators': {'this': total_mud_bonded_foundation},
             'values':
                 {'this': round(
-                    total_mud_bonded_foundation / total_households * 100, 2)},
+                    total_mud_bonded_foundation / total_households * 100, 2)}
         },
         'outer_wall_type_distribution': outer_wall_type_dict,
         'mud_bonded_wall': {
@@ -291,7 +312,7 @@ def get_households_profile(geo_code, geo_level, session):
             'numerators': {'this': total_mud_bonded_wall},
             'values':
                 {'this': round(
-                    total_mud_bonded_wall / total_households * 100, 2)},
+                    total_mud_bonded_wall / total_households * 100, 2)}
         },
         'roof_type_distribution': roof_type_dict,
         'galvanized_roof': {
@@ -299,7 +320,7 @@ def get_households_profile(geo_code, geo_level, session):
             'numerators': {'this': total_galvanized_roof},
             'values':
                 {'this': round(
-                    total_galvanized_roof / total_households * 100, 2)},
+                    total_galvanized_roof / total_households * 100, 2)}
         },
         'toilet_type_distribution': toilet_type_dict,
         'flush_toilet': {
@@ -307,7 +328,7 @@ def get_households_profile(geo_code, geo_level, session):
             'numerators': {'this': total_flush_toilet},
             'values':
                 {'this': round(
-                    total_flush_toilet / total_households * 100, 2)},
+                    total_flush_toilet / total_households * 100, 2)}
         },
         'drinking_water_distribution': drinking_water_dict,
         'piped_tap': {
@@ -315,7 +336,7 @@ def get_households_profile(geo_code, geo_level, session):
             'numerators': {'this': total_piped_tap},
             'values':
                 {'this': round(
-                    total_piped_tap / total_households * 100, 2)},
+                    total_piped_tap / total_households * 100, 2)}
         },
         'lighting_fuel_distribution': lighting_fuel_dict,
         'lighting_electricity': {
@@ -323,7 +344,7 @@ def get_households_profile(geo_code, geo_level, session):
             'numerators': {'this': total_electricity},
             'values':
                 {'this': round(
-                    total_electricity / total_households * 100, 2)},
+                    total_electricity / total_households * 100, 2)}
         },
         'home_ownership_distribution': home_ownership_dict,
         'own_home': {
@@ -331,8 +352,9 @@ def get_households_profile(geo_code, geo_level, session):
             'numerators': {'this': total_own_home},
             'values':
                 {'this': round(
-                    total_own_home / total_households * 100, 2)},
-        }
+                    total_own_home / total_households * 100, 2)}
+        },
+        'household_facilities': household_facilities
     }
 
     return household_stats
