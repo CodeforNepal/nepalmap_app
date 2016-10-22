@@ -1,0 +1,25 @@
+{% extends 'data/data_map.html' %}{% load humanize %}
+{% load staticfiles %}
+
+{% block body %}
+<div id="map-controls" class="clearfix">
+    <header class="box-header">
+        <a class="title" href="{% url 'homepage' %}">
+            {{ WAZIMAP.name }}
+        </a>
+    </header>
+    <div class="box-content">
+        <section class="clearfix">
+            {% include 'data/_blocks/_toggle_menu.html' %}
+            {% include 'data/_blocks/_topic_select_input.html' %}
+        </section>
+
+        <section id="data-display" class="clearfix">
+            <div id="header-container"></div>
+        </section>
+        <aside></aside>
+    </div>
+</div>
+
+<div id="slippy-map"></div>
+{% endblock %}
