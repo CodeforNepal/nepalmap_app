@@ -196,6 +196,11 @@ def get_demographics_profile(geo_code, geo_level, session):
             'name': 'People',
             'values':
                 {'this': total_disabled},
+        },
+        'percent_disabled': {
+            'name': 'Are disabled',
+            'values':
+                {'this': round(total_disabled / float(total_pop) * 100, 2)},
         }
     }
 
