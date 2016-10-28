@@ -13,6 +13,16 @@
         </section>
 
         <section class="clearfix stat-row">
+            <h2><a class="permalink" href="#demographics-life-and-icome" id="demographics-life-and-income">Life Expectancy and Income <i class="fa fa-link"></i></a></h2>
+            <div class="column-half">
+                {% include 'profile/_blocks/_stat_list.html' with stat=demographics.life_expectancy stat_type='number' %}
+            </div>
+            <div class="column-half">
+                {% include 'profile/_blocks/_stat_list.html' with stat=demographics.per_capita_income stat_type='dollar' %}
+            </div>
+        </section>
+
+        <section class="clearfix stat-row">
             <h2><a class="permalink" href="#demographics-disability" id="demographics-disability">Disabled <i class="fa fa-link"></i></a></h2>
             <div class="column-quarter">
                 {% include 'profile/_blocks/_stat_list.html' with stat=demographics.percent_disabled stat_type='percentage' %}

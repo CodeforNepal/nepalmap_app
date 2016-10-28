@@ -1,7 +1,7 @@
 from collections import OrderedDict
 
 from wazimap.geo import geo_data
-from wazimap.data.tables import get_model_from_fields
+from wazimap.data.tables import get_model_from_fields, get_datatable
 from wazimap.data.utils import get_session, calculate_median, merge_dicts, \
     get_stat_data, get_objects_by_geo, group_remainder
 
@@ -185,6 +185,14 @@ def get_demographics_profile(geo_code, geo_level, session):
         key_order=DISABILITY_RECODES.values(),
         exclude=['NO_DISABILITY'])
 
+    table = get_datatable('per_capita_income')
+    per_capita_income, _ = table.get_stat_data(
+        geo_level, geo_code, percent=False)
+
+    table = get_datatable('lifeexpectancy')
+    life_expectancy, _ = table.get_stat_data(
+        geo_level, geo_code, percent=False)
+
     demographic_data = {
         'sex_ratio': sex_dist_data,
         'disability_ratio': disability_dist_data,
@@ -201,6 +209,14 @@ def get_demographics_profile(geo_code, geo_level, session):
             'name': 'Are disabled',
             'values':
                 {'this': round(total_disabled / float(total_pop) * 100, 2)},
+        },
+        'per_capita_income': {
+            'name': 'Per capita income in US dollars',
+            'values': {'this': per_capita_income['income']['values']['this']}
+        },
+        'life_expectancy': {
+            'name': 'Life expectancy in years',
+            'values': {'this': life_expectancy['years']['values']['this']}
         }
     }
 

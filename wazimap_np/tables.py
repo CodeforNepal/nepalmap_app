@@ -1,4 +1,4 @@
-from wazimap.data.tables import FieldTable
+from wazimap.data.tables import FieldTable, SimpleTable
 
 
 # Define our tables so the data API can discover them.
@@ -36,3 +36,21 @@ FieldTable(['school attendance', 'sex'],
 
 # Population tables
 FieldTable(['disability', 'sex'], universe='Population', table_per_level=False)
+
+SimpleTable(
+    id='lifeexpectancy',
+    universe='Population',
+    total_column=None,
+    description='Life Expectancy',
+    dataset='Nepal Human Development Report 2014',
+    year='2014'
+)
+
+SimpleTable(
+    id='per_capita_income',
+    universe='Population',
+    total_column=None,
+    description='Per Capita Income',
+    dataset='Nepal Human Development Report 2014',
+    year='2014'
+)
