@@ -7,7 +7,8 @@ The Nepal instance of [Wazimap](https://github.com/Code4SA/wazimap), a Django ap
 1. clone the repo
 2. ``cd nepalmap``
 2. ``mkvirtualenv nepalmap``
-3. ``pip install -r requirements.txt``
+3. ``workon nepalmap``
+4. ``pip install -r requirements.txt``
 
 You might need to install certain dependencies on Ubuntu before you can install dependencies via `pip` for the app.
 
