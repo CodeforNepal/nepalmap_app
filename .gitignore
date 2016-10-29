@@ -5,3 +5,4 @@ node_modules/
 debug
 .vagrant
 /static/
+.DS_Store

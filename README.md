@@ -9,6 +9,12 @@ The Nepal instance of [Wazimap](https://github.com/Code4SA/wazimap), a Django ap
 2. ``mkvirtualenv nepalmap``
 3. ``pip install -r requirements.txt``
 
+You might need to install certain dependencies on Ubuntu before you can install dependencies via `pip` for the app.
+
+- `sudo apt install -y libgdal-dev postgresql-server-dev-9.5`
+- `export C_INCLUDE_PATH=/usr/include/gdal`
+- `export CPLUS_INCLUDE_PATH=/usr/include/gdal`
+
 You will need a Postgres database:
 
 ```
