@@ -24,10 +24,9 @@ create database wazimap_np;
 grant all privileges on database wazimap_np to wazimap_np;
 ```
 
-Import the data into the new database:
+Import the sql files needed for SimpleTable entries:
 ```
-shopt -s extglob
-cat sql/!(geography).sql | psql -U wazimap_np -W wazimap_np
+cat sql/simpletables/*.sql | psql -U wazimap_np -W wazimap_np
 ```
 
 Run migrations to keep Django happy:
@@ -35,10 +34,10 @@ Run migrations to keep Django happy:
 python manage.py migrate
 ```
 
-Import geography.sql:
+Import data for all the tables:
 
 ```
-psql -f sql/geography.sql -U wazimap_np -W wazimap_np
+cat sql/*.sql | psql -U wazimap_np -W wazimap_np
 ```
 
 Start the server:
