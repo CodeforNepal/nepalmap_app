@@ -26,12 +26,19 @@ grant all privileges on database wazimap_np to wazimap_np;
 
 Import the data into the new database:
 ```
-cat sql/*.sql | psql -U wazimap_np -W wazimap_np
+shopt -s extglob
+cat sql/!(geography).sql | psql -U wazimap_np -W wazimap_np
 ```
 
 Run migrations to keep Django happy:
 ```
 python manage.py migrate
+```
+
+Import geography.sql:
+
+```
+psql -f sql/geography.sql -U wazimap_np -W wazimap_np
 ```
 
 Start the server:
