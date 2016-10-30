@@ -1,41 +1,86 @@
 from wazimap.data.tables import FieldTable, SimpleTable
 
-
 # Define our tables so the data API can discover them.
 # Household tables
-FieldTable(['main type of cooking fuel'], universe='Households',
+FieldTable(['main type of cooking fuel'],
+           universe='Households',
+           description='Main type of cooking fuel',
+           dataset='National Population and Housing Census',
            table_per_level=False)
 
-FieldTable(['drinking water source'], universe='Households',
+FieldTable(['drinking water source'],
+           universe='Households',
+           description='Drinking water source',
+           dataset='National Population and Housing Census',
            table_per_level=False)
 
-FieldTable(['lighting fuel'], universe='Households', table_per_level=False)
+FieldTable(['lighting fuel'],
+           universe='Households',
+           description='Main type of lighting fuel',
+           dataset='National Population and Housing Census',
+           table_per_level=False)
 
-FieldTable(['foundation type'], universe='Households', table_per_level=False)
+FieldTable(['foundation type'],
+           universe='Households',
+           description='Building foundation',
+           dataset='National Population and Housing Census',
+           table_per_level=False)
 
-FieldTable(['outer wall type'], universe='Households', table_per_level=False)
+FieldTable(['outer wall type'],
+           universe='Households',
+           description='Outer wall of building',
+           dataset='National Population and Housing Census',
+           table_per_level=False)
 
-FieldTable(['roof type'], universe='Households', table_per_level=False)
+FieldTable(['roof type'],
+           universe='Households',
+           description='Roof type of building',
+           dataset='National Population and Housing Census',
+           table_per_level=False)
 
-FieldTable(['toilet type'], universe='Households', table_per_level=False)
+FieldTable(['toilet type'],
+           universe='Households',
+           description='Type of toilet used',
+           dataset='National Population and Housing Census',
+           table_per_level=False)
 
-FieldTable(['home ownership'], universe='Households', table_per_level=False)
+FieldTable(['home ownership'],
+           universe='Households',
+           description='Home ownership',
+           dataset='National Population and Housing Census',
+           table_per_level=False)
 
-FieldTable(['household facilities'], universe='Households',
+FieldTable(['household facilities'],
+           universe='Households',
+           description='Facilities possessed by household',
+           dataset='National Population and Housing Census',
            denominator_key='TOTAL_HOUSEHOLDS')
 
 # Education tables
 FieldTable(['education level passed', 'sex'],
-           universe='People aged 5 years and older', table_per_level=False)
+           universe='People aged 5 years and older',
+           description='Education level by gender',
+           dataset='National Population and Housing Census',
+           table_per_level=False)
 
 FieldTable(['literacy', 'sex'],
-           universe='People aged 5 years and older', table_per_level=False)
+           universe='People aged 5 years and older',
+           description='Literacy by gender',
+           dataset='National Population and Housing Census',
+           table_per_level=False)
 
 FieldTable(['school attendance', 'sex'],
-           universe='People aged 5 to 25 years old', table_per_level=False)
+           universe='People aged 5 to 25 years old',
+           description='School attendance by gender',
+           dataset='National Population and Housing Census',
+           table_per_level=False)
 
 # Population tables
-FieldTable(['disability', 'sex'], universe='Population', table_per_level=False)
+FieldTable(['disability', 'sex'],
+           universe='Population',
+           description='Disability by gender',
+           dataset='National Population and Housing Census',
+           table_per_level=False)
 
 SimpleTable(
     id='lifeexpectancy',
