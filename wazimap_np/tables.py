@@ -96,14 +96,6 @@ FieldTable(['disability', 'sex'],
            table_per_level=False)
 
 FieldTable(['sex'],
-           id='population_projection_2021',
-           universe='Population',
-           description='Projected population in 2021',
-           dataset='National Population and Housing Census 2011',
-           year='2011',
-           table_per_level=False)
-
-FieldTable(['sex'],
            id='population_projection_2031',
            universe='Population',
            description='Projected population in 2031',
