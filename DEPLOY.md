@@ -1,6 +1,6 @@
 # Updating the NepalMap server
 
-The current NepalMap server is updated manually. Here are the steps to update
+The current NepalMap server is updated manually. Here are the steps to update.
 
 ## Go to the directory for nepalmap
 ```
