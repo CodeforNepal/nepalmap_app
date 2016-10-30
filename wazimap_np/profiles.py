@@ -193,12 +193,6 @@ def get_demographics_profile(geo_code, geo_level, session):
     life_expectancy, _ = table.get_stat_data(
         geo_level, geo_code, percent=False)
 
-    # population projection for 2021
-    pop_2021_dist_data, pop_projection_2021 = get_stat_data(
-        'sex', geo_level, geo_code, session,
-        table_fields=['sex'],
-        table_name='population_projection_2021')
-
     # population projection for 2031
     pop_2031_dist_data, pop_projection_2031 = get_stat_data(
         'sex', geo_level, geo_code, session,
@@ -229,11 +223,6 @@ def get_demographics_profile(geo_code, geo_level, session):
         'life_expectancy': {
             'name': 'Life expectancy in years',
             'values': {'this': life_expectancy['years']['values']['this']}
-        },
-        'pop_2021_dist': pop_2021_dist_data,
-        'pop_projection_2021': {
-            "name": "Projected in 2021",
-            "values": {"this": pop_projection_2021}
         },
         'pop_2031_dist': pop_2031_dist_data,
         'pop_projection_2031': {
