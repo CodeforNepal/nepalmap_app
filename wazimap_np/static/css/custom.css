@@ -48,3 +48,7 @@ a.action-button,
 body {
     background-color: #FFF;
 }
+
+#page-header-title a, .box-header a {
+    margin-right: 5px;
+}
