@@ -41,3 +41,4 @@ WAZIMAP['map_zoom'] = 7
 WAZIMAP['email'] = 'nepalmap@codefornepal.org'
 WAZIMAP['github'] = 'https://github.com/Code4Nepal/nepalmap_app'
 WAZIMAP['tagline'] = 'Explore and understand Nepal using data'
+WAZIMAP['facebook'] = 'codefornepal'

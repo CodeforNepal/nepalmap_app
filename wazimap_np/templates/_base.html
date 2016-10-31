@@ -42,9 +42,15 @@
             {% endblock %}
         {% endif %}
         <div class="header-buttons">
-            {% if WAZIMAP.twitter %}
-            <a href="https://twitter.com/{{ WAZIMAP.twitter }}" title="{{ WAZIMAP.twitter }} on Twitter" target="_blank"><i class="fa fa-2x fa-twitter"></i></a>
+
+            {% if WAZIMAP.facebook %}
+            <a href="https://facebook.com/{{ WAZIMAP.facebook }}" title="{{ WAZIMAP.facebook }} on Facebook" target="_blank"><i class="fa fa-2x fa-facebook-square"></i></a>
             {% endif %}
+
+            {% if WAZIMAP.twitter %}
+            <a href="https://twitter.com/{{ WAZIMAP.twitter }}" title="{{ WAZIMAP.twitter }} on Twitter" target="_blank"><i class="fa fa-2x fa-twitter-square"></i></a>
+            {% endif %}
+            
         {% block header_branding %}
         {% endblock %}
         </div>
