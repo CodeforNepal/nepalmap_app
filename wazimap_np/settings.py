@@ -22,13 +22,18 @@ WAZIMAP['levels'] = {
     },
     'district': {
         'plural': 'districts',
+        'children': ['vdc']
+    },
+    'vdc': {
+        'plural': 'vdcs',
         'children': []
     }
 }
-WAZIMAP['comparative_levels'] = ['country', 'district']
+WAZIMAP['comparative_levels'] = ['country', 'district', 'vdc']
 WAZIMAP['geometry_data'] = {
     'country': 'geo/country.topojson',
     'district': 'geo/district.topojson',
+    'vdc': 'geo/vdc.topojson'
 }
 
 WAZIMAP['ga_tracking_id'] = os.environ.get('GA_TRACKING_ID')

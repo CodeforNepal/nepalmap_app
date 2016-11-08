@@ -1,9 +1,8 @@
 from collections import OrderedDict
 
 from wazimap.geo import geo_data
-from wazimap.data.tables import get_model_from_fields, get_datatable
-from wazimap.data.utils import get_session, calculate_median, merge_dicts, \
-    get_stat_data, get_objects_by_geo, group_remainder
+from wazimap.data.tables import get_datatable
+from wazimap.data.utils import get_session, merge_dicts, get_stat_data
 
 # ensure tables are loaded
 import wazimap_np.tables  # noqa
@@ -185,20 +184,6 @@ def get_demographics_profile(geo_code, geo_level, session):
         key_order=DISABILITY_RECODES.values(),
         exclude=['NO_DISABILITY'])
 
-    table = get_datatable('per_capita_income')
-    per_capita_income, _ = table.get_stat_data(
-        geo_level, geo_code, percent=False)
-
-    table = get_datatable('lifeexpectancy')
-    life_expectancy, _ = table.get_stat_data(
-        geo_level, geo_code, percent=False)
-
-    # population projection for 2031
-    pop_2031_dist_data, pop_projection_2031 = get_stat_data(
-        'sex', geo_level, geo_code, session,
-        table_fields=['sex'],
-        table_name='population_projection_2031')
-
     demographic_data = {
         'sex_ratio': sex_dist_data,
         'disability_ratio': disability_dist_data,
@@ -216,20 +201,40 @@ def get_demographics_profile(geo_code, geo_level, session):
             'values':
                 {'this': round(total_disabled / float(total_pop) * 100, 2)},
         },
-        'per_capita_income': {
+        'is_vdc': True
+    }
+
+    if geo_level != 'vdc':
+        table = get_datatable('per_capita_income')
+        per_capita_income, _ = table.get_stat_data(
+            geo_level, geo_code, percent=False)
+
+        table = get_datatable('lifeexpectancy')
+        life_expectancy, _ = table.get_stat_data(
+            geo_level, geo_code, percent=False)
+
+        # population projection for 2031
+        pop_2031_dist_data, pop_projection_2031 = get_stat_data(
+            'sex', geo_level, geo_code, session,
+            table_fields=['sex'],
+            table_name='population_projection_2031')
+
+        demographic_data['is_vdc'] = False
+
+        demographic_data['per_capita_income'] = {
             'name': 'Per capita income in US dollars',
             'values': {'this': per_capita_income['income']['values']['this']}
-        },
-        'life_expectancy': {
+        }
+
+        demographic_data['life_expectancy'] = {
             'name': 'Life expectancy in years',
             'values': {'this': life_expectancy['years']['values']['this']}
-        },
-        'pop_2031_dist': pop_2031_dist_data,
-        'pop_projection_2031': {
+        }
+        demographic_data['pop_2031_dist'] = pop_2031_dist_data
+        demographic_data['pop_projection_2031'] = {
             "name": "Projected in 2031",
             "values": {"this": pop_projection_2031}
         }
-    }
 
     return demographic_data
 
