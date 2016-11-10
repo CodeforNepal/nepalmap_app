@@ -3467,7 +3467,7 @@ Sisahaniya,2907,2016,district,Sisahaniya,vdc,60
 Sonpur,2908,2016,district,Sonpur,vdc,60
 Syuja,2909,2016,district,Syuja,vdc,60
 Tarigaun,2910,2016,district,Tarigaun,vdc,60
-Tribhuwan Nagar Municipality,2911,2016,district,Tribhuwan Nagar Municipality,vdc,60
+Ghorahi Municipality,2911,2016,district,Ghorahi Municipality,vdc,60
 Tulsipur Municipality,2912,2016,district,Tulsipur Municipality,vdc,60
 Urahari,2913,2016,district,Urahari,vdc,60
 Badagaun,3057,2016,district,Badagaun,vdc,61
