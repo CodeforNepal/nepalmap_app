@@ -597,7 +597,7 @@ Itahari Municipality,1443,2016,district,Itahari Municipality,vdc,10
 Jalpapur,1444,2016,district,Jalpapur,vdc,10
 Kaptanganj,1445,2016,district,Kaptanganj,vdc,10
 Khanar,1446,2016,district,Khanar,vdc,10
-Koshi Tappu Wildlife,1447,2016,district,Koshi Tappu Wildlife,vdc,10
+Koshi Tappu Wildlife Reserve,1447,2016,district,Koshi Tappu Wildlife Reserve,vdc,10
 Laukahi,1448,2016,district,Laukahi,vdc,10
 Madhelee,1449,2016,district,Madhelee,vdc,10
 Madhesa,1450,2016,district,Madhesa,vdc,10
@@ -805,7 +805,7 @@ Jogidaha,2097,2016,district,Jogidaha,vdc,14
 Katari,2098,2016,district,Katari,vdc,14
 Katunjebawala,2099,2016,district,Katunjebawala,vdc,14
 Khanbu,2100,2016,district,Khanbu,vdc,14
-Koshi Tappu Wildlife,2101,2016,district,Koshi Tappu Wildlife,vdc,14
+Koshi Tappu Wildlife Reserve,2101,2016,district,Koshi Tappu Wildlife Reserve,vdc,14
 Laphagau,2102,2016,district,Laphagau,vdc,14
 Lekhani,2103,2016,district,Lekhani,vdc,14
 Lekhgau,2104,2016,district,Lekhgau,vdc,14
@@ -900,7 +900,7 @@ Khoksarparbaha,1888,2016,district,Khoksarparbaha,vdc,15
 Ko Madhepura,1889,2016,district,Ko Madhepura,vdc,15
 Kochabakhari,1890,2016,district,Kochabakhari,vdc,15
 Koiladi,1891,2016,district,Koiladi,vdc,15
-Koshi Tappu Wildlife,1892,2016,district,Koshi Tappu Wildlife,vdc,15
+Koshi Tappu Wildlife Reserve,1892,2016,district,Koshi Tappu Wildlife Reserve,vdc,15
 Kushaha,1893,2016,district,Kushaha,vdc,15
 Lalapati,1894,2016,district,Lalapati,vdc,15
 Launiya,1895,2016,district,Launiya,vdc,15
@@ -2170,7 +2170,7 @@ Pokhariya,1098,2016,district,Pokhariya,vdc,33
 Prasurampur,1099,2016,district,Prasurampur,vdc,33
 Ramgadhawa,1100,2016,district,Ramgadhawa,vdc,33
 Ramnagari,1101,2016,district,Ramnagari,vdc,33
-Royal Chitawan Natio,1102,2016,district,Royal Chitawan Natio,vdc,33
+Chitwan National Park,1102,2016,district,Chitwan National Park,vdc,33
 Sabaithawa,1103,2016,district,Sabaithawa,vdc,33
 Sakhuwa Prasauni,1104,2016,district,Sakhuwa Prasauni,vdc,33
 Samjhauta,1105,2016,district,Samjhauta,vdc,33
@@ -2216,7 +2216,7 @@ Namtar,1023,2016,district,Namtar,vdc,34
 Nibuwatar,1024,2016,district,Nibuwatar,vdc,34
 Padam Pokhari,1025,2016,district,Padam Pokhari,vdc,34
 Palung,1026,2016,district,Palung,vdc,34
-Parsa Wildlife Reser,1027,2016,district,Parsa Wildlife Reser,vdc,34
+Parsa Wildlife Reserve,1027,2016,district,Parsa Wildlife Reserve,vdc,34
 Raigaun,1028,2016,district,Raigaun,vdc,34
 Raksirang,1029,2016,district,Raksirang,vdc,34
 Sarikhet Palase,1030,2016,district,Sarikhet Palase,vdc,34
@@ -2267,7 +2267,7 @@ Patihani,982,2016,district,Patihani,vdc,35
 Piple,983,2016,district,Piple,vdc,35
 Pithuwa,984,2016,district,Pithuwa,vdc,35
 Ratnanagar Municipality,985,2016,district,Ratnanagar Municipality,vdc,35
-Royal Chitawan Natio,986,2016,district,Royal Chitawan Natio,vdc,35
+Chitwan National Park,986,2016,district,Chitwan National Park,vdc,35
 Saradanagar,987,2016,district,Saradanagar,vdc,35
 Shaktikhor,988,2016,district,Shaktikhor,vdc,35
 Sibanagar,989,2016,district,Sibanagar,vdc,35
@@ -2628,7 +2628,7 @@ Ramnagar,3826,2016,district,Ramnagar,vdc,42
 Rampurkhadauna,3827,2016,district,Rampurkhadauna,vdc,42
 Rampurkha,3828,2016,district,Rampurkha,vdc,42
 Ratanapur,3829,2016,district,Ratanapur,vdc,42
-Royal Chitawan Natio,3830,2016,district,Royal Chitawan Natio,vdc,42
+Chitwan National Park,3830,2016,district,Chitwan National Park,vdc,42
 Ruchang,3831,2016,district,Ruchang,vdc,42
 Rupauliya,3832,2016,district,Rupauliya,vdc,42
 Sanai,3833,2016,district,Sanai,vdc,42
@@ -2746,7 +2746,7 @@ Karauta,3944,2016,district,Karauta,vdc,44
 Kerbani,3945,2016,district,Kerbani,vdc,44
 Khadawa Bangai,3946,2016,district,Khadawa Bangai,vdc,44
 Khudabagar,3947,2016,district,Khudabagar,vdc,44
-Lumbini Development,3948,2016,district,Lumbini Development,vdc,44
+Lumbini Development Trust,3948,2016,district,Lumbini Development Trust,vdc,44
 Lumbini,3949,2016,district,Lumbini,vdc,44
 Madhbaliya,3950,2016,district,Madhbaliya,vdc,44
 Madhuwani,3951,2016,district,Madhuwani,vdc,44
@@ -3467,7 +3467,7 @@ Sisahaniya,2907,2016,district,Sisahaniya,vdc,60
 Sonpur,2908,2016,district,Sonpur,vdc,60
 Syuja,2909,2016,district,Syuja,vdc,60
 Tarigaun,2910,2016,district,Tarigaun,vdc,60
-Tribhuwan Nagar Municipality,2911,2016,district,Tribhuwan Nagar Municipality,vdc,60
+Ghorahi Municipality,2911,2016,district,Ghorahi Municipality,vdc,60
 Tulsipur Municipality,2912,2016,district,Tulsipur Municipality,vdc,60
 Urahari,2913,2016,district,Urahari,vdc,60
 Badagaun,3057,2016,district,Badagaun,vdc,61
@@ -3727,7 +3727,7 @@ Padanaha,2591,2016,district,Padanaha,vdc,66
 Pasupati Nagar,2592,2016,district,Pasupati Nagar,vdc,66
 Patabhar,2593,2016,district,Patabhar,vdc,66
 Rajapur,2594,2016,district,Rajapur,vdc,66
-Royal Bardiya Nation,2595,2016,district,Royal Bardiya Nation,vdc,66
+Bardiya National Park,2595,2016,district,Bardiya National Park,vdc,66
 Sanashree,2596,2016,district,Sanashree,vdc,66
 Sivapur,2597,2016,district,Sivapur,vdc,66
 Sorhawa,2598,2016,district,Sorhawa,vdc,66
@@ -4123,7 +4123,7 @@ Pipaladi,2265,2016,district,Pipaladi,vdc,75
 Raikawar Bichawa,2266,2016,district,Raikawar Bichawa,vdc,75
 Rampur Bilaspur,2267,2016,district,Rampur Bilaspur,vdc,75
 Rauteli Bichawa,2268,2016,district,Rauteli Bichawa,vdc,75
-Royal Shuklaphanta,2269,2016,district,Royal Shuklaphanta,vdc,75
+Shuklaphanta Wildlife Reserve,2269,2016,district,Shuklaphanta Wildlife Reserve,vdc,75
 Shankarpur,2270,2016,district,Shankarpur,vdc,75
 Sreepur,2271,2016,district,Sreepur,vdc,75
 Suda,2272,2016,district,Suda,vdc,75
