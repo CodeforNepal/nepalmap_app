@@ -1,42 +1,73 @@
 <article id="education" class="clearfix">
-    <header class="section-contents">
-        <h1>Education</h1>
-    </header>
-    <div class="section-container">
+    {% if education.area_has_data == True %}
+        <header class="section-contents">
+            <h1>Education</h1>
+        </header>
+        <div class="section-container">
 
-        <section class="clearfix stat-row">
-            <h2><a class="permalink" href="#education">Education <i class="fa fa-link"></i></a></h2>
-            <div class="column-third">
-                {% include 'profile/_blocks/_stat_list.html' with stat=education.aged_five_and_over stat_type='number' %}
-            </div>
-        </section>
-        <section class="clearfix stat-row">
-            <h2><a class="permalink" href="#education-level-reached" id="education-level-reached">Education Level Passed <i class="fa fa-link"></i></a></h2>
-            <div class="column-third">
-                {% include 'profile/_blocks/_stat_list.html' with stat=education.primary_level_reached stat_type='percentage' %}
-            </div>
-            <div class="column-two-thirds" id="chart-histogram-education-education_level_passed_distribution" data-stat-type="scaled-percentage" data-chart-title="Highest education level reached" data-qualifier="Universe: {{ education.education_level_passed_distribution.metadata.universe }}"></div>
-        </section>
-        <section class="clearfix stat-row">
-            <h2><a class="permalink" href="#education-level-reached-by-sex" id="education-level-reached-by-sex">Education Level Passed by Sex <i class="fa fa-link"></i></a></h2>
-            <div class="column-third">
-                {% include 'profile/_blocks/_stat_list.html' with stat=education.primary_level_reached_by_sex stat_type='percentage' %}
-            </div>
-            <div class="column-two-thirds" id="chart-grouped_column-education-education_level_by_sex_distribution" data-stat-type="scaled-percentage" data-chart-title="Highest education level reached" data-qualifier="Universe: {{ education.education_level_by_sex_distribution.metadata.universe }}"></div>
-        </section>
-        <section class="clearfix stat-row">
-            <h2><a class="permalink" href="#literacy-by-sex" id="literacy-by-sex">Literacy <i class="fa fa-link"></i></a></h2>
-            <div class="column-third" id="chart-pie-education-literacy_distribution" data-stat-type="percentage"></div>
-            <div class="column-two-thirds" id="chart-grouped_column-education-literacy_by_sex_distribution" data-stat-type="scaled-percentage" data-chart-title="Literacy rate by sex" data-qualifier="Universe: {{ education.literacy_by_sex_distribution.metadata.universe }}"></div>
-        </section>
-        <section class="clearfix stat-row">
-            <h2><a class="permalink" href="#school-attendance-by-sex" id="school-attendance-by-sex">School Attendance <i class="fa fa-link"></i></a></h2>
-            <div class="column-quarter">
-                {% include 'profile/_blocks/_stat_list.html' with stat=education.aged_five_to_twenty_five stat_type='number' %}
-            </div>
-            <div class="column-quarter" id="chart-pie-education-school_attendance_distribution" data-stat-type="percentage" data-chart-title="School attendance"></div>
-            <div class="column-half" id="chart-grouped_column-education-school_attendance_by_sex_distribution" data-stat-type="scaled-percentage" data-chart-title="School attendance by sex" data-qualifier="Universe: {{ education.school_attendance_by_sex_distribution.metadata.universe }}"></div>
-        </section>
-
-    </div>
+            <section class="clearfix stat-row">
+                <h2><a class="permalink" href="#education">Education <i
+                        class="fa fa-link"></i></a></h2>
+                <div class="column-third">
+                    {% include 'profile/_blocks/_stat_list.html' with stat=education.aged_five_and_over stat_type='number' %}
+                </div>
+            </section>
+            <section class="clearfix stat-row">
+                <h2><a class="permalink" href="#education-level-reached"
+                       id="education-level-reached">Education Level Passed <i
+                        class="fa fa-link"></i></a></h2>
+                <div class="column-third">
+                    {% include 'profile/_blocks/_stat_list.html' with stat=education.primary_level_reached stat_type='percentage' %}
+                </div>
+                <div class="column-two-thirds"
+                     id="chart-histogram-education-education_level_passed_distribution"
+                     data-stat-type="scaled-percentage"
+                     data-chart-title="Highest education level reached"
+                     data-qualifier="Universe: {{ education.education_level_passed_distribution.metadata.universe }}"></div>
+            </section>
+            <section class="clearfix stat-row">
+                <h2><a class="permalink" href="#education-level-reached-by-sex"
+                       id="education-level-reached-by-sex">Education Level
+                    Passed by Sex <i class="fa fa-link"></i></a></h2>
+                <div class="column-third">
+                    {% include 'profile/_blocks/_stat_list.html' with stat=education.primary_level_reached_by_sex stat_type='percentage' %}
+                </div>
+                <div class="column-two-thirds"
+                     id="chart-grouped_column-education-education_level_by_sex_distribution"
+                     data-stat-type="scaled-percentage"
+                     data-chart-title="Highest education level reached"
+                     data-qualifier="Universe: {{ education.education_level_by_sex_distribution.metadata.universe }}"></div>
+            </section>
+            <section class="clearfix stat-row">
+                <h2><a class="permalink" href="#literacy-by-sex"
+                       id="literacy-by-sex">Literacy <i class="fa fa-link"></i></a>
+                </h2>
+                <div class="column-third"
+                     id="chart-pie-education-literacy_distribution"
+                     data-stat-type="percentage"></div>
+                <div class="column-two-thirds"
+                     id="chart-grouped_column-education-literacy_by_sex_distribution"
+                     data-stat-type="scaled-percentage"
+                     data-chart-title="Literacy rate by sex"
+                     data-qualifier="Universe: {{ education.literacy_by_sex_distribution.metadata.universe }}"></div>
+            </section>
+            <section class="clearfix stat-row">
+                <h2><a class="permalink" href="#school-attendance-by-sex"
+                       id="school-attendance-by-sex">School Attendance <i
+                        class="fa fa-link"></i></a></h2>
+                <div class="column-quarter">
+                    {% include 'profile/_blocks/_stat_list.html' with stat=education.aged_five_to_twenty_five stat_type='number' %}
+                </div>
+                <div class="column-quarter"
+                     id="chart-pie-education-school_attendance_distribution"
+                     data-stat-type="percentage"
+                     data-chart-title="School attendance"></div>
+                <div class="column-half"
+                     id="chart-grouped_column-education-school_attendance_by_sex_distribution"
+                     data-stat-type="scaled-percentage"
+                     data-chart-title="School attendance by sex"
+                     data-qualifier="Universe: {{ education.school_attendance_by_sex_distribution.metadata.universe }}"></div>
+            </section>
+        </div>
+    {% endif %}
 </article>
