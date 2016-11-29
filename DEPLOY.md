@@ -2,13 +2,9 @@
 
 The current NepalMap server is updated manually. Here are the steps to update.
 
-## Go to the directory for nepalmap
+## Go to the directory for nepalmap and copy the current version into a releases directory identified by the SHA of the current commit 
 ```
-$ cd /webapps/nepalmap
-```
-## Copy the current version into a releases directory identified by the SHA of the current commit 
-```
-$ sha=$(git --git-dir nepalmap/.git log | head -1 | awk '{ print $2 }') && cp -r nepalmap releases/$sha
+$ cd /webapps/nepalmap && sha=$(git --git-dir nepalmap/.git log | head -1 | awk '{ print $2 }') && cp -r nepalmap releases/$sha
 
 ```
 
