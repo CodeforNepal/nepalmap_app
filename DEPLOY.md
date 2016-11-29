@@ -4,7 +4,7 @@ The current NepalMap server is updated manually. Here are the steps to update.
 
 ## Go to the directory for nepalmap
 ```
-$ cd /webapps/nepalmap/nepalmap
+$ cd /webapps/nepalmap
 ```
 ## Copy the current version into a releases directory identified by the SHA of the current commit 
 ```
