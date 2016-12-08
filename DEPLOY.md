@@ -2,29 +2,15 @@
 
 The current NepalMap server is updated manually. Here are the steps to update.
 
-## Go to the directory for nepalmap
+## Go to the directory for nepalmap and copy the current version into a releases directory identified by the SHA of the current commit 
 ```
-$ cd /webapps/nepalmap/nepalmap
-$ git log
-```
-## Capture current sha and use it for copying over a backup of the current version of the code
-```
-$ cd ..
-$ cp -r nepalmap releases/<current-sha>
+$ cd /webapps/nepalmap && sha=$(git --git-dir nepalmap/.git log | head -1 | awk '{ print $2 }') && cp -r nepalmap releases/$sha
 
 ```
 
 ## Update the code on the server
 ```
-$ source bin/activate
-$ cd nepalmap
-$ git pull
-$ pip install -r requirements.txt
-$ cat sql/simpletables/*.sql | psql postgresql://<username>:<password>@localhost/wazimap_np
-$ python manage.py migrate
-$ cat sql/*.sql | psql postgresql://<username>:<password>@localhost/wazimap_np
-$ python manage.py collectstatic
-$ sudo service supervisor restart
+$ source bin/activate && cd nepalmap && git pull && pip install -r requirements.txt && cat sql/simpletables/*.sql | psql postgresql://<username>:<password>@localhost/wazimap_np && python manage.py migrate && cat sql/*.sql | psql postgresql://<username>:<password>@localhost/wazimap_np && python manage.py collectstatic --noinput && sudo service supervisor restart
 
 ```
 
