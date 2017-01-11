@@ -144,6 +144,23 @@ SCHOOL_ATTENDANCE_RECODES = OrderedDict([
     ('ATTENDENCE_NOT_STATED', 'Not Stated')
 ])
 
+FIELD_OF_STUDY_RECODES = OrderedDict([
+    ('BUSINESS_AND_ADMINISTRATION', 'Business'),
+    ('HUMANITIES_AND_ARTS', 'Humanities'),
+    ('EDUCATION', 'Education'),
+    ('NOT_STATED', 'Not Stated'),
+    ('SCIENCE', 'Science'),
+    ('SOCIAL_&_BEHAVIOURAL_SCIENCE', 'Social Science'),
+    ('HEALTH', 'Health'),
+    ('ENGINEERING_MANUFACTURING_AND_CONSTRUCTION', 'Engineering'),
+    ('LAW', 'Law'),
+    ('MATHEMATICS_AND_STATISTICS', 'Mathematics'),
+    ('AGRICULTURE_FORESTRY_&_FISHERY', 'Agriculture'),
+    ('COMPUTING', 'Computing'),
+    ('JOURNALISM_AND_INFORMATION', 'Journalism'),
+    ('OTHERS', 'Others')
+])
+
 
 def get_census_profile(geo_code, geo_level, profile_name=None):
     session = get_session()
@@ -502,6 +519,44 @@ def get_education_profile(geo_code, geo_level, session):
             'school_attendance_by_sex_distribution': school_attendance_by_sex,
             'school_attendance_distribution': school_attendance_dist
         }
+
+        if geo_level != 'vdc':
+            all_field_of_study_by_sex, pop_above_slc = get_stat_data(
+                ['field of study', 'sex'], geo_level, geo_code, session,
+                recode={
+                    'field of study': dict(FIELD_OF_STUDY_RECODES)},
+                key_order={
+                    'field of study': FIELD_OF_STUDY_RECODES.values(),
+                    'sex': ['Female', 'Male']},
+                percent_grouping=['sex'])
+
+            field_of_study_dist, _ = get_stat_data(
+                'field of study', geo_level, geo_code, session,
+                recode=dict(FIELD_OF_STUDY_RECODES),
+                key_order=FIELD_OF_STUDY_RECODES.values())
+
+            field_of_study_by_sex = {
+                'Business': all_field_of_study_by_sex['Business'],
+                'Humanities': all_field_of_study_by_sex['Humanities'],
+                'Education': all_field_of_study_by_sex['Education'],
+                'Science': all_field_of_study_by_sex['Science'],
+                'Social Science': all_field_of_study_by_sex['Social Science'],
+                'Health': all_field_of_study_by_sex['Health'],
+                'metadata': all_field_of_study_by_sex['metadata']
+            }
+
+            education_stats['is_vdc'] = False
+
+            education_stats['field_of_study_distribution'] = \
+                field_of_study_dist
+
+            education_stats['field_of_study_by_sex_distribution'] = \
+                field_of_study_by_sex
+
+            education_stats['pop_above_slc'] = {
+                'name': 'Population above SLC',
+                'values': {'this': pop_above_slc}
+            }
 
     else:
         education_stats = {

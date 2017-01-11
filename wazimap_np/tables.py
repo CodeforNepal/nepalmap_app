@@ -87,6 +87,13 @@ FieldTable(['school attendance', 'sex'],
            year='2011',
            table_per_level=False)
 
+FieldTable(['field of study', 'sex'],
+           universe='Population above SLC',
+           description='Field of study',
+           dataset='National Population and Housing Census 2011',
+           year='2011',
+           table_per_level=False)
+
 # Population tables
 FieldTable(['disability', 'sex'],
            universe='Population',
