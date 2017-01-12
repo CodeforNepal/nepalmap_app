@@ -154,7 +154,7 @@ FIELD_OF_STUDY_RECODES = OrderedDict([
     ('HEALTH', 'Health'),
     ('ENGINEERING_MANUFACTURING_AND_CONSTRUCTION', 'Engineering'),
     ('LAW', 'Law'),
-    ('MATHEMATICS_AND_STATISTICS', 'Mathematics'),
+    ('MATHEMATICS_AND_STATISTICS', 'Math'),
     ('AGRICULTURE_FORESTRY_&_FISHERY', 'Agriculture'),
     ('COMPUTING', 'Computing'),
     ('JOURNALISM_AND_INFORMATION', 'Journalism'),
