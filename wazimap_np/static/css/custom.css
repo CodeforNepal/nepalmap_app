@@ -1,0 +1,54 @@
+a {
+	color: #e00015;
+}
+
+a:hover {
+    color: #f85767;
+}
+
+#page-header,
+.box-header {
+  background-color: #e00015;
+}
+
+#menu a.button,
+a.action-button,
+.big-action .with-submit input[type="submit"] {
+    background-color: #00adef;
+}
+
+.action-button:hover {
+    background-color: #fa1a2f;
+}
+
+.callout i.fa {
+    background-color: #e00015;
+}
+
+#cover-profile article {
+    border: 1px solid #00adef;
+}
+
+.tt-suggestion.tt-cursor { 
+ background-color: #FF3348;
+}
+
+.action-links a {
+    cursor: pointer;
+    color: #E00015;
+}
+.action-links a:hover {
+    color: #FA1A2F;
+}
+
+.tan-stripe {
+    background-color: #f7f7f7;
+}
+
+body {
+    background-color: #FFF;
+}
+
+#page-header-title a, .box-header a {
+    margin-right: 5px;
+}
