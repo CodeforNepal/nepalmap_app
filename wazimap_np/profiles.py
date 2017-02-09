@@ -116,6 +116,11 @@ DISABILITY_RECODES = OrderedDict([
     ('DEAF_BLIND', 'Deaf and Blind')
 ])
 
+POVERTY_RECODES = OrderedDict([
+    ('IN_POVERTY', 'In Poverty'),
+    ('NOT_IN_POVERTY', 'Not in Poverty')
+])
+
 # Education recodes
 EDUCATION_LEVEL_PASSED_RECODES = OrderedDict([
     ('PRIMARY_1_5', 'Primary'),
@@ -238,6 +243,15 @@ def get_demographics_profile(geo_code, geo_level, session):
                 table_fields=['sex'],
                 table_name='population_projection_2031')
 
+            # population by sex
+            poverty_dist_data, total_poverty_pop = get_stat_data(
+                'poverty', geo_level, geo_code, session,
+                recode=dict(POVERTY_RECODES),
+                key_order=POVERTY_RECODES.values())
+
+            total_in_poverty = \
+                poverty_dist_data['In Poverty']['numerators']['this']
+
             demographic_data['is_vdc'] = False
 
             demographic_data['per_capita_income'] = {
@@ -253,6 +267,19 @@ def get_demographics_profile(geo_code, geo_level, session):
             demographic_data['pop_projection_2031'] = {
                 "name": "Projected in 2031",
                 "values": {"this": pop_projection_2031}
+            }
+            demographic_data['poverty_dist'] = poverty_dist_data
+            demographic_data['poverty_population'] = {
+                'name': 'Estimated Population',
+                'values': {'this': total_poverty_pop}
+            }
+            demographic_data['percent_impoverished'] = {
+                'name': 'Percent In Poverty',
+                'numerators': {'this': total_in_poverty},
+                'values': {
+                    'this': round(
+                        total_in_poverty / total_poverty_pop * 100,
+                        2)}
             }
 
     else:
