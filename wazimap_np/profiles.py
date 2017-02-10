@@ -288,7 +288,7 @@ def get_demographics_profile(geo_code, geo_level, session):
                 'values': {'this': undp_survey_pop}
             }
             demographic_data['percent_impoverished'] = {
-                'name': 'Percent In Poverty',
+                'name': 'Are in poverty',
                 'numerators': {'this': total_in_poverty},
                 'values': {
                     'this': round(
@@ -301,7 +301,7 @@ def get_demographics_profile(geo_code, geo_level, session):
                 'values': {'this': undp_survey_pop}
             }
             demographic_data['percent_with_safe_water'] = {
-                'name': 'Percent with Access to Safe Drinking Water',
+                'name': 'Have access to safe drinking water',
                 'numerators': {'this': total_with_safe_water},
                 'values': {
                     'this': round(
