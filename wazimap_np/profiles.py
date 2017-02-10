@@ -121,6 +121,11 @@ POVERTY_RECODES = OrderedDict([
     ('NOT_IN_POVERTY', 'Not in Poverty')
 ])
 
+SAFE_WATER_RECODES = OrderedDict([
+    ('YES', 'Access to Safe  Water'),
+    ('NO', 'No Access to Safe  Water')
+])
+
 # Education recodes
 EDUCATION_LEVEL_PASSED_RECODES = OrderedDict([
     ('PRIMARY_1_5', 'Primary'),
@@ -243,14 +248,23 @@ def get_demographics_profile(geo_code, geo_level, session):
                 table_fields=['sex'],
                 table_name='population_projection_2031')
 
-            # population by sex
-            poverty_dist_data, total_poverty_pop = get_stat_data(
+            # poverty (UNDP and Open Nepal)
+            poverty_dist_data, undp_survey_pop = get_stat_data(
                 'poverty', geo_level, geo_code, session,
                 recode=dict(POVERTY_RECODES),
                 key_order=POVERTY_RECODES.values())
 
+            # safe drinking water (UNDP and Open Nepal)
+            safe_water_dist_data, _ = get_stat_data(
+                'safe water', geo_level, geo_code, session,
+                recode=dict(SAFE_WATER_RECODES),
+                key_order=SAFE_WATER_RECODES.values())
+
             total_in_poverty = \
                 poverty_dist_data['In Poverty']['numerators']['this']
+
+            total_with_safe_water = \
+                safe_water_dist_data['Access to Safe  Water']['numerators']['this']
 
             demographic_data['is_vdc'] = False
 
@@ -271,14 +285,27 @@ def get_demographics_profile(geo_code, geo_level, session):
             demographic_data['poverty_dist'] = poverty_dist_data
             demographic_data['poverty_population'] = {
                 'name': 'Estimated Population',
-                'values': {'this': total_poverty_pop}
+                'values': {'this': undp_survey_pop}
             }
             demographic_data['percent_impoverished'] = {
-                'name': 'Percent In Poverty',
+                'name': 'Are in poverty',
                 'numerators': {'this': total_in_poverty},
                 'values': {
                     'this': round(
-                        total_in_poverty / total_poverty_pop * 100,
+                        total_in_poverty / undp_survey_pop * 100,
+                        2)}
+            }
+            demographic_data['safe_water_dist'] = safe_water_dist_data
+            demographic_data['safe_water_population'] = {
+                'name': 'Estimated Population',
+                'values': {'this': undp_survey_pop}
+            }
+            demographic_data['percent_with_safe_water'] = {
+                'name': 'Have access to safe drinking water',
+                'numerators': {'this': total_with_safe_water},
+                'values': {
+                    'this': round(
+                        total_with_safe_water / undp_survey_pop * 100,
                         2)}
             }
 

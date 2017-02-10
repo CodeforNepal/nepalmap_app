@@ -112,8 +112,15 @@ FieldTable(['sex'],
 
 FieldTable(['poverty'],
            universe='Population',
-           description='Levels of Poverty by District',
+           description='Levels of poverty by district',
            dataset='OpenNepal Poverty Rates on District Level, 2001-2011',
+           year='2011',
+           table_per_level=False)
+
+FieldTable(['safe water'],
+           universe='Population',
+           description='Access to safe drinking water',
+           dataset='OpenNepal Human Poverty Index Value by Districts (2011)',
            year='2011',
            table_per_level=False)
 
