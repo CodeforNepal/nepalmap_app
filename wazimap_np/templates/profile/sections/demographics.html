@@ -71,8 +71,6 @@
         </div>
 
         {% if demographics.is_vdc == False %}
-
-
             <header class="section-contents">
                 <h1 id="humandevelopment">Human Development</h1>
             </header>
@@ -85,35 +83,45 @@
                             class="fa fa-link"></i></a></h2>
                     {% include 'profile/_blocks/_stat_list.html' with stat=demographics.percent_impoverished stat_type='percentage' %}
                 </div>
-                    <div class="column-quarter"
+                    <div class="column-three-quarters"
                          id="chart-pie-demographics-poverty_dist"
                          data-stat-type="percentage"
                          data-chart-title="In poverty">
                     </div>
-
-                <div class="column-quarter">
-                    <h2><a class="permalink" href="#humandevelopment">Safe Drinking Water <i
-                            class="fa fa-link"></i></a></h2>
-                    {% include 'profile/_blocks/_stat_list.html' with stat=demographics.percent_with_safe_water stat_type='percentage' %}
-                </div>
-                    <div class="column-quarter"
-                         id="chart-pie-demographics-safe_water_dist"
-                         data-stat-type="percentage"
-                         data-chart-title="Access to Safe Drinking Water">
-                    </div>
-                    <small>Poverty Rate Source:
+                    <small>Source:
                         <a target="_blank"
                            href="http://data.opennepal.net/content/poverty-rates-district-level-2001-2011">OpenNepal
                             Poverty Rates on District Level, 2001-2011</a>
                     </small>
-                    <br>
-                    <small>Safe Drinking Water Source:
+                </section>
+                <section class="clearfix stat-row">
+                    <div class="column-third">
+                        <h2><a class="permalink" href="#humandevelopment">Child Health <i
+                                    class="fa fa-link"></i></a></h2>
+                        {% include 'profile/_blocks/_stat_list.html' with stat=demographics.children_malnourished stat_type='percentage' %}
+                    </div>
+                    <div class="column-third">
+                        <h2><a class="permalink" href="#humandevelopment">Safe
+                            Drinking Water <i
+                                    class="fa fa-link"></i></a></h2>
+                        {% include 'profile/_blocks/_stat_list.html' with stat=demographics.percent_with_safe_water stat_type='percentage' %}
+                    </div>
+                    <div class="column-third"
+                         id="chart-pie-demographics-safe_water_dist"
+                         data-stat-type="percentage"
+                         data-chart-title="Access to Safe Drinking Water">
+                    </div>
+                    <small>Sources:
+                        <br>
                         <a target="_blank"
                            href="http://data.opennepal.net/content/human-poverty-index-value-districts-2011">OpenNepal
                             Human Poverty Index Value by Districts (2011)</a>
+                        <br>
+                        <a target="_blank"
+                           href="https://github.com/opennepal/datasources/blob/master/Poverty/NHDR_Report_2014.pdf">
+                            Nepal Human Development Report 2014</a>
                     </small>
                 </section>
-
             </div>
         {% endif %}
     {% endif %}
