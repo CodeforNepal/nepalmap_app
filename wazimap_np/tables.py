@@ -141,3 +141,12 @@ SimpleTable(
     dataset='Nepal Human Development Report 2014',
     year='2014'
 )
+
+SimpleTable(
+    id='child_nourishment',
+    universe='People under the age of 5',
+    total_column=None,
+    description='Percentage of children under age five who are malnourished',
+    dataset='OpenNepal Human Poverty Index Value by Districts (2011)',
+    year='2011'
+)

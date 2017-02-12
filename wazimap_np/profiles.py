@@ -234,12 +234,12 @@ def get_demographics_profile(geo_code, geo_level, session):
         }
 
         if geo_level != 'vdc':
-            table = get_datatable('per_capita_income')
-            per_capita_income, _ = table.get_stat_data(
+            income_table = get_datatable('per_capita_income')
+            per_capita_income, _ = income_table.get_stat_data(
                 geo_level, geo_code, percent=False)
 
-            table = get_datatable('lifeexpectancy')
-            life_expectancy, _ = table.get_stat_data(
+            lifeexpectancy_table = get_datatable('lifeexpectancy')
+            life_expectancy, _ = lifeexpectancy_table.get_stat_data(
                 geo_level, geo_code, percent=False)
 
             # population projection for 2031
@@ -254,18 +254,23 @@ def get_demographics_profile(geo_code, geo_level, session):
                 recode=dict(POVERTY_RECODES),
                 key_order=POVERTY_RECODES.values())
 
+            total_in_poverty = \
+                poverty_dist_data['In Poverty']['numerators']['this']
+
             # safe drinking water (UNDP and Open Nepal)
             safe_water_dist_data, _ = get_stat_data(
                 'safe water', geo_level, geo_code, session,
                 recode=dict(SAFE_WATER_RECODES),
                 key_order=SAFE_WATER_RECODES.values())
 
-            total_in_poverty = \
-                poverty_dist_data['In Poverty']['numerators']['this']
-
             total_with_safe_water = \
                 safe_water_dist_data['Access to Safe  Water']['numerators']['this']
 
+            child_nourishment_table = get_datatable('child_nourishment')
+            child_nourishment, _ = child_nourishment_table.get_stat_data(
+                geo_level, geo_code, percent=False)
+
+            # add non-VDC data
             demographic_data['is_vdc'] = False
 
             demographic_data['per_capita_income'] = {
@@ -301,12 +306,16 @@ def get_demographics_profile(geo_code, geo_level, session):
                 'values': {'this': undp_survey_pop}
             }
             demographic_data['percent_with_safe_water'] = {
-                'name': 'Have access to safe drinking water',
+                'name': 'of people have access to safe drinking water',
                 'numerators': {'this': total_with_safe_water},
                 'values': {
                     'this': round(
                         total_with_safe_water / undp_survey_pop * 100,
                         2)}
+            }
+            demographic_data['children_malnourished'] = {
+                'name': 'of children under age five are malnourished',
+                'values': {'this': child_nourishment['percent malnourished']['values']['this']}
             }
 
     else:
@@ -334,7 +343,6 @@ def get_households_profile(geo_code, geo_level, session):
         household_size = total_pop / float(total_households)
         women = sex_dist_data['Female']['numerators']['this']
         men = sex_dist_data['Male']['numerators']['this']
-        # male_female_ratio = men / float(women)
         male_female_ratio = round(men / women * 100, 2)
 
         # foundation type
