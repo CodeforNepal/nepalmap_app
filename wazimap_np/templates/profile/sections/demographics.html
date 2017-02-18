@@ -52,6 +52,31 @@
                                       href="http://hdr.undp.org/sites/default/files/nepal_nhdr_2014-final.pdf">Nepal
                         Human Development Report 2014 (PDF)</a></small>
                 </section>
+                <section class="clearfix stat-row">
+                    <h2 class="header-for-columns"><a class="permalink"
+                                                      href="#language"
+                                                      id="language">Language <i
+                            class="fa fa-link"></i></a></h2>
+                    <div class="column-quarter">
+                        {% include 'profile/_blocks/_stat_list.html' with stat=demographics.language_most_spoken stat_type='name' stat_name='Language most spoken at home' %}
+                    </div>
+                    <div class="column-three-quarters">
+                        <div id="chart-histogram-demographics-language_distribution"
+                             data-stat-type="scaled-percentage"
+                             data-chart-title="Population by language most spoken at home"></div>
+                    </div>
+                    <small>Sources:
+                        <br>
+                        <a target="_blank"
+                           href="http://data.opennepal.net/content/population-mother-tongue-sex-and-age-groups-2011-12">OpenNepal
+                            Population by mother tongue, sex and age groups
+                            (2011-12)</a>
+                        <br>
+                        <a target="_blank"
+                           href="http://unstats.un.org/unsd/demographic/sources/census/wphc/Nepal/Nepal-Census-2011-Vol1.pdf">National
+                            Population and Housing Census 2011 (PDF)</a>
+                    </small>
+                </section>
             {% endif %}
 
             <section class="clearfix stat-row">
