@@ -2,7 +2,8 @@ from collections import OrderedDict
 
 from wazimap.geo import geo_data
 from wazimap.data.tables import get_datatable
-from wazimap.data.utils import get_session, merge_dicts, get_stat_data
+from wazimap.data.utils import get_session, merge_dicts, get_stat_data, \
+    group_remainder
 
 # ensure tables are loaded
 import wazimap_np.tables  # noqa
@@ -191,10 +192,13 @@ def get_census_profile(geo_code, geo_level, profile_name=None):
                     merge_dicts(data[section], func(code, level, session),
                                 level)
 
-        return data
-
     finally:
         session.close()
+
+    if geo_level != 'vdc':
+        group_remainder(data['demographics']['language_distribution'], 10)
+
+    return data
 
 
 def get_demographics_profile(geo_code, geo_level, session):
@@ -270,6 +274,11 @@ def get_demographics_profile(geo_code, geo_level, session):
             child_nourishment, _ = child_nourishment_table.get_stat_data(
                 geo_level, geo_code, percent=False)
 
+            # language
+            language_data, _ = get_stat_data(
+                ['language'], geo_level, geo_code, session, order_by='-total')
+            language_most_spoken = language_data[language_data.keys()[0]]
+
             # add non-VDC data
             demographic_data['is_vdc'] = False
 
@@ -317,6 +326,8 @@ def get_demographics_profile(geo_code, geo_level, session):
                 'name': 'of children under age five are malnourished',
                 'values': {'this': child_nourishment['percent malnourished']['values']['this']}
             }
+            demographic_data['language_distribution'] = language_data
+            demographic_data['language_most_spoken'] = language_most_spoken
 
     else:
         demographic_data = {
