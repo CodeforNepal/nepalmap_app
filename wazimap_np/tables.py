@@ -124,6 +124,13 @@ FieldTable(['safe water'],
            year='2011',
            table_per_level=False)
 
+FieldTable(['language'],
+           universe='Population',
+           description='Mother tongue',
+           dataset='OpenNepal Population by mother tongue, sex and age groups',
+           year='2011',
+           table_per_level=False)
+
 SimpleTable(
     id='lifeexpectancy',
     universe='Population',
