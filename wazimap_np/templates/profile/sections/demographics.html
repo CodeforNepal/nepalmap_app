@@ -73,8 +73,34 @@
                             (2011-12)</a>
                         <br>
                         <a target="_blank"
-                           href="http://unstats.un.org/unsd/demographic/sources/census/wphc/Nepal/Nepal-Census-2011-Vol1.pdf">National
-                            Population and Housing Census 2011 (PDF)</a>
+                           href="https://github.com/opennepal/datasources/blob/census_population/Census/Volume05Part02.pdf">National
+                            Population and Housing Census 2011 Social Characteristics Tables (PDF)</a>
+                    </small>
+                </section>
+                <section class="clearfix stat-row">
+                    <h2 class="header-for-columns"><a class="permalink"
+                                                      href="#ethnicity"
+                                                      id="ethnicity">Caste and
+                        Ethnic Groups <i
+                                class="fa fa-link"></i></a></h2>
+                    <div class="column-quarter">
+                        {% include 'profile/_blocks/_stat_list.html' with stat=demographics.most_populous_caste stat_type='name' stat_name='Most populous caste or ethnic group' %}
+                    </div>
+                    <div class="column-three-quarters">
+                        <div id="chart-histogram-demographics-ethnic_distribution"
+                             data-stat-type="scaled-percentage"
+                             data-chart-title="Population by caste or ethnic group"></div>
+                    </div>
+                    <small>Sources:
+                        <br>
+                        <a target="_blank"
+                           href="http://data.opennepal.net/content/population-casteethnic-groups-and-sex-2011-12">OpenNepal
+                            Population by caste/ethnic groups and sex
+                            (2011-12)</a>
+                        <br>
+                        <a target="_blank"
+                           href="https://github.com/opennepal/datasources/blob/census_population/Census/Volume05Part02.pdf">National
+                            Population and Housing Census 2011 Social Characteristics Tables (PDF)</a>
                     </small>
                 </section>
             {% endif %}

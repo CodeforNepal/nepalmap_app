@@ -131,6 +131,14 @@ FieldTable(['language'],
            year='2011',
            table_per_level=False)
 
+FieldTable(['caste or ethnic group'],
+           id='caste',
+           universe='Population',
+           description='Caste or ethnic group',
+           dataset='OpenNepal Population by caste or ethnic groups and sex',
+           year='2011',
+           table_per_level=False)
+
 SimpleTable(
     id='lifeexpectancy',
     universe='Population',
