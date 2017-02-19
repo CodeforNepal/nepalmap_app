@@ -197,6 +197,7 @@ def get_census_profile(geo_code, geo_level, profile_name=None):
 
     if geo_level != 'vdc':
         group_remainder(data['demographics']['language_distribution'], 10)
+        group_remainder(data['demographics']['ethnic_distribution'], 10)
 
     return data
 
@@ -279,6 +280,11 @@ def get_demographics_profile(geo_code, geo_level, session):
                 ['language'], geo_level, geo_code, session, order_by='-total')
             language_most_spoken = language_data[language_data.keys()[0]]
 
+            # caste or ethnic group
+            caste_data, _ = get_stat_data(['caste or ethnic group'], geo_level,
+                                          geo_code, session, order_by='-total')
+            most_populous_caste = caste_data[caste_data.keys()[0]]
+
             # add non-VDC data
             demographic_data['is_vdc'] = False
 
@@ -328,6 +334,8 @@ def get_demographics_profile(geo_code, geo_level, session):
             }
             demographic_data['language_distribution'] = language_data
             demographic_data['language_most_spoken'] = language_most_spoken
+            demographic_data['ethnic_distribution'] = caste_data
+            demographic_data['most_populous_caste'] = most_populous_caste
 
     else:
         demographic_data = {
