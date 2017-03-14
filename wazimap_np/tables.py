@@ -139,6 +139,14 @@ FieldTable(['caste or ethnic group'],
            year='2011',
            table_per_level=False)
 
+FieldTable(['age in completed years', 'sex'],
+           id='age_sex',
+           universe='Population',
+           description='Age in completed years',
+           dataset='National Population and Housing Census 2011',
+           year='2011',
+           table_per_level=False)
+
 SimpleTable(
     id='lifeexpectancy',
     universe='Population',
