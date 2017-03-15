@@ -1,9 +1,9 @@
 from collections import OrderedDict
 
 from wazimap.geo import geo_data
-from wazimap.data.tables import get_datatable
+from wazimap.data.tables import get_datatable, get_model_from_fields
 from wazimap.data.utils import get_session, merge_dicts, get_stat_data, \
-    group_remainder
+    group_remainder, get_objects_by_geo, calculate_median
 
 # ensure tables are loaded
 import wazimap_np.tables  # noqa
@@ -239,6 +239,7 @@ def get_demographics_profile(geo_code, geo_level, session):
         }
 
         if geo_level != 'vdc':
+
             income_table = get_datatable('per_capita_income')
             per_capita_income, _ = income_table.get_stat_data(
                 geo_level, geo_code, percent=False)
@@ -284,6 +285,66 @@ def get_demographics_profile(geo_code, geo_level, session):
             caste_data, _ = get_stat_data(['caste or ethnic group'], geo_level,
                                           geo_code, session, order_by='-total')
             most_populous_caste = caste_data[caste_data.keys()[0]]
+
+            # age
+            # age in 10 year groups
+            def age_recode(f, x):
+                age = int(x)
+                if age >= 80:
+                    return '80+'
+                bucket = 10 * (age / 10)
+                return '%d-%d' % (bucket, bucket + 9)
+
+            age_dist_data, _ = get_stat_data(
+                'age in completed years', geo_level, geo_code, session,
+                table_fields=['age in completed years', 'sex'],
+                recode=age_recode,
+                table_name='age_sex')
+
+            ordered_age_dist_data = OrderedDict(
+                sorted(age_dist_data.items(),
+                       key=lambda age_range: age_range[0])
+            )
+
+            # age category
+            def age_cat_recode(f, x):
+                age = int(x.replace('+', ''))
+                if age < 20:
+                    return 'Under 20'
+                elif age >= 60:
+                    return '60 and over'
+                else:
+                    return '20 to 59'
+
+            age_cats, _ = get_stat_data(
+                'age in completed years', geo_level, geo_code, session,
+                table_fields=['age in completed years', 'sex'],
+                recode=age_cat_recode,
+                table_name='age_sex')
+
+            ordered_age_cats_data = OrderedDict(
+                [('Under 20', age_cats['Under 20']),
+                 ('20 to 59', age_cats['20 to 59']),
+                 ('60 and over', age_cats['60 and over']),
+                 ('metadata', age_cats['metadata'])]
+            )
+
+            # median age
+            db_model_age = get_model_from_fields(
+                ['age in completed years', 'sex'],
+                geo_level)
+            objects = get_objects_by_geo(db_model_age,
+                                         geo_code,
+                                         geo_level,
+                                         session,
+                                         ['age in completed years'])
+            objects = sorted((o for o in objects if
+                              getattr(o, 'age in completed years') !=
+                              'unspecified'),
+                             key=lambda x:
+                             int(getattr(x, 'age in completed years')
+                                 .replace('+', '')))
+            median_age = calculate_median(objects, 'age in completed years')
 
             # add non-VDC data
             demographic_data['is_vdc'] = False
@@ -336,6 +397,14 @@ def get_demographics_profile(geo_code, geo_level, session):
             demographic_data['language_most_spoken'] = language_most_spoken
             demographic_data['ethnic_distribution'] = caste_data
             demographic_data['most_populous_caste'] = most_populous_caste
+
+            demographic_data['age_group_distribution'] = ordered_age_dist_data
+            demographic_data['age_category_distribution'] = \
+                ordered_age_cats_data
+            demographic_data['median_age'] = {
+                'name': 'Median age',
+                'values': {'this': median_age},
+            }
 
     else:
         demographic_data = {

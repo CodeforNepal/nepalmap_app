@@ -7,7 +7,7 @@
         </header>
         <div class="section-container">
             <section class="clearfix stat-row">
-                <h2><a class="permalink" href="#demographics">Demographics <i
+                <h2><a class="permalink" href="#demographics">Population <i
                         class="fa fa-link"></i></a></h2>
                 {% if demographics.is_vdc == True %}
                     <div class="column-quarter">
@@ -31,11 +31,42 @@
                     <div class="column-quarter"
                          id="chart-pie-demographics-pop_2031_dist"
                          data-stat-type="percentage"
-                         data-chart-title="Projected by Sex in 2031"></div>
+                         data-chart-title="Projected by sex in 2031"></div>
                 {% endif %}
             </section>
 
             {% if demographics.is_vdc == False %}
+                <section class="clearfix stat-row">
+                    <div class="column-full clearfix">
+                        <h2 class="header-for-columns"><a class="permalink"
+                                                          href="#age" id="age">Age
+                            <i class="fa fa-link"></i></a></h2>
+                        <div class="column-quarter">
+                            {% include 'profile/_blocks/_stat_list.html' with stat=demographics.median_age stat_type='number' %}
+                        </div>
+                        <div class="column-quarter">
+                            <div id="chart-pie-demographics-age_category_distribution"
+                                 data-stat-type="percentage"
+                                 data-chart-title="Population by age category"></div>
+                        </div>
+                        <div class="column-half">
+                            <div id="chart-histogram-demographics-age_group_distribution"
+                                 data-stat-type="scaled-percentage"
+                                 data-chart-title="Population by 10-year age range"></div>
+                        </div>
+                    </div>
+                    <small>Sources: <br>
+                        <a target="_blank"
+                           href="http://data.opennepal.net/content/population-single-year-age-and-sex-2011-12">OpenNepal
+                            Population by single year of age and sex
+                            (2011-12)</a>
+                        <br>
+                        <a target="_blank"
+                           href="https://github.com/opennepal/datasources/blob/Population/Census/Volume05Part01.pdf">National
+                            Population and Housing Census 2011 General and
+                            Social Characteristics Tables (PDF)</a>
+                    </small>
+                </section>
                 <section class="clearfix stat-row">
                     <h2><a class="permalink"
                            href="#demographics-life-and-income"
