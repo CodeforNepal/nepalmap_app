@@ -1,0 +1,43 @@
+<article id="elections" class="clearfix">
+    {% if elections.area_has_data == True %}
+        <header class="section-contents">
+            <h1>Elections</h1>
+        </header>
+        <div class="section-container">
+            <section class="clearfix stat-row">
+                <h2><a class="permalink" href="elections-voters"
+                       id="elections-voters">Voters
+                    <i class="fa fa-link"></i></a></h2>
+                <div class="column-third">
+                    {% include 'profile/_blocks/_stat_list.html' with stat=elections.total_voters stat_type='number' %}
+                </div>
+                <div class="column-two-thirds"
+                     id="chart-pie-elections-voter_distribution"
+                     data-stat-type="percentage"
+                     data-chart-title="Voters by sex"></div>
+                <small>Source: <br>
+                    <a target="_blank"
+                       href="http://electionnepal.org/data-preview/45/">Election Nepal: Total number of male, female and third gender voters per districts</a>
+                </small>
+            </section>
+        </div>
+        <div class="section-container">
+            <section class="clearfix stat-row">
+                <h2><a class="permalink" href="local-electoral-bodies"
+                       id="local-electoral-bodies">Local Electoral Bodies
+                    <i class="fa fa-link"></i></a></h2>
+                <div class="column-third">
+                    {% include 'profile/_blocks/_stat_list.html' with stat=elections.total_electoral_bodies stat_type='number' %}
+                </div>
+                <div class="column-two-thirds"
+                     id="chart-pie-elections-local_electoral_bodies_distribution"
+                     data-stat-type="percentage"
+                     data-chart-title="Local electoral bodies"></div>
+                <small>Source: <br>
+                    <a target="_blank"
+                       href="http://electionnepal.org/data-preview/45/">Election Nepal: Total number of Local Bodies per districts</a>
+                </small>
+            </section>
+        </div>
+    {% endif %}
+</article>
