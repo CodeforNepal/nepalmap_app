@@ -10,6 +10,7 @@ import wazimap_np.tables  # noqa
 
 PROFILE_SECTIONS = (
     'demographics',
+    'elections',
     'households',
     'education'
 )
@@ -412,6 +413,41 @@ def get_demographics_profile(geo_code, geo_level, session):
         }
 
     return demographic_data
+
+
+def get_elections_profile(geo_code, geo_level, session):
+
+    if geo_level != 'vdc':
+        # voters by sex
+        voter_sex_dist, total_voters = get_stat_data(
+            'voter_sex', geo_level, geo_code, session,
+            table_fields=['voter_sex'])
+
+        # safe drinking water (UNDP and Open Nepal)
+        local_electoral_bodies_dist, total_electoral_bodies = get_stat_data(
+            ['local electoral body'], geo_level, geo_code, session)
+
+        election_data = {
+            'area_has_data': True,
+            'is_vdc': False,
+            'total_voters': {
+                'name': 'Voters',
+                'values': {'this': total_voters}
+            },
+            'voter_distribution': voter_sex_dist,
+            'total_electoral_bodies': {
+                'name': 'Electoral Bodies',
+                'values': {'this': total_electoral_bodies}
+            },
+            'local_electoral_bodies_distribution': local_electoral_bodies_dist
+        }
+
+    else:
+        election_data = {
+            'area_has_data': False
+        }
+
+    return election_data
 
 
 def get_households_profile(geo_code, geo_level, session):

@@ -147,6 +147,22 @@ FieldTable(['age in completed years', 'sex'],
            year='2011',
            table_per_level=False)
 
+FieldTable(['voter_sex'],
+           id='voters_sex',
+           universe='Population',
+           description='Voters per district',
+           dataset='electionnepal.org',
+           year='2017',
+           table_per_level=False)
+
+FieldTable(['local electoral body'],
+           id='local_electoral_bodies',
+           universe='Elections',
+           description='Local electoral bodies per district',
+           dataset='electionnepal.org',
+           year='2017',
+           table_per_level=False)
+
 SimpleTable(
     id='lifeexpectancy',
     universe='Population',
