@@ -161,7 +161,7 @@
                 <section class="clearfix stat-row">
 
                 <div class="column-quarter">
-                    <h2><a class="permalink" href="#humandevelopment">Poverty Rate <i
+                    <h2><a class="permalink" href="#poverty-rate" id="poverty-rate">Poverty Rate <i
                             class="fa fa-link"></i></a></h2>
                     {% include 'profile/_blocks/_stat_list.html' with stat=demographics.percent_impoverished stat_type='percentage' %}
                 </div>
@@ -178,12 +178,12 @@
                 </section>
                 <section class="clearfix stat-row">
                     <div class="column-third">
-                        <h2><a class="permalink" href="#humandevelopment">Child Health <i
+                        <h2><a class="permalink" href="#child-health" id="child-health">Child Health <i
                                     class="fa fa-link"></i></a></h2>
                         {% include 'profile/_blocks/_stat_list.html' with stat=demographics.children_malnourished stat_type='percentage' %}
                     </div>
                     <div class="column-third">
-                        <h2><a class="permalink" href="#humandevelopment">Safe
+                        <h2><a class="permalink" href="#safe-water" id="safe-water">Safe
                             Drinking Water <i
                                     class="fa fa-link"></i></a></h2>
                         {% include 'profile/_blocks/_stat_list.html' with stat=demographics.percent_with_safe_water stat_type='percentage' %}
