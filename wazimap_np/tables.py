@@ -189,3 +189,21 @@ SimpleTable(
     dataset='OpenNepal Human Poverty Index Value by Districts (2011)',
     year='2011'
 )
+
+SimpleTable(
+    id='political_parties',
+    universe='Political parties',
+    total_column=None,
+    description='Registered political parties',
+    dataset='Open Knowledge Nepal',
+    year='2017'
+)
+
+SimpleTable(
+    id='polling_places',
+    universe='Polling Places',
+    total_column=None,
+    description='Polling places',
+    dataset='Open Knowledge Nepal',
+    year='2017'
+)
