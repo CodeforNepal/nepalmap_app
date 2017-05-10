@@ -39,5 +39,25 @@
                 </small>
             </section>
         </div>
+        <div class="section-container">
+            <section class="clearfix stat-row">
+                <h2><a class="permalink" href="#polling-places-and-parties"
+                       id="polling-places-and-parties">Polling Places and Registered Political Parties
+                    <i class="fa fa-link"></i></a></h2>
+                <div class="column-half">
+                    {% include 'profile/_blocks/_stat_list.html' with stat=elections.polling_places stat_type='number' %}
+                </div>
+                    <div class="column-half">
+                        {% include 'profile/_blocks/_stat_list.html' with stat=elections.political_parties stat_type='number' %}
+                    </div>
+                <small>Sources: <br>
+                    <a target="_blank"
+                       href="https://github.com/okfnepal/election-nepal-data/blob/master/Demographics/75%20district%20polling%20place:center.csv">Open Knowledge Nepal: polling places</a>
+                    <br>
+                    <a target="_blank"
+                       href="https://github.com/okfnepal/election-nepal-data/blob/master/Demographics/Total%20number%20of%20registered%20political%20parties%20per%20districts.csv">Open Knowledge Nepal: total number of registered political parties per districts</a>
+                    </small>
+            </section>
+        </div>
     {% endif %}
 </article>

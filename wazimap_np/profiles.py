@@ -427,6 +427,14 @@ def get_elections_profile(geo_code, geo_level, session):
         local_electoral_bodies_dist, total_electoral_bodies = get_stat_data(
             ['local electoral body'], geo_level, geo_code, session)
 
+        parties_table = get_datatable('political_parties')
+        political_parties, _ = parties_table.get_stat_data(
+            geo_level, geo_code, percent=False)
+
+        polling_places_table = get_datatable('polling_places')
+        polling_places, _ = polling_places_table.get_stat_data(
+            geo_level, geo_code, percent=False)
+
         election_data = {
             'area_has_data': True,
             'is_vdc': False,
@@ -439,7 +447,17 @@ def get_elections_profile(geo_code, geo_level, session):
                 'name': 'Electoral Bodies',
                 'values': {'this': total_electoral_bodies}
             },
-            'local_electoral_bodies_distribution': local_electoral_bodies_dist
+            'local_electoral_bodies_distribution': local_electoral_bodies_dist,
+            'political_parties': {
+                'name': 'Number of registered political parties',
+                'values':
+                    {'this': political_parties['number of registered political parties']['values']['this']}
+            },
+            'polling_places': {
+                'name': 'Number of polling places',
+                'values':
+                    {'this': polling_places['number of polling places']['values']['this']}
+            }
         }
 
     else:
