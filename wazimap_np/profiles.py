@@ -11,6 +11,7 @@ import wazimap_np.tables  # noqa
 PROFILE_SECTIONS = (
     'demographics',
     'elections',
+    'health',
     'households',
     'education'
 )
@@ -173,6 +174,13 @@ FIELD_OF_STUDY_RECODES = OrderedDict([
     ('OTHERS', 'Others')
 ])
 
+ASSISTED_CHILDBIRTH_RECODES = OrderedDict([
+    ('SBA_AT_FACILITY', 'Skilled Birth Attendant at a Facility'),
+    ('SBA_AT_HOME', 'Skilled Birth Attendant at Home'),
+    ('HEALTH_WORKER_AT_FACILITY', 'Other Health Worker at a Facility'),
+    ('HEALTH_WORKER_AT_HOME', 'Other Health Worker at Home')
+])
+
 
 def get_census_profile(geo_code, geo_level, profile_name=None):
     session = get_session()
@@ -263,19 +271,6 @@ def get_demographics_profile(geo_code, geo_level, session):
 
             total_in_poverty = \
                 poverty_dist_data['In Poverty']['numerators']['this']
-
-            # safe drinking water (UNDP and Open Nepal)
-            safe_water_dist_data, _ = get_stat_data(
-                'safe water', geo_level, geo_code, session,
-                recode=dict(SAFE_WATER_RECODES),
-                key_order=SAFE_WATER_RECODES.values())
-
-            total_with_safe_water = \
-                safe_water_dist_data['Access to Safe  Water']['numerators']['this']
-
-            child_nourishment_table = get_datatable('child_nourishment')
-            child_nourishment, _ = child_nourishment_table.get_stat_data(
-                geo_level, geo_code, percent=False)
 
             # language
             language_data, _ = get_stat_data(
@@ -377,23 +372,6 @@ def get_demographics_profile(geo_code, geo_level, session):
                         total_in_poverty / undp_survey_pop * 100,
                         2)}
             }
-            demographic_data['safe_water_dist'] = safe_water_dist_data
-            demographic_data['safe_water_population'] = {
-                'name': 'Estimated Population',
-                'values': {'this': undp_survey_pop}
-            }
-            demographic_data['percent_with_safe_water'] = {
-                'name': 'of people have access to safe drinking water',
-                'numerators': {'this': total_with_safe_water},
-                'values': {
-                    'this': round(
-                        total_with_safe_water / undp_survey_pop * 100,
-                        2)}
-            }
-            demographic_data['children_malnourished'] = {
-                'name': 'of children under age five are malnourished',
-                'values': {'this': child_nourishment['percent malnourished']['values']['this']}
-            }
             demographic_data['language_distribution'] = language_data
             demographic_data['language_most_spoken'] = language_most_spoken
             demographic_data['ethnic_distribution'] = caste_data
@@ -423,7 +401,7 @@ def get_elections_profile(geo_code, geo_level, session):
             'voter_sex', geo_level, geo_code, session,
             table_fields=['voter_sex'])
 
-        # safe drinking water (UNDP and Open Nepal)
+        # electoral bodies
         local_electoral_bodies_dist, total_electoral_bodies = get_stat_data(
             ['local electoral body'], geo_level, geo_code, session)
 
@@ -466,6 +444,71 @@ def get_elections_profile(geo_code, geo_level, session):
         }
 
     return election_data
+
+
+def get_health_profile(geo_code, geo_level, session):
+    if geo_level != 'vdc':
+
+        # electoral bodies
+        childbirth_assistance_dist, total_childbirths = get_stat_data(
+            ['delivery type'], geo_level, geo_code, session,
+            recode=dict(ASSISTED_CHILDBIRTH_RECODES),
+            key_order=ASSISTED_CHILDBIRTH_RECODES.values())
+
+        # safe drinking water (UNDP and Open Nepal)
+        safe_water_dist_data, _ = get_stat_data(
+            'safe water', geo_level, geo_code, session,
+            recode=dict(SAFE_WATER_RECODES),
+            key_order=SAFE_WATER_RECODES.values())
+
+        _, undp_survey_pop = get_stat_data(
+            'poverty', geo_level, geo_code, session,
+            recode=dict(POVERTY_RECODES),
+            key_order=POVERTY_RECODES.values())
+
+        total_with_safe_water = \
+            safe_water_dist_data['Access to Safe  Water']['numerators']['this']
+
+        child_nourishment_table = get_datatable('child_nourishment')
+        child_nourishment, _ = child_nourishment_table.get_stat_data(
+            geo_level, geo_code, percent=False)
+
+        health_data = {
+            'area_has_data': True,
+            'is_vdc': False,
+            'total_assisted_childbirths': {
+                'name': 'Assisted Childbirths',
+                'values': {'this': total_childbirths}
+            },
+            'childbirth_assistance_distribution': childbirth_assistance_dist,
+            'safe_water_dist': safe_water_dist_data,
+            'safe_water_population': {
+                'name': 'Estimated Population',
+                'values': {'this': undp_survey_pop}
+            },
+            'percent_with_safe_water': {
+                'name': 'of people have access to safe drinking water',
+                'numerators': {'this': total_with_safe_water},
+                'values': {
+                    'this': round(
+                        total_with_safe_water / undp_survey_pop * 100,
+                        2)}
+            },
+            'children_malnourished': {
+                'name': 'of children under age five are malnourished',
+                'values': {
+                    'this':
+                        child_nourishment['percent malnourished']['values'][
+                            'this']}
+            }
+        }
+
+    else:
+        health_data = {
+            'area_has_data': False
+        }
+
+    return health_data
 
 
 def get_households_profile(geo_code, geo_level, session):
