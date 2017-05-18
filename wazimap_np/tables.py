@@ -163,6 +163,14 @@ FieldTable(['local electoral body'],
            year='2017',
            table_per_level=False)
 
+FieldTable(['delivery type'],
+           id='childbirth_delivery_assistance',
+           universe='Childbirths',
+           description='Location and type of assistance for childbirth',
+           dataset='Annual Report of the Department of Health Services',
+           year='2014-2015',
+           table_per_level=False)
+
 SimpleTable(
     id='lifeexpectancy',
     universe='Population',

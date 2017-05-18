@@ -1,0 +1,57 @@
+<article id="health" class="clearfix">
+    {% if elections.area_has_data == True %}
+        <header class="section-contents">
+            <h1>Health</h1>
+        </header>
+        <div class="section-container">
+            <section class="clearfix stat-row">
+                <div class="column-third">
+                    <h2><a class="permalink" href="#child-health"
+                           id="child-health">Child Health <i
+                            class="fa fa-link"></i></a></h2>
+                    {% include 'profile/_blocks/_stat_list.html' with stat=health.children_malnourished stat_type='percentage' %}
+                </div>
+                <div class="column-third">
+                    <h2><a class="permalink" href="#safe-water"
+                           id="safe-water">Safe
+                        Drinking Water <i
+                                class="fa fa-link"></i></a></h2>
+                    {% include 'profile/_blocks/_stat_list.html' with stat=health.percent_with_safe_water stat_type='percentage' %}
+                </div>
+                <div class="column-third"
+                     id="chart-pie-health-safe_water_dist"
+                     data-stat-type="percentage"
+                     data-chart-title="Access to Safe Drinking Water">
+                </div>
+                <small>Sources:
+                    <br>
+                    <a target="_blank"
+                       href="http://data.opennepal.net/content/human-poverty-index-value-districts-2011">OpenNepal
+                        Human Poverty Index Value by Districts (2011)</a>
+                    <br>
+                    <a target="_blank"
+                       href="https://github.com/opennepal/datasources/blob/master/Poverty/NHDR_Report_2014.pdf">
+                        Nepal Human Development Report 2014</a>
+                </small>
+            </section>
+            <section class="clearfix stat-row">
+                <h2><a class="permalink" href="#childbirth-delivery-assistance"
+                       id="childbirth-delivery-assistance">Assisted Childbirth
+                    <i class="fa fa-link"></i></a></h2>
+                <div class="column-third">
+                    {% include 'profile/_blocks/_stat_list.html' with stat=health.total_assisted_childbirths stat_type='number' %}
+                </div>
+                <div class="column-two-thirds"
+                     id="chart-pie-health-childbirth_assistance_distribution"
+                     data-stat-type="percentage"
+                     data-chart-title="Assisted Childbirth"></div>
+                <small>Source: <br>
+                    <a target="_blank"
+                       href="http://dohs.gov.np/annual-report/annual-report-fy-207172/">Department
+                        of Health Services Annual Report, Fiscal Year
+                        2071-2072</a>
+                </small>
+            </section>
+        </div>
+    {% endif %}
+</article>
