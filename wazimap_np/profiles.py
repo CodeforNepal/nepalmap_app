@@ -449,11 +449,26 @@ def get_elections_profile(geo_code, geo_level, session):
 def get_health_profile(geo_code, geo_level, session):
     if geo_level != 'vdc':
 
-        # electoral bodies
+        # childbirth
         childbirth_assistance_dist, total_childbirths = get_stat_data(
             ['delivery type'], geo_level, geo_code, session,
             recode=dict(ASSISTED_CHILDBIRTH_RECODES),
             key_order=ASSISTED_CHILDBIRTH_RECODES.values())
+
+        births_at_health_facilities_table = get_datatable(
+            'births_at_health_facility')
+        births_at_health_facilities, _ = births_at_health_facilities_table\
+            .get_stat_data(geo_level, geo_code, percent=False)
+
+        births_with_sba_table = get_datatable(
+            'births_with_skilled_attendant')
+        births_with_sba, _ = births_with_sba_table.get_stat_data(
+            geo_level, geo_code, percent=False)
+
+        births_with_non_sba_table = get_datatable(
+            'births_with_non_sba_health_worker')
+        births_with_health_worker, _ = births_with_non_sba_table.get_stat_data(
+            geo_level, geo_code, percent=False)
 
         # safe drinking water (UNDP and Open Nepal)
         safe_water_dist_data, _ = get_stat_data(
@@ -500,6 +515,27 @@ def get_health_profile(geo_code, geo_level, session):
                     'this':
                         child_nourishment['percent malnourished']['values'][
                             'this']}
+            },
+            'births_at_health_facilities': {
+                'name': 'of all deliveries at institutions',
+                'values':
+                    {'this': births_at_health_facilities
+                     ['percent deliveries at institutions']['values']['this']}
+            },
+            'births_with_sba': {
+                'name': 'of all deliveries attended by a skilled birth '
+                        'attendant',
+                'values':
+                    {'this': births_with_sba
+                     ['percent deliveries with sba']['values']['this']}
+            },
+            'births_with_health_worker': {
+                'name': 'of all deliveries attended by a health worker other '
+                        'than a skilled birth attendant',
+                'values':
+                    {'this': births_with_health_worker
+                     ['percent deliveries with non sba health worker']
+                     ['values']['this']}
             }
         }
 

@@ -35,6 +35,32 @@
                 </small>
             </section>
             <section class="clearfix stat-row">
+                <div class="column-third">
+                    <h2><a class="permalink" href="#childbirth-at-facility"
+                           id="childbirth-at-facility">Childbirth at a Health Facility <i
+                            class="fa fa-link"></i></a></h2>
+                    {% include 'profile/_blocks/_stat_list.html' with stat=health.births_at_health_facilities stat_type='percentage' %}
+                </div>
+                <div class="column-third">
+                    <h2><a class="permalink" href="#childbirth-with-sba"
+                           id="childbirth-with-sba">Childbirth with a Skilled Attendant <i
+                            class="fa fa-link"></i></a></h2>
+                    {% include 'profile/_blocks/_stat_list.html' with stat=health.births_with_sba stat_type='percentage' %}
+                </div>
+                <div class="column-third">
+                    <h2><a class="permalink" href="#childbirth-with-non-sba"
+                           id="childbirth-with-non-sba">Childbirth with a non-SBA Health Worker <i
+                            class="fa fa-link"></i></a></h2>
+                    {% include 'profile/_blocks/_stat_list.html' with stat=health.births_with_health_worker stat_type='percentage' %}
+                </div>
+                <small>Source: <br>
+                    <a target="_blank"
+                       href="http://dohs.gov.np/annual-report/annual-report-fy-207172/">Department
+                        of Health Services Annual Report, Fiscal Year
+                        2071-2072 (Page 375)</a>
+                </small>
+            </section>
+            <section class="clearfix stat-row">
                 <h2><a class="permalink" href="#childbirth-delivery-assistance"
                        id="childbirth-delivery-assistance">Assisted Childbirth
                     <i class="fa fa-link"></i></a></h2>
@@ -49,7 +75,7 @@
                     <a target="_blank"
                        href="http://dohs.gov.np/annual-report/annual-report-fy-207172/">Department
                         of Health Services Annual Report, Fiscal Year
-                        2071-2072</a>
+                        2071-2072 (Page 370)</a>
                 </small>
             </section>
         </div>
