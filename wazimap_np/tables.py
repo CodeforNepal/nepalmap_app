@@ -215,3 +215,31 @@ SimpleTable(
     dataset='Open Knowledge Nepal',
     year='2017'
 )
+
+SimpleTable(
+    id='births_at_health_facility',
+    universe='Births',
+    total_column=None,
+    description='Percentage of births at health facilities',
+    dataset='Annual Report of the Department of Health Services',
+    year='2014-2015'
+)
+
+SimpleTable(
+    id='births_with_skilled_attendant',
+    universe='Births',
+    total_column=None,
+    description='Percentage of births attended by a skill birth attendant',
+    dataset='Annual Report of the Department of Health Services',
+    year='2014-2015'
+)
+
+SimpleTable(
+    id='births_with_non_sba_health_worker',
+    universe='Births',
+    total_column=None,
+    description='Percentage of births attended by a health worker other than '
+                'a skilled birth attendant',
+    dataset='Annual Report of the Department of Health Services',
+    year='2014-2015'
+)
