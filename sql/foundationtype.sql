@@ -20,7 +20,7 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- Name: foundationtype; Type: TABLE; Schema: public; Owner: wazimap_np; Tablespace:
+-- Name: foundationtype; Type: TABLE; Schema: public; Tablespace:
 --
 
 CREATE TABLE foundationtype (
@@ -31,10 +31,8 @@ CREATE TABLE foundationtype (
 );
 
 
-ALTER TABLE foundationtype OWNER TO wazimap_np;
-
 --
--- Data for Name: foundationtype; Type: TABLE DATA; Schema: public; Owner: wazimap_np
+-- Data for Name: foundationtype; Type: TABLE DATA; Schema: public
 --
 
 COPY foundationtype (geo_code, geo_level, "foundation type", total) FROM stdin WITH DELIMITER ',';
@@ -24288,7 +24286,7 @@ NP,country,WOODEN_PILLAR,1350151
 
 
 --
--- Name: foundationtype_pkey; Type: CONSTRAINT; Schema: public; Owner: wazimap_np; Tablespace:
+-- Name: foundationtype_pkey; Type: CONSTRAINT; Schema: public; Tablespace:
 --
 
 ALTER TABLE ONLY foundationtype

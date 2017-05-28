@@ -20,7 +20,7 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- Name: schoolattendance_sex; Type: TABLE; Schema: public; Owner: wazimap_np; Tablespace:
+-- Name: schoolattendance_sex; Type: TABLE; Schema: public; Tablespace:
 --
 
 CREATE TABLE schoolattendance_sex (
@@ -32,10 +32,8 @@ CREATE TABLE schoolattendance_sex (
 );
 
 
-ALTER TABLE schoolattendance_sex OWNER TO wazimap_np;
-
 --
--- Data for Name: schoolattendance_sex; Type: TABLE DATA; Schema: public; Owner: wazimap_np
+-- Data for Name: schoolattendance_sex; Type: TABLE DATA; Schema: public
 --
 
 COPY schoolattendance_sex (geo_code, geo_level, "school attendance", sex, total) FROM stdin WITH DELIMITER ',';
@@ -24283,7 +24281,7 @@ NP,country,SCHOOL_GOING,male,3711930
 
 
 --
--- Name: schoolattendance_sex_pkey; Type: CONSTRAINT; Schema: public; Owner: wazimap_np; Tablespace:
+-- Name: schoolattendance_sex_pkey; Type: CONSTRAINT; Schema: public; Tablespace:
 --
 
 ALTER TABLE ONLY schoolattendance_sex

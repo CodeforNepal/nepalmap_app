@@ -20,7 +20,7 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- Name: age_sex; Type: TABLE; Schema: public; Owner: wazimap_np; Tablespace:
+-- Name: age_sex; Type: TABLE; Schema: public; Tablespace:
 --
 
 CREATE TABLE age_sex (
@@ -32,10 +32,8 @@ CREATE TABLE age_sex (
 );
 
 
-ALTER TABLE age_sex OWNER TO wazimap_np;
-
 --
--- Data for Name: age_sex; Type: TABLE DATA; Schema: public; Owner: wazimap_np
+-- Data for Name: age_sex; Type: TABLE DATA; Schema: public
 --
 
 COPY age_sex (geo_level, geo_code, "age in completed years", sex, total) FROM stdin WITH DELIMITER ',';
@@ -15339,7 +15337,7 @@ district,75,100,male,36
 
 
 --
--- Name: age_sex_pkey; Type: CONSTRAINT; Schema: public; Owner: wazimap_np; Tablespace:
+-- Name: age_sex_pkey; Type: CONSTRAINT; Schema: public; Tablespace:
 --
 
 ALTER TABLE ONLY age_sex

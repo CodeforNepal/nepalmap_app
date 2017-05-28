@@ -20,7 +20,7 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- Name: political_parties; Type: TABLE; Schema: public; Owner: wazimap_np; Tablespace:
+-- Name: political_parties; Type: TABLE; Schema: public; Tablespace:
 --
 
 CREATE TABLE political_parties (
@@ -30,10 +30,8 @@ CREATE TABLE political_parties (
 );
 
 
-ALTER TABLE political_parties OWNER TO wazimap_np;
-
 --
--- Data for Name: political_parties; Type: TABLE DATA; Schema: public; Owner: wazimap_np
+-- Data for Name: political_parties; Type: TABLE DATA; Schema: public
 --
 
 COPY political_parties (geo_level, geo_code, "number of registered political parties") FROM stdin WITH DELIMITER ',';
@@ -117,7 +115,7 @@ district,14,23
 
 
 --
--- Name: political_parties_pkey; Type: CONSTRAINT; Schema: public; Owner: wazimap_np; Tablespace:
+-- Name: political_parties_pkey; Type: CONSTRAINT; Schema: public; Tablespace:
 --
 
 ALTER TABLE ONLY political_parties

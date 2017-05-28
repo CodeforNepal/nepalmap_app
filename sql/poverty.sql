@@ -22,7 +22,7 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- Name: poverty; Type: TABLE; Schema: public; Owner: wazimap_np; Tablespace:
+-- Name: poverty; Type: TABLE; Schema: public; Tablespace:
 --
 
 CREATE TABLE poverty (
@@ -33,10 +33,8 @@ CREATE TABLE poverty (
 );
 
 
-ALTER TABLE poverty OWNER TO wazimap_np;
-
 --
--- Data for Name: poverty; Type: TABLE DATA; Schema: public; Owner: wazimap_np
+-- Data for Name: poverty; Type: TABLE DATA; Schema: public
 --
 
 COPY poverty (geo_level, total, poverty, geo_code) FROM stdin WITH DELIMITER ',';
@@ -196,7 +194,7 @@ district,307085,NOT_IN_POVERTY,75
 
 
 --
--- Name: poverty_pkey; Type: CONSTRAINT; Schema: public; Owner: wazimap_np; Tablespace:
+-- Name: poverty_pkey; Type: CONSTRAINT; Schema: public; Tablespace:
 --
 
 ALTER TABLE ONLY poverty

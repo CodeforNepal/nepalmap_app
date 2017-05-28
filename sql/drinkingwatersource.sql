@@ -20,7 +20,7 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- Name: drinkingwatersource; Type: TABLE; Schema: public; Owner: wazimap_np; Tablespace:
+-- Name: drinkingwatersource; Type: TABLE; Schema: public; Tablespace:
 --
 
 CREATE TABLE drinkingwatersource (
@@ -31,10 +31,8 @@ CREATE TABLE drinkingwatersource (
 );
 
 
-ALTER TABLE drinkingwatersource OWNER TO wazimap_np;
-
 --
--- Data for Name: drinkingwatersource; Type: TABLE DATA; Schema: public; Owner: wazimap_np
+-- Data for Name: drinkingwatersource; Type: TABLE DATA; Schema: public
 --
 
 COPY drinkingwatersource (geo_code, geo_level, "drinking water source", total) FROM stdin WITH DELIMITER ',';
@@ -32370,7 +32368,7 @@ NP,country,UNCOVERED_WELL,255658
 
 
 --
--- Name: drinkingwatersource_pkey; Type: CONSTRAINT; Schema: public; Owner: wazimap_np; Tablespace:
+-- Name: drinkingwatersource_pkey; Type: CONSTRAINT; Schema: public; Tablespace:
 --
 
 ALTER TABLE ONLY drinkingwatersource

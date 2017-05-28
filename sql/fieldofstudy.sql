@@ -20,7 +20,7 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- Name: fieldofstudy_sex; Type: TABLE; Schema: public; Owner: wazimap_np; Tablespace:
+-- Name: fieldofstudy_sex; Type: TABLE; Schema: public; Tablespace:
 --
 
 CREATE TABLE fieldofstudy_sex (
@@ -32,10 +32,8 @@ CREATE TABLE fieldofstudy_sex (
 );
 
 
-ALTER TABLE fieldofstudy_sex OWNER TO wazimap_np;
-
 --
--- Data for Name: fieldofstudy_sex; Type: TABLE DATA; Schema: public; Owner: wazimap_np
+-- Data for Name: fieldofstudy_sex; Type: TABLE DATA; Schema: public
 --
 
 COPY fieldofstudy_sex (total, sex, "field of study", geo_level, geo_code) FROM stdin WITH DELIMITER ',';
@@ -2171,7 +2169,7 @@ COPY fieldofstudy_sex (total, sex, "field of study", geo_level, geo_code) FROM s
 
 
 --
--- Name: fieldofstudy_sex_pkey; Type: CONSTRAINT; Schema: public; Owner: wazimap_np; Tablespace:
+-- Name: fieldofstudy_sex_pkey; Type: CONSTRAINT; Schema: public; Tablespace:
 --
 
 ALTER TABLE ONLY fieldofstudy_sex

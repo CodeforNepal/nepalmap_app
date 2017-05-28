@@ -20,7 +20,7 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- Name: language; Type: TABLE; Schema: public; Owner: wazimap_np; Tablespace:
+-- Name: language; Type: TABLE; Schema: public; Tablespace:
 --
 
 CREATE TABLE language (
@@ -31,10 +31,8 @@ CREATE TABLE language (
 );
 
 
-ALTER TABLE language OWNER TO wazimap_np;
-
 --
--- Data for Name: language; Type: TABLE DATA; Schema: public; Owner: wazimap_np
+-- Data for Name: language; Type: TABLE DATA; Schema: public
 --
 
 COPY language (geo_code,total,language,geo_level) FROM stdin WITH DELIMITER ',';
@@ -9162,7 +9160,7 @@ NP,9995,Nachhiring,country
 
 
 --
--- Name: language_pkey; Type: CONSTRAINT; Schema: public; Owner: wazimap_np; Tablespace:
+-- Name: language_pkey; Type: CONSTRAINT; Schema: public; Tablespace:
 --
 
 ALTER TABLE ONLY language

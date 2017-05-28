@@ -20,7 +20,7 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- Name: voters_sex; Type: TABLE; Schema: public; Owner: wazimap_np; Tablespace:
+-- Name: voters_sex; Type: TABLE; Schema: public; Tablespace:
 --
 
 CREATE TABLE voters_sex (
@@ -31,10 +31,8 @@ CREATE TABLE voters_sex (
 );
 
 
-ALTER TABLE voters_sex OWNER TO wazimap_np;
-
 --
--- Data for Name: voters_sex; Type: TABLE DATA; Schema: public; Owner: wazimap_np
+-- Data for Name: voters_sex; Type: TABLE DATA; Schema: public
 --
 
 COPY voters_sex (geo_level, geo_code, voter_sex, total) FROM stdin WITH DELIMITER ',';
@@ -270,7 +268,7 @@ district,14,third gender,0
 
 
 --
--- Name: voters_sex_pkey; Type: CONSTRAINT; Schema: public; Owner: wazimap_np; Tablespace:
+-- Name: voters_sex_pkey; Type: CONSTRAINT; Schema: public; Tablespace:
 --
 
 ALTER TABLE ONLY voters_sex

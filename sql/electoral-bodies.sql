@@ -20,7 +20,7 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- Name: local_electoral_bodies; Type: TABLE; Schema: public; Owner: wazimap_np; Tablespace:
+-- Name: local_electoral_bodies; Type: TABLE; Schema: public; Tablespace:
 --
 
 CREATE TABLE local_electoral_bodies (
@@ -31,10 +31,8 @@ CREATE TABLE local_electoral_bodies (
 );
 
 
-ALTER TABLE local_electoral_bodies OWNER TO wazimap_np;
-
 --
--- Data for Name: local_electoral_bodies; Type: TABLE DATA; Schema: public; Owner: wazimap_np
+-- Data for Name: local_electoral_bodies; Type: TABLE DATA; Schema: public
 --
 
 COPY local_electoral_bodies (geo_level, geo_code, "local electoral body", total) FROM stdin WITH DELIMITER ',';
@@ -346,7 +344,7 @@ district,14,Mahanarpalika,0
 
 
 --
--- Name: local_electoral_bodies_pkey; Type: CONSTRAINT; Schema: public; Owner: wazimap_np; Tablespace:
+-- Name: local_electoral_bodies_pkey; Type: CONSTRAINT; Schema: public; Tablespace:
 --
 
 ALTER TABLE ONLY local_electoral_bodies

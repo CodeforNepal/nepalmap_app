@@ -20,7 +20,7 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- Name: toilettype; Type: TABLE; Schema: public; Owner: wazimap_np; Tablespace:
+-- Name: toilettype; Type: TABLE; Schema: public; Tablespace:
 --
 
 CREATE TABLE toilettype (
@@ -31,10 +31,8 @@ CREATE TABLE toilettype (
 );
 
 
-ALTER TABLE toilettype OWNER TO wazimap_np;
-
 --
--- Data for Name: toilettype; Type: TABLE DATA; Schema: public; Owner: wazimap_np
+-- Data for Name: toilettype; Type: TABLE DATA; Schema: public
 --
 
 COPY toilettype (geo_code, geo_level, "toilet type", total) FROM stdin WITH DELIMITER ',';
@@ -16206,7 +16204,7 @@ NP,country,ORDINARY_TOILET,1055862
 
 
 --
--- Name: toilettype_pkey; Type: CONSTRAINT; Schema: public; Owner: wazimap_np; Tablespace:
+-- Name: toilettype_pkey; Type: CONSTRAINT; Schema: public; Tablespace:
 --
 
 ALTER TABLE ONLY toilettype
