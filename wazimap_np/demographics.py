@@ -203,4 +203,3 @@ def get_demographics_profile(geo_code, geo_level, session):
         }
 
     return demographic_data
-
