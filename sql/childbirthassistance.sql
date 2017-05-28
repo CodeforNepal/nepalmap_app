@@ -20,7 +20,7 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- Name: childbirth_delivery_assistance; Type: TABLE; Schema: public; Owner: wazimap_np; Tablespace:
+-- Name: childbirth_delivery_assistance; Type: TABLE; Schema: public; Tablespace:
 --
 
 CREATE TABLE childbirth_delivery_assistance (
@@ -31,10 +31,8 @@ CREATE TABLE childbirth_delivery_assistance (
 );
 
 
-ALTER TABLE childbirth_delivery_assistance OWNER TO wazimap_np;
-
 --
--- Data for Name: childbirth_delivery_assistance; Type: TABLE DATA; Schema: public; Owner: wazimap_np
+-- Data for Name: childbirth_delivery_assistance; Type: TABLE DATA; Schema: public
 --
 
 COPY childbirth_delivery_assistance (geo_level, geo_code, "delivery type", total) FROM stdin WITH DELIMITER ',';
@@ -346,7 +344,7 @@ district,72,HEALTH_WORKER_AT_HOME,61
 
 
 --
--- Name: childbirth_delivery_assistance_pkey; Type: CONSTRAINT; Schema: public; Owner: wazimap_np; Tablespace:
+-- Name: childbirth_delivery_assistance_pkey; Type: CONSTRAINT; Schema: public; Tablespace:
 --
 
 ALTER TABLE ONLY childbirth_delivery_assistance

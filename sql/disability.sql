@@ -19,7 +19,7 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- Name: disability_sex; Type: TABLE; Schema: public; Owner: wazimap_np; Tablespace:
+-- Name: disability_sex; Type: TABLE; Schema: public; Tablespace:
 --
 
 CREATE TABLE disability_sex (
@@ -31,10 +31,8 @@ CREATE TABLE disability_sex (
 );
 
 
-ALTER TABLE disability_sex OWNER TO wazimap_np;
-
 --
--- Data for Name: disability_sex; Type: TABLE DATA; Schema: public; Owner: wazimap_np
+-- Data for Name: disability_sex; Type: TABLE DATA; Schema: public
 --
 
 COPY disability_sex (geo_code, geo_level, disability, sex, total) FROM stdin WITH DELIMITER ',';
@@ -73032,7 +73030,7 @@ NP,country,SPEECH_PROBLEM,male,33190
 
 
 --
--- Name: disability_sex_pkey; Type: CONSTRAINT; Schema: public; Owner: wazimap_np; Tablespace:
+-- Name: disability_sex_pkey; Type: CONSTRAINT; Schema: public; Tablespace:
 --
 
 ALTER TABLE ONLY disability_sex

@@ -20,7 +20,7 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- Name: caste; Type: TABLE; Schema: public; Owner: wazimap_np; Tablespace:
+-- Name: caste; Type: TABLE; Schema: public; Tablespace:
 --
 
 CREATE TABLE caste (
@@ -31,10 +31,8 @@ CREATE TABLE caste (
 );
 
 
-ALTER TABLE caste OWNER TO wazimap_np;
-
 --
--- Data for Name: caste; Type: TABLE DATA; Schema: public; Owner: wazimap_np
+-- Data for Name: caste; Type: TABLE DATA; Schema: public
 --
 
 COPY caste ("caste or ethnic group", total, geo_level, geo_code) FROM stdin WITH DELIMITER ',';
@@ -9998,7 +9996,7 @@ Sarki,7218,district,75
 
 
 --
--- Name: caste_pkey; Type: CONSTRAINT; Schema: public; Owner: wazimap_np; Tablespace:
+-- Name: caste_pkey; Type: CONSTRAINT; Schema: public; Tablespace:
 --
 
 ALTER TABLE ONLY caste

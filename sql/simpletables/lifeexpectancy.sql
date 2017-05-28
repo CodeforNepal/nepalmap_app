@@ -20,7 +20,7 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- Name: lifeexpectancy; Type: TABLE; Schema: public; Owner: wazimap_np; Tablespace:
+-- Name: lifeexpectancy; Type: TABLE; Schema: public; Tablespace:
 --
 
 CREATE TABLE lifeexpectancy (
@@ -30,10 +30,8 @@ CREATE TABLE lifeexpectancy (
 );
 
 
-ALTER TABLE lifeexpectancy OWNER TO wazimap_np;
-
 --
--- Data for Name: lifeexpectancy; Type: TABLE DATA; Schema: public; Owner: wazimap_np
+-- Data for Name: lifeexpectancy; Type: TABLE DATA; Schema: public
 --
 
 COPY lifeexpectancy (geo_code, geo_level, years) FROM stdin WITH DELIMITER ',';
@@ -117,7 +115,7 @@ NP,country,68.80
 
 
 --
--- Name: lifeexpectancy_pkey; Type: CONSTRAINT; Schema: public; Owner: wazimap_np; Tablespace:
+-- Name: lifeexpectancy_pkey; Type: CONSTRAINT; Schema: public; Tablespace:
 --
 
 ALTER TABLE ONLY lifeexpectancy

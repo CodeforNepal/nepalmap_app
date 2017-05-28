@@ -20,7 +20,7 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- Name: lightingfuel; Type: TABLE; Schema: public; Owner: wazimap_np; Tablespace:
+-- Name: lightingfuel; Type: TABLE; Schema: public; Tablespace:
 --
 
 CREATE TABLE lightingfuel (
@@ -31,10 +31,8 @@ CREATE TABLE lightingfuel (
 );
 
 
-ALTER TABLE lightingfuel OWNER TO wazimap_np;
-
 --
--- Data for Name: lightingfuel; Type: TABLE DATA; Schema: public; Owner: wazimap_np
+-- Data for Name: lightingfuel; Type: TABLE DATA; Schema: public
 --
 
 COPY lightingfuel (geo_code, geo_level, "lighting fuel", total) FROM stdin WITH DELIMITER ',';
@@ -24288,7 +24286,7 @@ NP,country,SOLAR,403504
 
 
 --
--- Name: lightingfuel_pkey; Type: CONSTRAINT; Schema: public; Owner: wazimap_np; Tablespace:
+-- Name: lightingfuel_pkey; Type: CONSTRAINT; Schema: public; Tablespace:
 --
 
 ALTER TABLE ONLY lightingfuel

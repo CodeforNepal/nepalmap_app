@@ -19,7 +19,7 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- Name: safewater; Type: TABLE; Schema: public; Owner: wazimap_np; Tablespace: 
+-- Name: safewater; Type: TABLE; Schema: public; Tablespace:
 --
 
 CREATE TABLE safewater (
@@ -30,10 +30,8 @@ CREATE TABLE safewater (
 );
 
 
-ALTER TABLE safewater OWNER TO wazimap_np;
-
 --
--- Data for Name: safewater; Type: TABLE DATA; Schema: public; Owner: wazimap_np
+-- Data for Name: safewater; Type: TABLE DATA; Schema: public
 --
 
 COPY safewater (geo_level, geo_code, "safe water", total) FROM stdin;
@@ -193,7 +191,7 @@ country	NP	YES	21846383
 
 
 --
--- Name: safewater_pkey; Type: CONSTRAINT; Schema: public; Owner: wazimap_np; Tablespace: 
+-- Name: safewater_pkey; Type: CONSTRAINT; Schema: public; Tablespace:
 --
 
 ALTER TABLE ONLY safewater

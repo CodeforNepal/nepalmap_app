@@ -20,7 +20,7 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- Name: polling_places; Type: TABLE; Schema: public; Owner: wazimap_np; Tablespace:
+-- Name: polling_places; Type: TABLE; Schema: public; Tablespace:
 --
 
 CREATE TABLE polling_places (
@@ -30,10 +30,8 @@ CREATE TABLE polling_places (
 );
 
 
-ALTER TABLE polling_places OWNER TO wazimap_np;
-
 --
--- Data for Name: polling_places; Type: TABLE DATA; Schema: public; Owner: wazimap_np
+-- Data for Name: polling_places; Type: TABLE DATA; Schema: public
 --
 
 COPY polling_places (geo_level, geo_code, "number of polling places") FROM stdin WITH DELIMITER ',';
@@ -117,7 +115,7 @@ district,75,293
 
 
 --
--- Name: polling_places_pkey; Type: CONSTRAINT; Schema: public; Owner: wazimap_np; Tablespace:
+-- Name: polling_places_pkey; Type: CONSTRAINT; Schema: public; Tablespace:
 --
 
 ALTER TABLE ONLY polling_places

@@ -20,7 +20,7 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- Name: educationlevelpassed_sex; Type: TABLE; Schema: public; Owner: wazimap_np; Tablespace:
+-- Name: educationlevelpassed_sex; Type: TABLE; Schema: public; Tablespace:
 --
 
 CREATE TABLE educationlevelpassed_sex (
@@ -32,10 +32,8 @@ CREATE TABLE educationlevelpassed_sex (
 );
 
 
-ALTER TABLE educationlevelpassed_sex OWNER TO wazimap_np;
-
 --
--- Data for Name: educationlevelpassed_sex; Type: TABLE DATA; Schema: public; Owner: wazimap_np
+-- Data for Name: educationlevelpassed_sex; Type: TABLE DATA; Schema: public
 --
 
 COPY educationlevelpassed_sex (geo_code, geo_level, "education level passed", sex, total) FROM stdin WITH DELIMITER ',';
@@ -89253,7 +89251,7 @@ NP,country,SLC_AND_EQUIVALENT,male,932391
 
 
 --
--- Name: educationlevelpassed_sex_pkey; Type: CONSTRAINT; Schema: public; Owner: wazimap_np; Tablespace:
+-- Name: educationlevelpassed_sex_pkey; Type: CONSTRAINT; Schema: public; Tablespace:
 --
 
 ALTER TABLE ONLY educationlevelpassed_sex

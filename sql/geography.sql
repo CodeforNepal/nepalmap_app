@@ -28,7 +28,7 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- Name: wazimap_geography; Type: TABLE; Schema: public; Owner: wazimap_np; Tablespace:
+-- Name: wazimap_geography; Type: TABLE; Schema: public; Tablespace:
 --
 
 CREATE TABLE wazimap_geography (
@@ -44,10 +44,8 @@ CREATE TABLE wazimap_geography (
 );
 
 
-ALTER TABLE wazimap_geography OWNER TO wazimap_np;
-
 --
--- Name: wazimap_geography_id_seq; Type: SEQUENCE; Schema: public; Owner: wazimap_np
+-- Name: wazimap_geography_id_seq; Type: SEQUENCE; Schema: public
 --
 
 CREATE SEQUENCE wazimap_geography_id_seq
@@ -58,10 +56,8 @@ CREATE SEQUENCE wazimap_geography_id_seq
     CACHE 1;
 
 
-ALTER TABLE wazimap_geography_id_seq OWNER TO wazimap_np;
-
 --
--- Name: wazimap_geography_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: wazimap_np
+-- Name: wazimap_geography_id_seq; Type: SEQUENCE OWNED BY; Schema: public
 --
 
 ALTER SEQUENCE wazimap_geography_id_seq OWNED BY wazimap_geography.id;
@@ -4131,12 +4127,12 @@ Tribhuwanbast,2273,2016,district,Tribhuwanbast,vdc,75
 \.
 
 --
--- Name: wazimap_geography_id_seq; Type: SEQUENCE SET; Schema: public; Owner: wazimap_np
+-- Name: wazimap_geography_id_seq; Type: SEQUENCE SET; Schema: public
 --
 
 SELECT pg_catalog.setval('wazimap_geography_id_seq', 1, false);
 --
--- Name: wazimap_geography_geo_level_9a5128d2_uniq; Type: CONSTRAINT; Schema: public; Owner: wazimap_np; Tablespace:
+-- Name: wazimap_geography_geo_level_9a5128d2_uniq; Type: CONSTRAINT; Schema: public; Tablespace:
 --
 
 ALTER TABLE ONLY wazimap_geography
@@ -4144,35 +4140,35 @@ ALTER TABLE ONLY wazimap_geography
 
 
 --
--- Name: wazimap_geography_pkey; Type: CONSTRAINT; Schema: public; Owner: wazimap_np; Tablespace:
+-- Name: wazimap_geography_pkey; Type: CONSTRAINT; Schema: public; Tablespace:
 --
 
 ALTER TABLE ONLY wazimap_geography
     ADD CONSTRAINT wazimap_geography_pkey PRIMARY KEY (id);
 
 --
--- Name: wazimap_geography_2fc6351a; Type: INDEX; Schema: public; Owner: wazimap_np; Tablespace:
+-- Name: wazimap_geography_2fc6351a; Type: INDEX; Schema: public; Tablespace:
 --
 
 CREATE INDEX wazimap_geography_2fc6351a ON wazimap_geography USING btree (long_name);
 
 
 --
--- Name: wazimap_geography_84cdc76c; Type: INDEX; Schema: public; Owner: wazimap_np; Tablespace:
+-- Name: wazimap_geography_84cdc76c; Type: INDEX; Schema: public; Tablespace:
 --
 
 CREATE INDEX wazimap_geography_84cdc76c ON wazimap_geography USING btree (year);
 
 
 --
--- Name: wazimap_geography_b068931c; Type: INDEX; Schema: public; Owner: wazimap_np; Tablespace:
+-- Name: wazimap_geography_b068931c; Type: INDEX; Schema: public; Tablespace:
 --
 
 CREATE INDEX wazimap_geography_b068931c ON wazimap_geography USING btree (name);
 
 
 --
--- Name: wazimap_geography_name_36b79089_like; Type: INDEX; Schema: public; Owner: wazimap_np; Tablespace:
+-- Name: wazimap_geography_name_36b79089_like; Type: INDEX; Schema: public; Tablespace:
 --
 
 CREATE INDEX wazimap_geography_name_36b79089_like ON wazimap_geography USING btree (name varchar_pattern_ops);

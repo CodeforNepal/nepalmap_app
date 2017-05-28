@@ -20,7 +20,7 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- Name: outerwalltype; Type: TABLE; Schema: public; Owner: wazimap_np; Tablespace:
+-- Name: outerwalltype; Type: TABLE; Schema: public; Tablespace:
 --
 
 CREATE TABLE outerwalltype (
@@ -31,10 +31,8 @@ CREATE TABLE outerwalltype (
 );
 
 
-ALTER TABLE outerwalltype OWNER TO wazimap_np;
-
 --
--- Data for Name: outerwalltype; Type: TABLE DATA; Schema: public; Owner: wazimap_np
+-- Data for Name: outerwalltype; Type: TABLE DATA; Schema: public
 --
 
 COPY outerwalltype (geo_code, geo_level, "outer wall type", total) FROM stdin WITH DELIMITER ',';
@@ -28329,7 +28327,7 @@ NP,country,WOOD_PLANKS,287859
 
 
 --
--- Name: outerwalltype_pkey; Type: CONSTRAINT; Schema: public; Owner: wazimap_np; Tablespace:
+-- Name: outerwalltype_pkey; Type: CONSTRAINT; Schema: public; Tablespace:
 --
 
 ALTER TABLE ONLY outerwalltype

@@ -20,7 +20,7 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- Name: births_at_health_facility; Type: TABLE; Schema: public; Owner: wazimap_np; Tablespace:
+-- Name: births_at_health_facility; Type: TABLE; Schema: public; Tablespace:
 --
 
 CREATE TABLE births_at_health_facility (
@@ -30,10 +30,8 @@ CREATE TABLE births_at_health_facility (
 );
 
 
-ALTER TABLE births_at_health_facility OWNER TO wazimap_np;
-
 --
--- Data for Name: births_at_health_facility; Type: TABLE DATA; Schema: public; Owner: wazimap_np
+-- Data for Name: births_at_health_facility; Type: TABLE DATA; Schema: public
 --
 
 COPY births_at_health_facility (geo_level, geo_code, "percent deliveries at institutions") FROM stdin WITH DELIMITER ',';
@@ -117,7 +115,7 @@ district,72,51.70
 
 
 --
--- Name: births_at_health_facility_pkey; Type: CONSTRAINT; Schema: public; Owner: wazimap_np; Tablespace:
+-- Name: births_at_health_facility_pkey; Type: CONSTRAINT; Schema: public; Tablespace:
 --
 
 ALTER TABLE ONLY births_at_health_facility

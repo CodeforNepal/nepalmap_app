@@ -19,7 +19,7 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- Name: population_projection_2031; Type: TABLE; Schema: public; Owner: wazimap_np; Tablespace: 
+-- Name: population_projection_2031; Type: TABLE; Schema: public; Tablespace:
 --
 
 CREATE TABLE population_projection_2031 (
@@ -30,10 +30,8 @@ CREATE TABLE population_projection_2031 (
 );
 
 
-ALTER TABLE population_projection_2031 OWNER TO wazimap_np;
-
 --
--- Data for Name: population_projection_2031; Type: TABLE DATA; Schema: public; Owner: wazimap_np
+-- Data for Name: population_projection_2031; Type: TABLE DATA; Schema: public
 --
 
 COPY population_projection_2031 (sex, geo_level, total, geo_code)  FROM stdin WITH DELIMITER ',';
@@ -193,7 +191,7 @@ male,country,16313189,NP
 
 
 --
--- Name: population_projection_2031_pkey; Type: CONSTRAINT; Schema: public; Owner: wazimap_np; Tablespace: 
+-- Name: population_projection_2031_pkey; Type: CONSTRAINT; Schema: public; Tablespace:
 --
 
 ALTER TABLE ONLY population_projection_2031
