@@ -20,7 +20,7 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- Name: child_nourishment; Type: TABLE; Schema: public; Owner: wazimap_np; Tablespace:
+-- Name: child_nourishment; Type: TABLE; Schema: public; Tablespace:
 --
 
 CREATE TABLE child_nourishment (
@@ -30,10 +30,8 @@ CREATE TABLE child_nourishment (
 );
 
 
-ALTER TABLE child_nourishment OWNER TO wazimap_np;
-
 --
--- Data for Name: child_nourishment; Type: TABLE DATA; Schema: public; Owner: wazimap_np
+-- Data for Name: child_nourishment; Type: TABLE DATA; Schema: public
 --
 
 COPY child_nourishment (geo_level, geo_code, "percent malnourished") FROM stdin WITH DELIMITER ',';
@@ -117,7 +115,7 @@ country,NP,40.5
 
 
 --
--- Name: child_nourishment_pkey; Type: CONSTRAINT; Schema: public; Owner: wazimap_np; Tablespace:
+-- Name: child_nourishment_pkey; Type: CONSTRAINT; Schema: public; Tablespace:
 --
 
 ALTER TABLE ONLY child_nourishment

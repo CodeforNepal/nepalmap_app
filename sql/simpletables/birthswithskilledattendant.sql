@@ -20,7 +20,7 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- Name: births_with_skilled_attendant; Type: TABLE; Schema: public; Owner: wazimap_np; Tablespace:
+-- Name: births_with_skilled_attendant; Type: TABLE; Schema: public; Tablespace:
 --
 
 CREATE TABLE births_with_skilled_attendant (
@@ -30,10 +30,8 @@ CREATE TABLE births_with_skilled_attendant (
 );
 
 
-ALTER TABLE births_with_skilled_attendant OWNER TO wazimap_np;
-
 --
--- Data for Name: births_with_skilled_attendant; Type: TABLE DATA; Schema: public; Owner: wazimap_np
+-- Data for Name: births_with_skilled_attendant; Type: TABLE DATA; Schema: public
 --
 
 COPY births_with_skilled_attendant (geo_level, geo_code, "percent deliveries with sba") FROM stdin WITH DELIMITER ',';
@@ -117,7 +115,7 @@ district,72,51.50
 
 
 --
--- Name: births_with_skilled_attendant_pkey; Type: CONSTRAINT; Schema: public; Owner: wazimap_np; Tablespace:
+-- Name: births_with_skilled_attendant_pkey; Type: CONSTRAINT; Schema: public; Tablespace:
 --
 
 ALTER TABLE ONLY births_with_skilled_attendant

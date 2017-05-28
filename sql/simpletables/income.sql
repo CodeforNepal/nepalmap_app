@@ -20,7 +20,7 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- Name: per_capita_income; Type: TABLE; Schema: public; Owner: wazimap_np; Tablespace:
+-- Name: per_capita_income; Type: TABLE; Schema: public; Tablespace:
 --
 
 CREATE TABLE per_capita_income (
@@ -30,10 +30,8 @@ CREATE TABLE per_capita_income (
 );
 
 
-ALTER TABLE per_capita_income OWNER TO wazimap_np;
-
 --
--- Data for Name: per_capita_income; Type: TABLE DATA; Schema: public; Owner: wazimap_np
+-- Data for Name: per_capita_income; Type: TABLE DATA; Schema: public
 --
 
 COPY per_capita_income (geo_code, income, geo_level) FROM stdin WITH DELIMITER ',';
@@ -117,7 +115,7 @@ NP,1160,country
 
 
 --
--- Name: per_capita_income_pkey; Type: CONSTRAINT; Schema: public; Owner: wazimap_np; Tablespace:
+-- Name: per_capita_income_pkey; Type: CONSTRAINT; Schema: public; Tablespace:
 --
 
 ALTER TABLE ONLY per_capita_income

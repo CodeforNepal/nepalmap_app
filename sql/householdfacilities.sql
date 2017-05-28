@@ -20,7 +20,7 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- Name: householdfacilities; Type: TABLE; Schema: public; Owner: wazimap_np; Tablespace:
+-- Name: householdfacilities; Type: TABLE; Schema: public; Tablespace:
 --
 
 CREATE TABLE householdfacilities (
@@ -31,10 +31,8 @@ CREATE TABLE householdfacilities (
 );
 
 
-ALTER TABLE householdfacilities OWNER TO wazimap_np;
-
 --
--- Data for Name: householdfacilities; Type: TABLE DATA; Schema: public; Owner: wazimap_np
+-- Data for Name: householdfacilities; Type: TABLE DATA; Schema: public
 --
 
 COPY householdfacilities (geo_code, geo_level, "household facilities", total) FROM stdin WITH DELIMITER ',';
@@ -52575,7 +52573,7 @@ NP,country,TOTAL_HOUSEHOLDS,5423297
 
 
 --
--- Name: householdfacilities_pkey; Type: CONSTRAINT; Schema: public; Owner: wazimap_np; Tablespace:
+-- Name: householdfacilities_pkey; Type: CONSTRAINT; Schema: public; Tablespace:
 --
 
 ALTER TABLE ONLY householdfacilities

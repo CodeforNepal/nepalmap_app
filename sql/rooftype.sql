@@ -20,7 +20,7 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- Name: rooftype; Type: TABLE; Schema: public; Owner: wazimap_np; Tablespace:
+-- Name: rooftype; Type: TABLE; Schema: public; Tablespace:
 --
 
 CREATE TABLE rooftype (
@@ -31,10 +31,8 @@ CREATE TABLE rooftype (
 );
 
 
-ALTER TABLE rooftype OWNER TO wazimap_np;
-
 --
--- Data for Name: rooftype; Type: TABLE DATA; Schema: public; Owner: wazimap_np
+-- Data for Name: rooftype; Type: TABLE DATA; Schema: public
 --
 
 COPY rooftype (geo_code, geo_level, "roof type", total) FROM stdin WITH DELIMITER ',';
@@ -32370,7 +32368,7 @@ NP,country,WOOD_PLANKS,44069
 
 
 --
--- Name: rooftype_pkey; Type: CONSTRAINT; Schema: public; Owner: wazimap_np; Tablespace:
+-- Name: rooftype_pkey; Type: CONSTRAINT; Schema: public; Tablespace:
 --
 
 ALTER TABLE ONLY rooftype
