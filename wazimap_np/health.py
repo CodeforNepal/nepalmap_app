@@ -18,9 +18,9 @@ SAFE_WATER_RECODES = OrderedDict([
 ])
 
 MATERNAL_CHILDBIRTH_DEATH_RECODES = OrderedDict([
-    ('ANTEPARTUM', 'Before Birth'),
-    ('INTRAPARTUM', 'During Birth'),
-    ('POSTPARTUM', 'After Birth')
+    ('ANTEPARTUM', 'Before Delivery'),
+    ('INTRAPARTUM', 'During Delivery'),
+    ('POSTPARTUM', 'After Delivery')
 ])
 
 
