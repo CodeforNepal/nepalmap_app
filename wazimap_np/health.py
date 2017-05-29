@@ -17,6 +17,12 @@ SAFE_WATER_RECODES = OrderedDict([
     ('NO', 'No Access to Safe  Water')
 ])
 
+MATERNAL_CHILDBIRTH_DEATH_RECODES = OrderedDict([
+    ('ANTEPARTUM', 'Before Birth'),
+    ('INTRAPARTUM', 'During Birth'),
+    ('POSTPARTUM', 'After Birth')
+])
+
 
 def get_health_profile(geo_code, geo_level, session):
     if geo_level != 'vdc':
@@ -41,6 +47,11 @@ def get_health_profile(geo_code, geo_level, session):
             'births_with_non_sba_health_worker')
         births_with_health_worker, _ = births_with_non_sba_table.get_stat_data(
             geo_level, geo_code, percent=False)
+
+        maternal_childbirth_deaths_dist, _ = get_stat_data(
+            ['maternal death in childbirth'], geo_level, geo_code, session,
+            recode=dict(MATERNAL_CHILDBIRTH_DEATH_RECODES),
+            key_order=MATERNAL_CHILDBIRTH_DEATH_RECODES.values())
 
         # safe drinking water (UNDP and Open Nepal)
         safe_water_dist_data, _ = get_stat_data(
@@ -108,7 +119,9 @@ def get_health_profile(geo_code, geo_level, session):
                     {'this': births_with_health_worker
                      ['percent deliveries with non sba health worker']
                      ['values']['this']}
-            }
+            },
+            'maternal_death_in_childbirth_distribution':
+                maternal_childbirth_deaths_dist
         }
 
     else:
