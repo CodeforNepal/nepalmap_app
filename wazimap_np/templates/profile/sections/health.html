@@ -64,18 +64,22 @@
                 <h2><a class="permalink" href="#childbirth-delivery-assistance"
                        id="childbirth-delivery-assistance">Assisted Childbirth
                     <i class="fa fa-link"></i></a></h2>
-                <div class="column-third">
+                <div class="column-quarter">
                     {% include 'profile/_blocks/_stat_list.html' with stat=health.total_assisted_childbirths stat_type='number' %}
                 </div>
-                <div class="column-two-thirds"
+                <div class="column-half"
                      id="chart-pie-health-childbirth_assistance_distribution"
                      data-stat-type="percentage"
                      data-chart-title="Assisted Childbirth"></div>
+                <div class="column-quarter"
+                     id="chart-histogram-health-maternal_death_in_childbirth_distribution"
+                     data-stat-type="scaled-percentage"
+                     data-chart-title="Reported Maternal Deaths in Childbirth"></div>
                 <small>Source: <br>
                     <a target="_blank"
                        href="http://dohs.gov.np/annual-report/annual-report-fy-207172/">Department
                         of Health Services Annual Report, Fiscal Year
-                        2071-2072 (Page 370)</a>
+                        2071-2072 (Pages 370, 373)</a>
                 </small>
             </section>
         </div>
