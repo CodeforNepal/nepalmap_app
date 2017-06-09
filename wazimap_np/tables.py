@@ -171,6 +171,15 @@ FieldTable(['delivery type'],
            year='2014-2015',
            table_per_level=False)
 
+FieldTable(['maternal death in childbirth'],
+           id='maternal_death',
+           universe='Childbirths',
+           description='Reported maternal deaths in childbirth',
+           dataset='Annual Report of the Department of Health Services',
+           year='2014-2015',
+           table_per_level=False)
+
+# Simple Tables
 SimpleTable(
     id='lifeexpectancy',
     universe='Population',
