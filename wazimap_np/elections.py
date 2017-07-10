@@ -22,6 +22,18 @@ def get_elections_profile(geo_code, geo_level, session):
         polling_places, _ = polling_places_table.get_stat_data(
             geo_level, geo_code, percent=False)
 
+        # mayoral party
+        mayoral_party_dict, _ = get_stat_data(
+            ['mayoral party'], geo_level, geo_code, session, order_by='-total')
+
+        # deputy mayoral party
+        deputy_mayoral_party_dict, _ = get_stat_data(
+            ['deputy mayoral party'],
+            geo_level,
+            geo_code,
+            session,
+            order_by='-total')
+
         election_data = {
             'area_has_data': True,
             'is_vdc': False,
@@ -44,7 +56,9 @@ def get_elections_profile(geo_code, geo_level, session):
                 'name': 'Number of polling places',
                 'values':
                     {'this': polling_places['number of polling places']['values']['this']}
-            }
+            },
+            'mayoral_party_distribution': mayoral_party_dict,
+            'deputy_mayoral_party_distribution': deputy_mayoral_party_dict
         }
 
     else:

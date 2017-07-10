@@ -147,6 +147,7 @@ FieldTable(['age in completed years', 'sex'],
            year='2011',
            table_per_level=False)
 
+# elections
 FieldTable(['voter_sex'],
            id='voters_sex',
            universe='Population',
@@ -163,6 +164,23 @@ FieldTable(['local electoral body'],
            year='2017',
            table_per_level=False)
 
+FieldTable(['mayoral party'],
+           id='mayoral_party',
+           universe='Elections',
+           description='Party holding mayoral seat',
+           dataset='Local elections 2017',
+           year='2017',
+           table_per_level=False)
+
+FieldTable(['deputy mayoral party'],
+           id='deputy_mayoral_party',
+           universe='Elections',
+           description='Party holding deputy mayoral seat',
+           dataset='Local elections 2017',
+           year='2017',
+           table_per_level=False)
+
+# health
 FieldTable(['delivery type'],
            id='childbirth_delivery_assistance',
            universe='Childbirths',
