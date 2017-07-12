@@ -26,6 +26,10 @@ def get_elections_profile(geo_code, geo_level, session):
         mayoral_party_dict, _ = get_stat_data(
             ['mayoral party'], geo_level, geo_code, session, order_by='-total')
 
+        mayoralities = sum(
+            [mayoral_party_dict[name]['numerators']['this'] for name in
+             [item for item in mayoral_party_dict] if name != 'metadata'])
+
         # deputy mayoral party
         deputy_mayoral_party_dict, _ = get_stat_data(
             ['deputy mayoral party'],
@@ -33,6 +37,11 @@ def get_elections_profile(geo_code, geo_level, session):
             geo_code,
             session,
             order_by='-total')
+
+        deputy_mayoralities = sum(
+            [deputy_mayoral_party_dict[name]['numerators']['this'] for name in
+             [item for item in deputy_mayoral_party_dict]
+             if name != 'metadata'])
 
         election_data = {
             'area_has_data': True,
@@ -58,7 +67,15 @@ def get_elections_profile(geo_code, geo_level, session):
                     {'this': polling_places['number of polling places']['values']['this']}
             },
             'mayoral_party_distribution': mayoral_party_dict,
-            'deputy_mayoral_party_distribution': deputy_mayoral_party_dict
+            'total_mayoralities': {
+                'name': 'Mayoralities',
+                'values': {'this': mayoralities}
+            },
+            'deputy_mayoral_party_distribution': deputy_mayoral_party_dict,
+            'total_deputy_mayoralities': {
+                'name': 'Deputy mayoralities',
+                'values': {'this': deputy_mayoralities}
+            }
         }
 
     else:
