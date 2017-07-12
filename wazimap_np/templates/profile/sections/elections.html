@@ -62,16 +62,37 @@
         <div class="section-container">
             <section class="clearfix stat-row">
                 <h2><a class="permalink" href="#elections-mayoral-by-party"
-                       id="elections-mayoral-by-party">Mayoral and Deputy Mayoral Seats by Party <i
+                       id="elections-mayoral-by-party">Mayoral Seats by Party <i
                         class="fa fa-link"></i></a></h2>
-                <div class="column-half"
+                <div class="column-third">
+                    {% include 'profile/_blocks/_stat_list.html' with stat=elections.total_mayoralities stat_type='number' %}
+                </div>
+                <div class="column-two-thirds"
                      id="chart-histogram-elections-mayoral_party_distribution"
                      data-stat-type="scaled-percentage"
                      data-chart-title="Mayoral seats held by party"></div>
-                <div class="column-half"
+                <small>Source: <br>
+                    <a target="_blank"
+                       href="https://github.com/okfnepal/election-nepal-data/blob/master/Demographics/Mayoral%20and%20Deputy%20Mayoral%20Winning%20Seats%20Distribution%20by%20Party%20-%2075%20districts.csv">Open Knowledge Nepal: Mayoral and Deputy Mayoral Winning Seats Distribution by Party</a>
+                    </small>
+            </section>
+        </div>
+        <div class="section-container">
+            <section class="clearfix stat-row">
+                <h2><a class="permalink" href="#elections-deputy-mayoral-by-party"
+                       id="elections-deputy-mayoral-by-party">Deputy Mayoral Seats by Party <i
+                        class="fa fa-link"></i></a></h2>
+                <div class="column-third">
+                    {% include 'profile/_blocks/_stat_list.html' with stat=elections.total_deputy_mayoralities stat_type='number' %}
+                </div>
+                <div class="column-two-thirds"
                      id="chart-histogram-elections-deputy_mayoral_party_distribution"
                      data-stat-type="scaled-percentage"
                      data-chart-title="Deputy mayoral seats held by party"></div>
+                <small>Source: <br>
+                    <a target="_blank"
+                       href="https://github.com/okfnepal/election-nepal-data/blob/master/Demographics/Mayoral%20and%20Deputy%20Mayoral%20Winning%20Seats%20Distribution%20by%20Party%20-%2075%20districts.csv">Open Knowledge Nepal: Mayoral and Deputy Mayoral Winning Seats Distribution by Party</a>
+                    </small>
             </section>
         </div>
     {% endif %}

@@ -36,12 +36,12 @@ CREATE TABLE deputy_mayoral_party (
 --
 
 COPY deputy_mayoral_party (geo_level, geo_code, "deputy mayoral party", total) FROM stdin WITH DELIMITER ',';
-country,NP,CPN-UML,282
-country,NP,Maoist Kendra,85
-country,NP,Nepali Congress,181
-country,NP,Others,22
-country,NP,Rastriya Prajatantra Party,5
-country,NP,Undetermined,146
+country,NP,CPN-UML,305
+country,NP,Maoist Kendra,86
+country,NP,Nepali Congress,189
+country,NP,Others,25
+country,NP,Rastriya Prajatantra Party,6
+country,NP,Undetermined,110
 district,68,CPN-UML,2
 district,68,Nepali Congress,6
 district,68,Maoist Kendra,2
@@ -204,12 +204,12 @@ district,62,Maoist Kendra,3
 district,62,Rastriya Prajatantra Party,0
 district,62,Others,0
 district,62,Undetermined,0
-district,04,CPN-UML,0
-district,04,Nepali Congress,0
+district,04,CPN-UML,12
+district,04,Nepali Congress,2
 district,04,Maoist Kendra,0
-district,04,Rastriya Prajatantra Party,0
+district,04,Rastriya Prajatantra Party,1
 district,04,Others,0
-district,04,Undetermined,15
+district,04,Undetermined,0
 district,54,CPN-UML,1
 district,54,Nepali Congress,2
 district,54,Maoist Kendra,5
@@ -228,12 +228,12 @@ district,55,Maoist Kendra,6
 district,55,Rastriya Prajatantra Party,0
 district,55,Others,0
 district,55,Undetermined,0
-district,75,CPN-UML,0
-district,75,Nepali Congress,0
-district,75,Maoist Kendra,0
+district,75,CPN-UML,7
+district,75,Nepali Congress,1
+district,75,Maoist Kendra,1
 district,75,Rastriya Prajatantra Party,0
 district,75,Others,0
-district,75,Undetermined,9
+district,75,Undetermined,0
 district,47,CPN-UML,3
 district,47,Nepali Congress,5
 district,47,Maoist Kendra,1
@@ -450,12 +450,12 @@ district,11,Maoist Kendra,1
 district,11,Rastriya Prajatantra Party,0
 district,11,Others,0
 district,11,Undetermined,0
-district,10,CPN-UML,0
-district,10,Nepali Congress,0
+district,10,CPN-UML,4
+district,10,Nepali Congress,5
 district,10,Maoist Kendra,0
 district,10,Rastriya Prajatantra Party,0
-district,10,Others,0
-district,10,Undetermined,12
+district,10,Others,3
+district,10,Undetermined,0
 district,64,CPN-UML,4
 district,64,Nepali Congress,5
 district,64,Maoist Kendra,0
