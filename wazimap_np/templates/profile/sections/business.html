@@ -1,0 +1,34 @@
+<article id="business" class="clearfix">
+    {% if busness.area_has_data == False %}
+        <h2>No data available for this area</h2>
+    {% else %}
+        <header class="section-contents">
+            <h1>Business</h1>
+        </header>
+        <div class="section-container">
+            {% if business.is_vdc == False %}
+                <section class="clearfix stat-row">
+                    <div class="column-full clearfix">
+                        <h2 class="header-for-columns"><a class="permalink"
+                                                          href="#business-by-decade" id="business-by-decade">Business registrations by decade<i class="fa fa-link"></i></a></h2>
+                        <div class="column-full">
+                            <div id="chart-histogram-business-registered_company_decade_distribution"
+                                 data-stat-type="number"></div>
+                        </div>
+                    </div>
+                </section>
+                <section class="clearfix stat-row">
+                    <div class="column-full clearfix">
+                        <h2 class="header-for-columns"><a class="permalink"
+                                                          href="#business-by-era" id="business-by-era">Business registrations by era<i class="fa fa-link"></i></a></h2>
+                        <div class="column-full">
+                            <div id="chart-bar-business-registered_company_era_distribution"
+                                 data-stat-type="number"></div>
+                        </div>
+                    </div>
+                </section>
+            {% endif %}
+
+        </div>
+    {% endif %}
+</article>

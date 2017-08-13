@@ -197,6 +197,14 @@ FieldTable(['maternal death in childbirth'],
            year='2014-2015',
            table_per_level=False)
 
+# business
+FieldTable(['registered company type', 'year'],
+           universe='Registered business',
+           description='Businesses registered',
+           dataset='National Population and Housing Census 2011',
+           year='2011',
+           table_per_level=False)
+
 # Simple Tables
 SimpleTable(
     id='lifeexpectancy',
