@@ -11,9 +11,37 @@
                     <div class="column-full clearfix">
                         <h2 class="header-for-columns"><a class="permalink"
                                                           href="#business-by-decade" id="business-by-decade">Business registrations by decade<i class="fa fa-link"></i></a></h2>
-                        <div class="column-full">
-                            <div id="chart-histogram-business-registered_company_decade_distribution"
-                                 data-stat-type="number"></div>
+                    <div class="column-third">
+                        {% include 'profile/_blocks/_stat_list.html' with stat=business.total_companies_registered stat_type='number' %}
+                    </div>
+                        <div class="column-third">
+                            <div id="chart-bar-business-registered_company_decade_distribution"
+                                 data-stat-type="number"
+                         data-chart-title="All company registrations"></div>
+                        </div>
+                        <div class="column-third">
+                            <div id="chart-bar-business-registered_private_company_decade_distribution"
+                                 data-stat-type="number"
+                         data-chart-title="Private company registrations"></div>
+                        </div>
+                    </div>
+                </section>
+                <section class="clearfix stat-row">
+                    <div class="column-full clearfix">
+                        <div class="column-third">
+                            <div id="chart-bar-business-registered_public_company_decade_distribution"
+                                 data-stat-type="number"
+                         data-chart-title="Public company registrations"></div>
+                        </div>
+                        <div class="column-third">
+                            <div id="chart-bar-business-registered_foreign_company_decade_distribution"
+                                 data-stat-type="number"
+                         data-chart-title="Foreign company registrations"></div>
+                        </div>
+                        <div class="column-third">
+                            <div id="chart-bar-business-registered_non_profit_decade_distribution"
+                                 data-stat-type="number"
+                         data-chart-title="Non-profit registrations"></div>
                         </div>
                     </div>
                 </section>
@@ -21,9 +49,34 @@
                     <div class="column-full clearfix">
                         <h2 class="header-for-columns"><a class="permalink"
                                                           href="#business-by-era" id="business-by-era">Business registrations by era<i class="fa fa-link"></i></a></h2>
-                        <div class="column-full">
+                        <div class="column-half">
                             <div id="chart-bar-business-registered_company_era_distribution"
-                                 data-stat-type="number"></div>
+                                 data-stat-type="number"
+                         data-chart-title="All company registrations"></div>
+                        </div>
+                        <div class="column-half">
+                            <div id="chart-bar-business-registered_private_company_era_distribution"
+                                 data-stat-type="number"
+                         data-chart-title="Private company registrations"></div>
+                        </div>
+                    </div>
+                </section>
+                <section class="clearfix stat-row">
+                    <div class="column-full clearfix">
+                        <div class="column-third">
+                            <div id="chart-bar-business-registered_public_company_era_distribution"
+                                 data-stat-type="number"
+                         data-chart-title="Public company registrations"></div>
+                        </div>
+                        <div class="column-third">
+                            <div id="chart-bar-business-registered_foreign_company_era_distribution"
+                                 data-stat-type="number"
+                         data-chart-title="Foreign company registrations"></div>
+                        </div>
+                        <div class="column-third">
+                            <div id="chart-bar-business-registered_non_profit_era_distribution"
+                                 data-stat-type="number"
+                         data-chart-title="Non-profit registrations"></div>
                         </div>
                     </div>
                 </section>
