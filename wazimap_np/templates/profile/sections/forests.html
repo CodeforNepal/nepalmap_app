@@ -1,0 +1,25 @@
+<article id="elections" class="clearfix">
+    {% if forests.area_has_data == True %}
+        <header class="section-contents">
+            <h1>Forests and Land Use</h1>
+        </header>
+        <div class="section-container">
+            <section class="clearfix stat-row">
+                <h2><a class="permalink" href="#forests-total-land"
+                       id="forests-total-land">Total Land
+                    <i class="fa fa-link"></i></a></h2>
+                <div class="column-third">
+                    {% include 'profile/_blocks/_stat_list.html' with stat=forests.total_square_kilometres stat_type='number' %}
+                </div>
+                <div class="column-two-thirds"
+                     id="chart-pie-forests-forest_distribution"
+                     data-stat-type="percentage"
+                     data-chart-title="Forested and unforested land"></div>
+                <small>Source: <br>
+                    <a target="_blank"
+                       href="http://www.dscwm.gov.np/">Department of Soil Conservation and Water Management: Forests and Watershed Profile of Local Level, 2017</a>
+                </small>
+            </section>
+        </div>
+    {% endif %}
+</article>
