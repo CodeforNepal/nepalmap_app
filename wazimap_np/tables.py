@@ -201,8 +201,17 @@ FieldTable(['maternal death in childbirth'],
 FieldTable(['registered company type', 'year'],
            universe='Registered business',
            description='Businesses registered',
-           dataset='National Population and Housing Census 2011',
-           year='2011',
+           dataset='Office of the Company Registrar Open Government Data',
+           year='2017',
+           table_per_level=False)
+
+# forested land
+FieldTable(['land use'],
+           id='land_use',
+           universe='Land',
+           description='Forested land',
+           dataset='Forests and Watershed Profile of Local Level',
+           year='2017',
            table_per_level=False)
 
 # Simple Tables

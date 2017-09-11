@@ -1,14 +1,15 @@
 from wazimap.data.utils import get_session, merge_dicts, group_remainder
 from wazimap.geo import geo_data
 
-from wazimap_np import business, demographics, education, elections, health, \
-    households
+from wazimap_np import business, demographics, education, elections, forests, \
+    health, households
 
 # ensure tables are loaded
 
 PROFILE_SECTIONS = (
     'demographics',
     'elections',
+    'forests',
     'health',
     'households',
     'education',
@@ -45,12 +46,24 @@ def get_census_profile(geo_code, geo_level, profile_name=None):
     return data
 
 
+def get_business_profile(geo_code, geo_level, session):
+    return business.get_business_profile(geo_code, geo_level, session)
+
+
 def get_demographics_profile(geo_code, geo_level, session):
     return demographics.get_demographics_profile(geo_code, geo_level, session)
 
 
+def get_education_profile(geo_code, geo_level, session):
+    return education.get_education_profile(geo_code, geo_level, session)
+
+
 def get_elections_profile(geo_code, geo_level, session):
     return elections.get_elections_profile(geo_code, geo_level, session)
+
+
+def get_forests_profile(geo_code, geo_level, session):
+    return forests.get_forests_profile(geo_code, geo_level, session)
 
 
 def get_health_profile(geo_code, geo_level, session):
@@ -59,11 +72,3 @@ def get_health_profile(geo_code, geo_level, session):
 
 def get_households_profile(geo_code, geo_level, session):
     return households.get_households_profile(geo_code, geo_level, session)
-
-
-def get_education_profile(geo_code, geo_level, session):
-    return education.get_education_profile(geo_code, geo_level, session)
-
-
-def get_business_profile(geo_code, geo_level, session):
-    return business.get_business_profile(geo_code, geo_level, session)
