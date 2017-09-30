@@ -1,0 +1,38 @@
+#!/bin/bash
+
+set -eou pipefail
+
+: ${APP_ENV?"APP_ENV not set. Aborting !"}
+: ${POSTGRES_HOST?"POSTGRES_HOST not set. Aborting !"}
+: ${POSTGRES_PORT?"POSTGRES_PORT not set. Aborting !"}
+: ${POSTGRES_USERNAME?"POSTGRES_USERNAME not set. Aborting !"}
+: ${POSTGRES_PASSWORD?"POSTGRES_PASSWORD not set. Aborting !"}
+: ${POSTGRES_DATABASE?"POSTGRES_DATABASE not set. Aborting !"}
+
+# prepare environment variable for django settings
+export DATABASE_URL="postgresql://$POSTGRES_USERNAME:$POSTGRES_PASSWORD@$POSTGRES_HOST:$POSTGRES_PORT/$POSTGRES_DATABASE"
+
+# setup pgpassfile for psql non-interactive authentication
+export PGPASSWORD="$POSTGRES_PASSWORD"
+
+# Setup Simpletable entries
+cat sql/simpletables/*.sql | psql -w -U "$POSTGRES_USERNAME"  -h "$POSTGRES_HOST"
+
+# Migrate
+python ./manage.py migrate --no-input
+
+# Import data for tables
+cat sql/*.sql | psql -w -U "$POSTGRES_USERNAME" -h "$POSTGRES_HOST"
+
+# Start server
+if [ "$APP_ENV" = "prod" ]; then
+
+    export DJANGO_SETTINGS_MODULE="wazimap_np.settings"
+    python ./manage.py collectstatic --no-input
+    exec gunicorn wazimap.wsgi:application --worker-class sync --workers 4 --timeout 30 --log-file - --bind 0.0.0.0:8000 --name wazimap_np --chdir /usr/src/app
+
+else
+
+    exec python ./manage.py runserver 0.0.0.0:8000
+
+fi

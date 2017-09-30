@@ -4,5 +4,4 @@ node_modules/
 .idea/
 debug
 .vagrant
-/static/
 .DS_Store
