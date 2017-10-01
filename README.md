@@ -46,6 +46,68 @@ Start the server:
 python manage.py runserver
 ```
 
+# Docker based setup
+
+Using this setup, one can run the project inside docker containers. This make the environments lightweight, reproducible and portable.
+
+## Requirements
+
+Only the following things are required on your host machine. Nothing else needs to be installed.
+
+- GNU Make ( Version 4.0 and up )
+- Docker Engine ( Version 17.06 and hopefully upwards )
+- Docker Compose ( Version 1.14 and hopefully upwards )
+
+
+## Development environment
+
+All commands are provided as make targets via Makefile. One can use docker and docker-compose directly for running the services, but some helpers are provided for consistency.
+
+An application environment context (dev, prod) has to be set along with any of the `make ...` commands. You can either export this in your shell environment, or pass it as an argument to the make target.
+
+```
+# Start the development environment
+APP_ENV=dev make start
+
+# Watch the logs
+APP_ENV=dev make tail-logs
+
+# Watch the logs for a particular service
+APP_ENV=dev SERVICE_NAME=web make tail-logs
+
+# Stop all the services
+APP_ENV=dev make stop
+
+# Stop and cleanup volumes etc
+APP_ENV=dev make stop-clean
+
+# Get a bash terminal in the context of web service (runs in a new container)
+APP_ENV=dev make web-bash
+
+# Run any ad-hoc command in the context of web service (runs in a new container)
+APP_ENV=dev make run-web CMD="python ./manage.py migrate"
+```
+
+## Production environment
+
+This is very much similar to running the dev environment. Caddy is used instead of Nginx, because of it's automatic HTTPS certs and other easier-to-configure things. Some commands are added, else much of them are the same as above, expect for the `APP_ENV` context set to `prod`.
+
+NOTE: Check the comments in `compose.prod.yml` before running in production.
+
+```
+# Start the production environment
+APP_ENV=prod make start
+
+# Update the deploy (stops, pulls from git and starts again)
+APP_ENV=prod make deploy
+```
+
+## Cleanup
+
+Every now and then, make sure to run the following command to cleanup orphaned docker resources and other project artifacts.
+```
+APP_ENV=dev make clean
+```
 
 # License
 
