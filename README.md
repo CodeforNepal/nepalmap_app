@@ -63,7 +63,7 @@ Only the following things are required on your host machine. Nothing else needs 
 
 All commands are provided as make targets via Makefile. One can use docker and docker-compose directly for running the services, but some helpers are provided for consistency.
 
-An application environment context (dev, prod) has to be set along with any of the `make ...` commands. You can either export this in your shell environment, or pass it as an argument to the make target.
+An application environment context (dev, staging) has to be set along with any of the `make ...` commands. You can either export this in your shell environment, or pass it as an argument to the make target.
 
 ```
 # Start the development environment
@@ -88,18 +88,18 @@ APP_ENV=dev make web-bash
 APP_ENV=dev make run-web CMD="python ./manage.py migrate"
 ```
 
-## Production environment
+## Staging environment
 
-This is very much similar to running the dev environment. Caddy is used instead of Nginx, because of it's automatic HTTPS certs and other easier-to-configure things. Some commands are added, else much of them are the same as above, expect for the `APP_ENV` context set to `prod`.
+This is very much similar to running the dev environment. Caddy is used instead of Nginx, because of it's automatic HTTPS certs and other easier-to-configure things. Some commands are added, else much of them are the same as above, expect for the `APP_ENV` context set to `staging`.
 
-NOTE: Check the comments in `compose.prod.yml` before running in production.
+NOTE: Check the comments in `compose.staging.yml` before running in staging.
 
 ```
-# Start the production environment
-APP_ENV=prod make start
+# Start the staging environment
+APP_ENV=staging make start
 
 # Update the deploy (stops, pulls from git and starts again)
-APP_ENV=prod make deploy
+APP_ENV=staging make deploy
 ```
 
 ## Cleanup

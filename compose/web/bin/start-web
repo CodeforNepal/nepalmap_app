@@ -25,14 +25,14 @@ python ./manage.py migrate --no-input
 cat sql/*.sql | psql -w -U "$POSTGRES_USERNAME" -h "$POSTGRES_HOST"
 
 # Start server
-if [ "$APP_ENV" = "prod" ]; then
+if [ "$APP_ENV" = "dev" ]; then
+
+    exec python ./manage.py runserver 0.0.0.0:8000
+
+else
 
     export DJANGO_SETTINGS_MODULE="wazimap_np.settings"
     python ./manage.py collectstatic --no-input
     exec gunicorn wazimap.wsgi:application --worker-class sync --workers 4 --timeout 30 --log-file - --bind 0.0.0.0:8000 --name wazimap_np --chdir /usr/src/app
-
-else
-
-    exec python ./manage.py runserver 0.0.0.0:8000
 
 fi
