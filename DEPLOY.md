@@ -15,4 +15,4 @@ $ source bin/activate && cd nepalmap && git pull && pip install -r requirements.
 ```
 
 ## Verify the updates in your browser
-Go to http://www.nepalmap.org and exercise the website. You may need to refresh a couple of times before the changes appear in your browser.
+Go to https://www.nepalmap.org and exercise the website. You may need to refresh a couple of times before the changes appear in your browser.
