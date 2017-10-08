@@ -5,3 +5,10 @@ node_modules/
 debug
 .vagrant
 .DS_Store
+
+# Empty directories (for Compose mounts)
+static/*
+certs/*
+
+# Keep files
+!.keep
