@@ -9,10 +9,13 @@ DATABASE_URL = os.environ.get('DATABASE_URL', 'postgresql://wazimap_np:wazimap_n
 DATABASES['default'] = dj_database_url.parse(DATABASE_URL)
 DATABASES['default']['ATOMIC_REQUESTS'] = True
 
+SCHEME = 'http' if (os.environ.get('APP_ENV', 'dev') == 'dev') else 'https'
+URL = SCHEME+'://'+'www.nepalmap.org'
+
 # Localise this instance of Wazimap
 WAZIMAP['name'] = 'NepalMap'
 # NB: this must be https if your site supports HTTPS.
-WAZIMAP['url'] = 'http://www.nepalmap.org'
+WAZIMAP['url'] = URL
 WAZIMAP['country_code'] = 'NP'
 WAZIMAP['profile_builder'] = 'wazimap_np.profiles.get_census_profile'
 WAZIMAP['levels'] = {

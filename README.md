@@ -46,6 +46,35 @@ Start the server:
 python manage.py runserver
 ```
 
+# Docker based setup
+
+Using this setup, one can run the project inside docker containers. This make the environments lightweight, reproducible and portable.
+
+## Requirements
+
+Only the following things are required on your host machine. Nothing else needs to be installed.
+
+- GNU Make ( Version 4.0 and up )
+- Docker Engine ( Version 17.06 and hopefully upwards )
+- Docker Compose ( Version 1.14 and hopefully upwards )
+
+
+## Development environment
+
+All commands are provided as make targets via Makefile. One can use docker and docker-compose directly for running the services, but some helpers are provided for consistency.
+
+An application environment context (dev, staging) has to be set along with any of the `make ...` commands. You can either export this in your shell environment, or pass it as an argument to the make target.
+
+```
+# Get all the Makefile documentation
+APP_ENV=dev make help
+```
+
+## Staging environment
+
+This is very much similar to running the dev environment. Caddy is used instead of Nginx, because of it's automatic HTTPS certs and other easier-to-configure things. Some commands are added, else much of them are the same as above, expect for the `APP_ENV` context set to `staging`.
+
+NOTE: Check the comments in `compose.staging.yml` before running in staging.
 
 # License
 

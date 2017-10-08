@@ -4,5 +4,11 @@ node_modules/
 .idea/
 debug
 .vagrant
-/static/
 .DS_Store
+
+# Empty directories (for Compose mounts)
+static/*
+certs/*
+
+# Keep files
+!.keep
