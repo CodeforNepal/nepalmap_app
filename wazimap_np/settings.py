@@ -51,3 +51,5 @@ WAZIMAP['github'] = 'https://github.com/Code4Nepal/nepalmap_app'
 WAZIMAP['tagline'] = 'Explore and understand Nepal using data'
 WAZIMAP['facebook'] = 'codefornepal'
 WAZIMAP['twittercard'] = True
+
+DEBUG = False
