@@ -94,6 +94,19 @@ def get_demographics_profile(geo_code, geo_level, session):
                                           geo_code, session, order_by='-total')
             most_populous_caste = caste_data[caste_data.keys()[0]]
 
+            citizenship_data, _ = get_stat_data(['citizenship', 'sex'], geo_level,
+                                        geo_code, session, order_by='-total')
+            citizenship_by_sex = {
+                'Nepal': citizenship_data['Nepal'],
+                'India': citizenship_data['India'],
+                'China': citizenship_data['China'],
+                'Others': citizenship_data['Others'],
+                'metadata': citizenship_data['metadata']
+            }
+            citizenship_distribution, _ = get_stat_data(
+                'citizenship', geo_level, geo_code, session,
+                key_order='citizenship')
+
             # age
             # age in 10 year groups
             def age_recode(f, x):
@@ -188,7 +201,8 @@ def get_demographics_profile(geo_code, geo_level, session):
             demographic_data['language_most_spoken'] = language_most_spoken
             demographic_data['ethnic_distribution'] = caste_data
             demographic_data['most_populous_caste'] = most_populous_caste
-
+            demographic_data['citizenship_by_sex'] = citizenship_by_sex
+            demographic_data['citizenship_distribution'] = citizenship_distribution
             demographic_data['age_group_distribution'] = ordered_age_dist_data
             demographic_data['age_category_distribution'] = \
                 ordered_age_cats_data
