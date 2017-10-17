@@ -25,7 +25,7 @@ SET default_with_oids = false;
 CREATE TABLE citizenship_sex (
     geo_level character varying(15) NOT NULL,
     geo_code character varying(10) NOT NULL,
-    country character varying(128) NOT NULL,
+    citizenship character varying(128) NOT NULL,
     sex character varying(128) NOT NULL,
     total integer NOT NULL
 );
@@ -35,7 +35,7 @@ CREATE TABLE citizenship_sex (
 -- Data for Name: citizenship_sex; Type: TABLE DATA; Schema: public
 --
 
-COPY citizenship_sex (geo_code, geo_level, country, sex, total) FROM stdin WITH DELIMITER ',';
+COPY citizenship_sex (geo_code, geo_level, citizenship, sex, total) FROM stdin WITH DELIMITER ',';
 NP,country,Nepal,Male,12779003
 NP,country,Nepal,Female,13576591
 NP,country,China,Male,1225
@@ -652,7 +652,7 @@ NP,country,Others,Female,10393
 --
 
 ALTER TABLE ONLY citizenship_sex
-    ADD CONSTRAINT citizenship_sex_pkey PRIMARY KEY (geo_level, geo_code, country, sex);
+    ADD CONSTRAINT citizenship_sex_pkey PRIMARY KEY (geo_level, geo_code, citizenship, sex);
 
 
 --
