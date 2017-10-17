@@ -113,14 +113,15 @@
                                                       href="#citizenship"
                                                       id="citizenship">Citizenship <i 
                                                           class="fa fa-link"></i></a></h2>
-                    <div class="column-quarter">
-                        {% include 'profile/_blocks/_stat_list.html' with stat=demographics.most_common_citizenship stat_type='percentage' stat_name='Most populous caste or ethnic group' %}
-                    </div>
-                    <div class="column-three-quarters">
-                        <div id="chart-grouped_column-demographics-citizenship_by_sex"
-                             data-stat-type="scaled-percentage"
-                             data-chart-title="Population by citizenship and sex"
-                             data-qualifier="Universe: {{ demographics.citizenship_distribution.metadata.universe }}"></div>
+                    <div class="column-half"
+                       id="chart-pie-demographics-citizenship_distribution"
+                       data-stat-type="percentage"></div>
+
+                    <div class="column-half">
+                       <div id="chart-grouped_column-demographics-citizenship_by_sex"
+                           data-stat-type="scaled-percentage"
+                           data-chart-title="Population by citizenship and sex"
+                           data-qualifier="Universe: {{ demographics.citizenship_distribution.metadata.universe }}"></div>
                     </div>
                     <small>Sources:
                         <br>
