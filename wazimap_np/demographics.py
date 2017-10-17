@@ -94,8 +94,10 @@ def get_demographics_profile(geo_code, geo_level, session):
                                           geo_code, session, order_by='-total')
             most_populous_caste = caste_data[caste_data.keys()[0]]
 
-            citizenship_data, _ = get_stat_data(['citizenship', 'sex'], geo_level,
-                                        geo_code, session, order_by='-total')
+            citizenship_data, _ = get_stat_data(
+                            ['citizenship', 'sex'], geo_level,
+                            geo_code, session, order_by='-total'
+            )
             citizenship_by_sex = {
                 'Nepal': citizenship_data['Nepal'],
                 'India': citizenship_data['India'],
