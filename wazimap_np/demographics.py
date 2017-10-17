@@ -105,7 +105,7 @@ def get_demographics_profile(geo_code, geo_level, session):
             }
             citizenship_distribution, _ = get_stat_data(
                 'citizenship', geo_level, geo_code, session,
-                key_order='citizenship')
+                order_by='-total')
 
             # age
             # age in 10 year groups
