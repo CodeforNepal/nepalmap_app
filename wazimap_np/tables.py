@@ -295,3 +295,12 @@ SimpleTable(
     dataset='Annual Report of the Department of Health Services',
     year='2014-2015'
 )
+
+SimpleTable(
+    id='flood_damage',
+    universe='Disasters',
+    total_column=None,
+    description='Reported number of Nepal Flood deaths ',
+    dataset='Nepal Disaster Risk Reduction Portal',
+    year='2017'
+)
