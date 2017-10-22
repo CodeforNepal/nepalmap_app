@@ -147,6 +147,14 @@ FieldTable(['age in completed years', 'sex'],
            year='2011',
            table_per_level=False)
 
+FieldTable(['citizenship', 'sex'],
+           id='citizenship_sex',
+           universe='Population',
+           description='Population by Citizenship',
+           dataset='National Population and Housing Census 2011',
+           year='2011',
+           table_per_level=False)
+
 # elections
 FieldTable(['voter_sex'],
            id='voters_sex',
