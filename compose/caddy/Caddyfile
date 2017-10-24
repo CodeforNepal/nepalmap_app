@@ -1,0 +1,13 @@
+{$HOST_NAME}
+
+tls {$TLS_EMAIL}
+
+root /static
+
+proxy / {$PROXY_HOST}:{$PROXY_PORT} {
+    transparent
+}
+
+log stdout
+errors stdout
+gzip

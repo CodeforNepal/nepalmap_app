@@ -147,6 +147,14 @@ FieldTable(['age in completed years', 'sex'],
            year='2011',
            table_per_level=False)
 
+FieldTable(['citizenship', 'sex'],
+           id='citizenship_sex',
+           universe='Population',
+           description='Population by Citizenship',
+           dataset='National Population and Housing Census 2011',
+           year='2011',
+           table_per_level=False)
+
 # elections
 FieldTable(['voter_sex'],
            id='voters_sex',
@@ -286,4 +294,13 @@ SimpleTable(
                 'a skilled birth attendant',
     dataset='Annual Report of the Department of Health Services',
     year='2014-2015'
+)
+
+SimpleTable(
+    id='flood_damage',
+    universe='Disasters',
+    total_column=None,
+    description='Reported number of Nepal Flood deaths ',
+    dataset='Nepal Disaster Risk Reduction Portal',
+    year='2017'
 )

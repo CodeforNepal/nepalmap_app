@@ -36,10 +36,10 @@ CREATE TABLE deputy_mayoral_party (
 --
 
 COPY deputy_mayoral_party (geo_level, geo_code, "deputy mayoral party", total) FROM stdin WITH DELIMITER ',';
-country,NP,CPN-UML,332
+country,NP,CPN-UML,329
 country,NP,Maoist Kendra,109
-country,NP,Nepali Congress,226
-country,NP,Others,83
+country,NP,Nepali Congress,225
+country,NP,Others,82
 country,NP,Rastriya Prajatantra Party,6
 district,68,CPN-UML,2
 district,68,Nepali Congress,6
@@ -337,10 +337,10 @@ district,57,Maoist Kendra,9
 district,57,Rastriya Prajatantra Party,0
 district,57,Others,0
 district,44,CPN-UML,8
-district,44,Nepali Congress,2
+district,44,Nepali Congress,1
 district,44,Maoist Kendra,1
 district,44,Rastriya Prajatantra Party,1
-district,44,Others,6
+district,44,Others,5
 district,61,CPN-UML,3
 district,61,Nepali Congress,3
 district,61,Maoist Kendra,4
@@ -351,7 +351,7 @@ district,05,Nepali Congress,4
 district,05,Maoist Kendra,0
 district,05,Rastriya Prajatantra Party,0
 district,05,Others,0
-district,15,CPN-UML,4
+district,15,CPN-UML,1
 district,15,Nepali Congress,7
 district,15,Maoist Kendra,0
 district,15,Rastriya Prajatantra Party,0
