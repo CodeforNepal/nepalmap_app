@@ -36,6 +36,28 @@ CREATE TABLE religion (
 --
 
 COPY religion (geo_code, geo_level, religion, sex, total) FROM stdin WITH DELIMITER ',';
+NP,country,Hindu,Male,12849041
+NP,country,Bouddha,Male,10470964
+NP,country,Islam,Male,1139779
+NP,country,Kirati,Male,583799
+NP,country,Christian,Male,380117
+NP,country,Prakriti,Male,175470
+NP,country,Bon,Male,58083
+NP,country,Jain,Male,5784
+NP,country,Bahai,Male,1664
+NP,country,Sikh,Male,576
+NP,country,Undefined,Male,323
+NP,country,Hindu,Female,13645463
+NP,country,Bouddha,Female,11080528
+NP,country,Islam,Female,1256320
+NP,country,Kirati,Female,578571
+NP,country,Christian,Female,427052
+NP,country,Prakriti,Female,200229
+NP,country,Bon,Female,63899
+NP,country,Jain,Female,7222
+NP,country,Bahai,Female,1550
+NP,country,Sikh,Female,707
+NP,country,Undefined,Female,286
 01,district,Hindu,Male,21957
 01,district,Bouddha,Male,12308
 01,district,Islam,Male,1
