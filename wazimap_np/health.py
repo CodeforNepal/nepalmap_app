@@ -25,15 +25,15 @@ MATERNAL_CHILDBIRTH_DEATH_RECODES = OrderedDict([
 
 HEALTH_CENTER_RECODES = OrderedDict([
     ('HOSPITAL', 'Hospital'),
-    ('PRIVATE_HOSPITAL', 'Private Hospital'),
-    ('ZONAL_HOSPITAL', 'Zonal Hospital'),
-    ('CENTRAL_HOSPITAL', 'Central Hospital'),
+    ('PRIVATE_HOSPITAL', 'Private Hosp.'),
+    ('ZONAL_HOSPITAL', 'Zonal Hosp.'),
+    ('CENTRAL_HOSPITAL', 'Central Hosp.'),
     ('HEALTH_CENTER', 'Health Center'),
     ('PRIMARY_HEALTH_CENTER', 'Primary Health Center'),
     ('SUPPLY_CENTER', 'Supply Center'),
     ('DISTRICT_CENTER', 'District Center'),
     ('SUB_CENTER', 'Sub Center'),
-    ('LAXMIPUR', 'Laxmipur'),
+    ('LAXMIPUR', 'L.pur'),
     ('REFUGEE_CAMP', 'Refugee Camp'),
     ('DISTRICT_COLD_ROOM', 'District Cold Room'),
     ('DAHC', 'DAHC'),
@@ -43,8 +43,8 @@ HEALTH_CENTER_RECODES = OrderedDict([
     ('PRIMARY_HEALTH_POST', 'Primary Health Post'),
     ('SUB_HEALTH_POST', 'Sub Health Post'),
     ('HEALTH_CARE_CENTER', 'Health Care Center'),
-    ('AYURVEDIC_AUSHADHALAYA', 'Ayurvedic Aushadhalaya'),
-    ('DISTRICT_AYURVEDIC_HC', 'District Ayurvedic HC')
+    ('AYURVEDIC_AUSHADHALAYA', 'Ayurv. Aushad.'),
+    ('DISTRICT_AYURVEDIC_HC', 'District Ayurv. HC')
 ])
 
 
@@ -98,7 +98,8 @@ def get_health_profile(geo_code, geo_level, session):
         health_facilities_data, _ = get_stat_data(
             ['facilitytype'], geo_level, geo_code, session,
             recode=dict(HEALTH_CENTER_RECODES),
-            key_order=HEALTH_CENTER_RECODES.values())
+            key_order=HEALTH_CENTER_RECODES.values(),
+            percent=False)
 
         health_data = {
             'area_has_data': True,
