@@ -98,7 +98,7 @@ def get_health_profile(geo_code, geo_level, session):
         health_facilities_data, _ = get_stat_data(
             ['facilitytype'], geo_level, geo_code, session,
             recode=dict(HEALTH_CENTER_RECODES),
-            key_order=HEALTH_CENTER_RECODES.values(),
+            order_by='-total',
             percent=False)
 
         health_data = {
