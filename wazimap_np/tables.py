@@ -205,6 +205,14 @@ FieldTable(['maternal death in childbirth'],
            year='2014-2015',
            table_per_level=False)
 
+FieldTable(['facilitytype'],
+           id='healthfacilities',
+           universe='Health Facilities',
+           description='Nepal Health Facilities',
+           dataset='WHO Health Infrastructure of Nepal Survey',
+           year='2015',
+           table_per_level=False)
+
 # business
 FieldTable(['registered company type', 'year'],
            universe='Registered business',
