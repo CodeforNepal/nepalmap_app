@@ -312,3 +312,21 @@ SimpleTable(
     dataset='Nepal Disaster Risk Reduction Portal',
     year='2017'
 )
+
+SimpleTable(
+    id='district_aid_amounts',
+    universe='International Development Assistance',
+    total_column=None,
+    description='District-level Development Assistance in US Dollars',
+    dataset='Ministry of Finance Development Cooperation Report for Fiscal Year 2014-15',
+    year='2015'
+)
+
+SimpleTable(
+    id='district_aid_projects',
+    universe='International Development Assistance',
+    total_column=None,
+    description='District-level Development Assistance Projects',
+    dataset='Ministry of Finance Development Cooperation Report for Fiscal Year 2014-15',
+    year='2015'
+)
