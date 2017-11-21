@@ -1,0 +1,25 @@
+<article id="development" class="clearfix">
+    {% if development.area_has_data == True %}
+        <header class="section-contents">
+            <h1>Development</h1>
+        </header>
+        <div class="section-container">
+            <section class="clearfix stat-row">
+                <h2><a class="permalink" href="#district-development"
+                       id="district-development">District-level Development Assistance
+                    <i class="fa fa-link"></i></a></h2>
+                <div class="column-half">
+                    {% include 'profile/_blocks/_stat_list.html' with stat=development.district_aid_amounts stat_type='dollar' %}
+                </div>
+                <div class="column-half">
+                    {% include 'profile/_blocks/_stat_list.html' with stat=development.district_aid_projects stat_type='number' %}
+                </div>
+                <small>Source: <br>
+                    <a target="_blank"
+                       href="http://mof.gov.np/ieccd/newsbook/20160424154147.pdf">Ministry of Finance Development Cooperation Report Fiscal Year 2014/2015 (Annex 3)</a> (PDF)
+                    <br>
+                </small>
+            </section>
+        </div>
+    {% endif %}
+</article>
