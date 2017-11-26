@@ -2,6 +2,7 @@ from wazimap.data.utils import get_session, merge_dicts, group_remainder
 from wazimap.geo import geo_data
 
 from wazimap_np import (
+    agriculture,
     business,
     demographics,
     development,
@@ -17,15 +18,16 @@ from wazimap_np import (
 # ensure tables are loaded
 
 PROFILE_SECTIONS = (
+    'agriculture',
+    'business',
     'demographics',
+    'development',
+    'disasters',
+    'education',
     'elections',
     'forests',
     'health',
-    'households',
-    'education',
-    'business',
-    'disasters',
-    'development'
+    'households'
 )
 
 
@@ -56,6 +58,10 @@ def get_census_profile(geo_code, geo_level, profile_name=None):
         group_remainder(data['demographics']['ethnic_distribution'], 10)
 
     return data
+
+
+def get_agriculture_profile(geo_code, geo_level, session):
+    return agriculture.get_agriculture_profile(geo_code, geo_level, session)
 
 
 def get_business_profile(geo_code, geo_level, session):

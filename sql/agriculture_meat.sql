@@ -28,7 +28,7 @@ SET default_with_oids = false;
 CREATE TABLE agriculture_meat (
     geo_level character varying(15) NOT NULL,
     geo_code character varying(10) NOT NULL,
-    meattype character varying(128) NOT NULL,
+    "meat type" character varying(128) NOT NULL,
     total integer NOT NULL
 );
 
@@ -37,7 +37,7 @@ CREATE TABLE agriculture_meat (
 -- Data for Name: agriculture_meat; Type: TABLE DATA; Schema: public
 --
 
-COPY agriculture_meat (geo_code, geo_level, meattype, total) FROM stdin WITH DELIMITER ',';
+COPY agriculture_meat (geo_code, geo_level, "meat type", total) FROM stdin WITH DELIMITER ',';
 NP,country,BUFF,175005
 NP,country,MUTTON,2684
 NP,country,CHEVON,65583
@@ -502,7 +502,7 @@ NP,country,DUCK,237
 --
 
 ALTER TABLE ONLY agriculture_meat
-    ADD CONSTRAINT agriculture_meat_pkey PRIMARY KEY (geo_level, geo_code, meattype);
+    ADD CONSTRAINT agriculture_meat_pkey PRIMARY KEY (geo_level, geo_code, "meat type");
 
 
 --
