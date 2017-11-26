@@ -4,6 +4,7 @@ from wazimap.geo import geo_data
 from wazimap_np import (
     business,
     demographics,
+    development,
     disasters,
     education,
     elections,
@@ -23,7 +24,8 @@ PROFILE_SECTIONS = (
     'households',
     'education',
     'business',
-    'disasters'
+    'disasters',
+    'development'
 )
 
 
@@ -62,6 +64,10 @@ def get_business_profile(geo_code, geo_level, session):
 
 def get_demographics_profile(geo_code, geo_level, session):
     return demographics.get_demographics_profile(geo_code, geo_level, session)
+
+
+def get_development_profile(geo_code, geo_level, session):
+    return development.get_development_profile(geo_code, geo_level, session)
 
 
 def get_disasters_profile(geo_code, geo_level, session):
