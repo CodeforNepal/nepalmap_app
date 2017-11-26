@@ -4,7 +4,7 @@ from wazimap.data.utils import get_stat_data
 
 
 def get_business_profile(geo_code, geo_level, session):
-    business_data = {}
+    business_data = {'area_has_data': False}
 
     if geo_level != 'vdc':
 
@@ -177,6 +177,8 @@ def get_business_profile(geo_code, geo_level, session):
              ('metadata', registered_non_profit_era_cats['metadata'])]
         )
         business_data = dict(
+         area_has_data=
+         True,
          is_vdc=
          False,
          registered_company_decade_distribution=
