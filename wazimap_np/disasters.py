@@ -15,7 +15,8 @@ def get_disasters_profile(geo_code, geo_level, session):
          is_vdc=False,
          area_has_data=True,
          flood_deaths={
-                'name': 'Total (flood + heavy rainfall + landslide)',
+                'name': 'Total deaths due to flood, heavy rainfall and '
+                        'landslide from March, 2011, to August, 2017',
                 'values': {
                     'this': flood_deaths['total']['values']['this']
                 }
