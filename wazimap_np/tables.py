@@ -230,6 +230,25 @@ FieldTable(['land use'],
            year='2017',
            table_per_level=False)
 
+# agriculture
+# meat production
+FieldTable(['meat type'],
+           id='agriculture_meat',
+           universe='Meat',
+           description='Meat production',
+           dataset='Statistical Information on Nepalese Agriculture',
+           year='2016',
+           table_per_level=False)
+
+# livestock
+FieldTable(['livestock type'],
+           id='agriculture_livestock',
+           universe='Livestock',
+           description='Number of livestock',
+           dataset='Statistical Information on Nepalese Agriculture',
+           year='2016',
+           table_per_level=False)
+
 # Simple Tables
 SimpleTable(
     id='lifeexpectancy',
