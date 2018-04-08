@@ -62,4 +62,4 @@ bash-web: run-web ## Spawn a bash shell for web service
 
 prune: ## Cleanup dangling/orphaned docker resources as well assets folder. Recommended to run every now and then to free up disk space etc.
 	docker system prune --volumes -f
-	find static/. -maxdepth 1 \( -not -name '.gitignore' -not -name '.' \) -print0 | xargs -0 rm -rf
+	find static/. -maxdepth 1 \( -not -name '.keep' -not -name '.' \) -print0 | xargs -0 rm -rf
