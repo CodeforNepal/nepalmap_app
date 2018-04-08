@@ -14,23 +14,16 @@ services:
       context: .
       dockerfile: ./compose/web/Dockerfile
     restart: always
-    command: wait-for-it postgres-host:5432 --strict --timeout=30 -- start-web
+    command: wait-for-it postgres:5432 --strict --timeout=30 -- start-web
     depends_on:
       - postgres
-    links:
-      - postgres:postgres-host
     volumes:
       - ./:/usr/src/app
-    healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:8000"]
-      interval: 10s
-      timeout: 5s
-      retries: 3
     environment:
       - HOST_USER_ID
       - HOST_GROUP_ID
       - APP_ENV
-      - POSTGRES_HOST=postgres-host
+      - POSTGRES_HOST=postgres
       - POSTGRES_PORT=5432
       - POSTGRES_USERNAME=wazimap_np
       - POSTGRES_PASSWORD=wazimap_np
@@ -41,11 +34,9 @@ services:
       context: .
       dockerfile: ./compose/caddy/Dockerfile
     restart: always
-    entrypoint: wait-for-it web-host:8000 --strict --timeout=30 -- start-caddy
+    entrypoint: wait-for-it web:8000 --strict --timeout=30 -- start-caddy
     depends_on:
       - web
-    links:
-      - web:web-host
     volumes:
       - ./compose/caddy/Caddyfile:/etc/Caddyfile
       - ./compose/common/bin/wait-for-it:/usr/local/sbin/wait-for-it
@@ -55,7 +46,7 @@ services:
     environment:
       - APP_ENV
       - CADDYPATH=/etc/caddycerts
-      - PROXY_HOST=web-host
+      - PROXY_HOST=web
       - PROXY_PORT=8000
       - HOST_NAME=staging.nepalmap.org # Change to staging server for nepalmap.org
       - TLS_EMAIL=test@example.com     # Enter a email address here link to LetsEncrypt certs

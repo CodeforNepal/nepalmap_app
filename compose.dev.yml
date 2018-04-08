@@ -14,25 +14,18 @@ services:
       context: .
       dockerfile: compose/web/Dockerfile
     restart: always
-    command: wait-for-it postgres-host:5432 --strict --timeout=30 -- start-web
+    command: wait-for-it postgres:5432 --strict --timeout=30 -- start-web
     depends_on:
       - postgres
-    links:
-      - postgres:postgres-host
     ports:
       - "8000:8000"
     volumes:
       - ./:/usr/src/app
-    healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:8000"]
-      interval: 10s
-      timeout: 5s
-      retries: 3
     environment:
       - HOST_USER_ID
       - HOST_GROUP_ID
       - APP_ENV
-      - POSTGRES_HOST=postgres-host
+      - POSTGRES_HOST=postgres
       - POSTGRES_PORT=5432
       - POSTGRES_USERNAME=wazimap_np
       - POSTGRES_PASSWORD=wazimap_np
