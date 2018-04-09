@@ -26,7 +26,7 @@ endif
 export HOST_USER_ID:=$(shell id -u)
 export HOST_GROUP_ID:=$(shell id -g)
 
-DOCKER_COMPOSE:=docker-compose -f $(COMPOSE_FILE)
+DOCKER_COMPOSE:=docker-compose -f compose.common.yml -f $(COMPOSE_FILE)
 
 # Targets for starting, stopping etc.
 
