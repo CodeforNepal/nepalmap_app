@@ -3,12 +3,22 @@ SHELL:=/bin/bash
 
 ifeq ($(APP_ENV),)
 $(error -- APP_ENV needs to be set, eg. APP_ENV=dev make)
+else ifeq ($(filter $(APP_ENV),dev stage prod),)
+$(error -- APP_ENV needs to be set to either of dev, stage, prod)
 endif
 
-ifeq ($(APP_ENV),$(filter $(APP_ENV),prod stage))
-APP_ENV_IS_PROD_OR_STAGE=true
+ifeq ($(APP_ENV),dev)
+COMPOSE_FILE=compose.dev.yml
+endif
+
+ifeq ($(APP_ENV),$(filter $(APP_ENV),stage prod))
+APP_ENV_IS_STAGE_OR_PROD=true
+COMPOSE_FILE=compose.stage_prod.yml
 ifeq ($(TLS_EMAIL),)
-$(error -- TLS_EMAIL needs to be set, eg. TLS_EMAIL=somebody@email.com make)
+$(error -- TLS_EMAIL needs to be set, eg. export TLS_EMAIL=somebody@email.com)
+endif
+ifeq ($(HOST_NAME),)
+$(error -- HOST_NAME needs to be set, eg. export HOST_NAME=test.nepalmap.org)
 endif
 endif
 
@@ -16,7 +26,7 @@ endif
 export HOST_USER_ID:=$(shell id -u)
 export HOST_GROUP_ID:=$(shell id -g)
 
-DOCKER_COMPOSE:=docker-compose -f compose.$(APP_ENV).yml
+DOCKER_COMPOSE:=docker-compose -f $(COMPOSE_FILE)
 
 # Targets for starting, stopping etc.
 
@@ -45,7 +55,7 @@ tail-logs: ## Tail the logs for the project service containers (Filtered via SER
 # For deploying
 
 pull-latest:
-	$(if $(APP_ENV_IS_PROD_OR_STAGE), git checkout master && git pull, $(info -- Not pulling on $(APP_ENV) environment))
+	$(if $(APP_ENV_IS_STAGE_OR_PROD), git checkout master && git pull, $(info -- Not pulling on $(APP_ENV) environment))
 
 deploy: stop pull-latest start ## Not intended for dev environment. Stops the services, Git pull the latest master & Start the services again
 

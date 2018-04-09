@@ -46,10 +46,11 @@ services:
     environment:
       - APP_ENV
       - TLS_EMAIL
+      - HOST_NAME
       - CADDYPATH=/etc/caddycerts
       - PROXY_HOST=web
       - PROXY_PORT=8000
-      - HOST_NAME=staging.nepalmap.org # Change to staging server for nepalmap.org
     ports:
         - "0.0.0.0:80:80"
         - "0.0.0.0:443:443"
+        # - "2015:2015" # Test Caddy without TLS `tls off` in Caddyfile and HOST_NAME=0.0.0.0

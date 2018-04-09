@@ -63,20 +63,20 @@ Only the following things are required on your host machine. Nothing else needs 
 
 All commands are provided as make targets via Makefile. One can use docker and docker-compose directly for running the services, but some helpers are provided for consistency.
 
-An application environment context (dev, staging, prod) has to be set along with any of the `make ...` commands. You can either export this in your shell environment, or pass it as an argument to the make target.
+An application environment context (dev, stage, prod) has to be set along with any of the `make ...` commands. You can either export this in your shell environment, or pass it as an argument to the make target.
 
 ```
 # Get all the Makefile documentation
 APP_ENV=dev make help
 ```
 
-## Staging and Production environment
+## Staging and Production environment (`stage` and `prod`)
 
 This is very much similar to running the dev environment. Caddy is used instead of Nginx, because of it's automatic HTTPS certs and other easier-to-configure things. Some commands are added, else much of them are the same as above, expect for the `APP_ENV` context set to correct environment.
 
 ```
 # Run in staging
-APP_ENV=staging make ...
+APP_ENV=stage make ...
 
 # Run in production
 APP_ENV=prod make ...
