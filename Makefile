@@ -12,7 +12,6 @@ COMPOSE_FILE=compose.dev.yml
 endif
 
 ifeq ($(APP_ENV),$(filter $(APP_ENV),stage prod))
-APP_ENV_IS_STAGE_OR_PROD=true
 COMPOSE_FILE=compose.stage_prod.yml
 ifeq ($(TLS_EMAIL),)
 $(error -- TLS_EMAIL needs to be set, eg. export TLS_EMAIL=somebody@email.com)
@@ -51,13 +50,6 @@ stop-clean: ## Stop all the project service containers, cleanup project images, 
 tail-logs: ## Tail the logs for the project service containers (Filtered via SERVICE_NAME, eg. make tail-logs SERVICE_NAME=worker)
 	$(if $(SERVICE_NAME), $(info -- Tailing logs for $(SERVICE_NAME)), $(info -- Tailing all logs, SERVICE_NAME not set.))
 	$(DOCKER_COMPOSE) logs -f $(SERVICE_NAME)
-
-# For deploying
-
-pull-latest:
-	$(if $(APP_ENV_IS_STAGE_OR_PROD), git checkout master && git pull, $(info -- Not pulling on $(APP_ENV) environment))
-
-deploy: stop pull-latest start ## Not intended for dev environment. Stops the services, Git pull the latest master & Start the services again
 
 # Targets for one-off tasks
 
