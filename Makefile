@@ -3,15 +3,29 @@ SHELL:=/bin/bash
 
 ifeq ($(APP_ENV),)
 $(error -- APP_ENV needs to be set, eg. APP_ENV=dev make)
-else ifeq ($(APP_ENV),prod)
-APP_ENV_IS_PROD=true
+else ifeq ($(filter $(APP_ENV),dev stage prod),)
+$(error -- APP_ENV needs to be set to either of dev, stage, prod)
+endif
+
+ifeq ($(APP_ENV),dev)
+COMPOSE_FILE=compose.dev.yml
+endif
+
+ifeq ($(APP_ENV),$(filter $(APP_ENV),stage prod))
+COMPOSE_FILE=compose.stage_prod.yml
+ifeq ($(TLS_EMAIL),)
+$(error -- TLS_EMAIL needs to be set, eg. export TLS_EMAIL=somebody@email.com)
+endif
+ifeq ($(HOST_NAME),)
+$(error -- HOST_NAME needs to be set, eg. export HOST_NAME=test.nepalmap.org)
+endif
 endif
 
 # Pre-requisite ENVIRONMENT VARIABLES setup
 export HOST_USER_ID:=$(shell id -u)
 export HOST_GROUP_ID:=$(shell id -g)
 
-DOCKER_COMPOSE:=docker-compose -f compose.$(APP_ENV).yml
+DOCKER_COMPOSE:=docker-compose -f compose.common.yml -f $(COMPOSE_FILE)
 
 # Targets for starting, stopping etc.
 
@@ -37,13 +51,6 @@ tail-logs: ## Tail the logs for the project service containers (Filtered via SER
 	$(if $(SERVICE_NAME), $(info -- Tailing logs for $(SERVICE_NAME)), $(info -- Tailing all logs, SERVICE_NAME not set.))
 	$(DOCKER_COMPOSE) logs -f $(SERVICE_NAME)
 
-# For deploying
-
-pull-latest:
-	$(if $(APP_ENV_IS_PROD), git checkout master && git pull, $(info -- Not pulling on $(APP_ENV) environment))
-
-deploy: stop pull-latest start ## Not intended for dev environment. Stops the services, Git pull the latest master & Start the services again
-
 # Targets for one-off tasks
 
 .PHONY: run-web web-bash
@@ -62,4 +69,4 @@ bash-web: run-web ## Spawn a bash shell for web service
 
 prune: ## Cleanup dangling/orphaned docker resources as well assets folder. Recommended to run every now and then to free up disk space etc.
 	docker system prune --volumes -f
-	find static/. -maxdepth 1 \( -not -name '.gitignore' -not -name '.' \) -print0 | xargs -0 rm -rf
+	find static/. -maxdepth 1 \( -not -name '.keep' -not -name '.' \) -print0 | xargs -0 rm -rf
