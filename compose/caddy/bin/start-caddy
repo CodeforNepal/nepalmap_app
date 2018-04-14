@@ -7,6 +7,6 @@ set -eou pipefail
 if [ "$APP_ENV" = "prod" ]; then
     exec /usr/bin/caddy --conf /etc/Caddyfile --log stdout
 else
-    # For staging etc. run the following, as it's not rate limited
+    # For stage etc. run the following, as it's not rate limited
     exec /usr/bin/caddy -ca https://acme-staging.api.letsencrypt.org/directory --conf /etc/Caddyfile --log stdout
 fi

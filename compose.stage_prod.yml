@@ -1,0 +1,36 @@
+version: '3'
+
+services:
+
+  web:
+    command: wait-for-it postgres:5432 --strict --timeout=30 -- start-web
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./:/usr/src/app
+
+  caddy:
+    build:
+      context: .
+      dockerfile: ./compose/caddy/Dockerfile
+    restart: always
+    entrypoint: wait-for-it web:8000 --strict --timeout=30 -- start-caddy
+    depends_on:
+      - web
+    volumes:
+      - ./compose/caddy/Caddyfile:/etc/Caddyfile
+      - ./compose/common/bin/wait-for-it:/usr/local/sbin/wait-for-it
+      - ./compose/caddy/bin/start-caddy:/usr/local/sbin/start-caddy
+      - ./certs:/etc/caddycerts
+      - ./static:/static
+    environment:
+      - APP_ENV
+      - TLS_EMAIL
+      - HOST_NAME
+      - CADDYPATH=/etc/caddycerts
+      - PROXY_HOST=web
+      - PROXY_PORT=8000
+    ports:
+        - "0.0.0.0:80:80"
+        - "0.0.0.0:443:443"
+        # - "2015:2015" # Test Caddy without TLS `tls off` in Caddyfile and HOST_NAME=0.0.0.0
