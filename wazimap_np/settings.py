@@ -10,7 +10,7 @@ DATABASES['default'] = dj_database_url.parse(DATABASE_URL)
 DATABASES['default']['ATOMIC_REQUESTS'] = True
 
 SCHEME = 'http' if (os.environ.get('APP_ENV', 'dev') == 'dev') else 'https'
-URL = SCHEME+'://'+'www.nepalmap.org'
+URL = SCHEME+'://'+'nepalmap.org'
 
 # Localise this instance of Wazimap
 WAZIMAP['name'] = 'NepalMap'
