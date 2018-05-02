@@ -14,15 +14,12 @@ RUN set -exu \
     # gosu for easy step down from root
     && wget -O /usr/local/bin/gosu "https://github.com/tianon/gosu/releases/download/$GOSU_VERSION/gosu-$(dpkg --print-architecture)" \
     && chmod +x /usr/local/bin/gosu \
-    && gosu nobody true \
-
-    # make workdir
-    && mkdir -p /usr/src/app
+    && gosu nobody true
 
 WORKDIR /usr/src/app
 
-COPY compose/web/requirements.txt /usr/src/app/requirements.txt
-RUN pip install --no-cache-dir --global-option=build_ext --global-option="-I/usr/include/gdal/" -r requirements.txt 
+COPY requirements.txt /usr/src/app/requirements.txt
+RUN pip install --no-cache-dir --global-option=build_ext --global-option="-I/usr/include/gdal/" -r requirements.txt
 
 COPY . /usr/src/app/
 
