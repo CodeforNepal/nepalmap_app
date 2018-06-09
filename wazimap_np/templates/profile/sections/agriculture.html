@@ -42,6 +42,44 @@
                     <br>
                 </small>
             </section>
+            </section>
+            <section class="clearfix stat-row">
+                <h2><a class="permalink" href="#agriculture-total-milk-animals"
+                       id="agriculture-total-milk-animals">Milk Animals
+                    <i class="fa fa-link"></i></a></h2>
+                <div class="column-third">
+                    {% include 'profile/_blocks/_stat_list.html' with stat=agriculture.total_milk_animals stat_type='number' %}
+                </div>
+                <div class="column-two-thirds"
+                     id="chart-histogram-agriculture-milk_animal_distribution"
+                     data-stat-type="number"
+                     data-chart-title="Number of milk animals"></div>
+                <small>Source: <br>
+                    <a target="_blank"
+                       href="http://moad.gov.np/public/uploads/1142453195-STATISTIC%20AGRICULTURE%20BOOK_2016.pdf">Ministry
+                        of Agricultural Development Statistical Information on
+                        Nepalese Agriculture 2072/73</a> (PDF)
+                    <br>
+                </small>
+            </section>
+            <section class="clearfix stat-row">
+                <h2><a class="permalink" href="#agriculture-total-milk"
+                       id="agriculture-total-milk">Milk Production
+                    <i class="fa fa-link"></i></a></h2>
+                <div class="column-third">
+                    {% include 'profile/_blocks/_stat_list.html' with stat=agriculture.total_milk stat_type='number' %}
+                </div>
+                <div class="column-two-thirds"
+                     id="chart-histogram-agriculture-milk_distribution"
+                     data-stat-type="number"
+                     data-chart-title="Metric tons of milk produced"></div>
+                <small>Source: <br>
+                    <a target="_blank"
+                       href="http://moad.gov.np/public/uploads/1142453195-STATISTIC%20AGRICULTURE%20BOOK_2016.pdf">Ministry
+                        of Agricultural Development Statistical Information on
+                        Nepalese Agriculture 2072/73</a> (PDF)
+                    <br>
+                </small>
         </div>
     {% endif %}
 </article>
