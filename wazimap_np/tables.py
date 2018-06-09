@@ -249,6 +249,24 @@ FieldTable(['livestock type'],
            year='2016',
            table_per_level=False)
 
+# milk
+FieldTable(['milk type'],
+           id='agriculture_milk',
+           universe='milk',
+           description='Metric tons of milk produced annually',
+           dataset='Statistical Information on Nepalese Agriculture',
+           year='2016',
+           table_per_level=False)
+
+# milk animals
+FieldTable(['milk animal type'],
+           id='agriculture_milk_animals',
+           universe='milk animals',
+           description='Number of milk animals',
+           dataset='Statistical Information on Nepalese Agriculture',
+           year='2016',
+           table_per_level=False)
+
 # Simple Tables
 SimpleTable(
     id='lifeexpectancy',
