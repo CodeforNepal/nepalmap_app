@@ -1,5 +1,5 @@
 .DEFAULT_GOAL:=help
-SHELL:=/bin/bash
+SHELL:=/usr/bin/env bash
 
 ifeq ($(APP_ENV),)
 $(error -- APP_ENV needs to be set, eg. APP_ENV=dev make)
