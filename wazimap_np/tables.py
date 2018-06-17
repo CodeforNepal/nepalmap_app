@@ -267,6 +267,24 @@ FieldTable(['milk animal type'],
            year='2016',
            table_per_level=False)
 
+# eggs
+FieldTable(['egg type'],
+           id='agriculture_eggs',
+           universe='eggs',
+           description='Number of eggs produced annually',
+           dataset='Statistical Information on Nepalese Agriculture',
+           year='2016',
+           table_per_level=False)
+
+# egg layers
+FieldTable(['egg layer type'],
+           id='agriculture_egg_layers',
+           universe='egg layers',
+           description='Number of egg laying hens and ducks',
+           dataset='Statistical Information on Nepalese Agriculture',
+           year='2016',
+           table_per_level=False)
+
 # Simple Tables
 SimpleTable(
     id='lifeexpectancy',

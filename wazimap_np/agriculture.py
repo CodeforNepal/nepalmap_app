@@ -31,6 +31,16 @@ MILK_RECODES = OrderedDict([
     ('COW_MILK', 'Cow Milk')
 ])
 
+EGG_RECODES = OrderedDict([
+    ('HEN_EGGS', 'Hen Eggs'),
+    ('DUCK_EGGS', 'Duck Eggs')
+])
+
+EGG_LAYER_RECODES = OrderedDict([
+    ('HENS', 'Hens'),
+    ('DUCKS', 'Ducks')
+])
+
 
 def get_agriculture_profile(geo_code, geo_level, session):
     agriculture_data = {'area_has_data': False}
@@ -61,6 +71,18 @@ def get_agriculture_profile(geo_code, geo_level, session):
             percent=False,
             order_by='-total')
 
+        egg_dist, total_eggs = get_stat_data(
+            'egg type', geo_level, geo_code, session,
+            recode=dict(EGG_RECODES),
+            percent=False,
+            order_by='-total')
+
+        egg_layer_dist, total_egg_layers = get_stat_data(
+            'egg layer type', geo_level, geo_code, session,
+            recode=dict(EGG_LAYER_RECODES),
+            percent=False,
+            order_by='-total')
+
         agriculture_data = dict(
             is_vdc=False,
             area_has_data=True,
@@ -83,6 +105,16 @@ def get_agriculture_profile(geo_code, geo_level, session):
             total_milk={
                 'name': 'Metric tons of milk',
                 'values': {'this': total_milk}
+            },
+            egg_distribution=egg_dist,
+            total_eggs={
+                'name': 'Number of eggs',
+                'values': {'this': total_eggs}
+            },
+            egg_layer_distribution=egg_layer_dist,
+            total_egg_layers={
+                'name': 'Number of laying hens and ducks',
+                'values': {'this': total_egg_layers}
             },
         )
 
