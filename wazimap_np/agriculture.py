@@ -22,7 +22,7 @@ LIVESTOCK_RECODES = OrderedDict([
 ])
 
 MILK_ANIMAL_RECODES = OrderedDict([
-    ('BUFFALOES', 'Water Buffalo'),
+    ('BUFFALOES', 'Water Buffaloes'),
     ('COWS', 'Cows')
 ])
 
