@@ -1,5 +1,5 @@
 Django==1.9.10
-gunicorn==18.0
+gunicorn==19.5.0
 wazimap[gdal]==0.7.3
 GDAL==2.1.3
 Shapely==1.5.17
