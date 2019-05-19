@@ -190,3 +190,4 @@ district,260,Community schools,74
 district,32,Institutional schools,74
 district,293,Community schools,75
 district,164,Institutional schools,75
+\.

@@ -192,3 +192,4 @@ district,847,Approved teachers,74
 district,360,Rahat teachers,74
 district,1217,Approved teachers,75
 district,705,Rahat teachers,75
+\.
