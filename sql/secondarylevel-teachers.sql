@@ -193,3 +193,10 @@ district,360,Rahat teachers,74
 district,1217,Approved teachers,75
 district,705,Rahat teachers,75
 \.
+
+--
+-- Name: education_teachers_pkey; Type: CONSTRAINT; Schema: public; Tablespace:
+--
+
+ALTER TABLE ONLY education_teachers
+    ADD CONSTRAINT education_teachers_pkey PRIMARY KEY (geo_level, geo_code, "teacher type");

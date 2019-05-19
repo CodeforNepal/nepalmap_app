@@ -191,3 +191,10 @@ district,32,Institutional schools,74
 district,293,Community schools,75
 district,164,Institutional schools,75
 \.
+
+--
+-- Name: education_teachers_pkey; Type: CONSTRAINT; Schema: public; Tablespace:
+--
+
+ALTER TABLE ONLY education_schools
+    ADD CONSTRAINT education_schools_pkey PRIMARY KEY (geo_level, geo_code, "school type");
