@@ -11,8 +11,7 @@
                 {% if stat_type == 'name' %}
                     {{ stat.name }}
                 {% else %}
-                    {{ stat.values.this | nepal_format }}
-{#                    {%  stat.values.this | insint %}#}
+                    {% if stat_type == 'dollar' %}{% statvalue stat.values.this %}{% endif %}{% if stat_type == 'percentage' %}{% statvalue stat.values.this %}{% endif %}{% if stat_type == 'number' %}{{ stat.values.this|nepal_format }}{% endif %}
                     {% if stat_suffix %} <span class="stat-suffix">{{ stat_suffix }}</span>{% endif %}
                 {% endif %}
                 {% if stat.error.this_ratio >= 10 %}<sup>&dagger;</sup>{% endif %}
