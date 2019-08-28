@@ -5,13 +5,9 @@ ENV PYTHONUNBUFFERED="true" \
     GOSU_VERSION="1.10"
 
 RUN set -exu \
-
-    # libgdal
     && apt-get update \
     && apt-get install -y libgdal-dev=2.1.2+dfsg-5 postgresql-client \
     && rm -rf /var/lib/apt/lists/* \
-
-    # gosu for easy step down from root
     && wget -O /usr/local/bin/gosu "https://github.com/tianon/gosu/releases/download/$GOSU_VERSION/gosu-$(dpkg --print-architecture)" \
     && chmod +x /usr/local/bin/gosu \
     && gosu nobody true
