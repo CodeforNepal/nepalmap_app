@@ -1,4 +1,5 @@
 Django==1.9.10
+django-cors-headers==2.4.1
 gunicorn==19.5.0
 wazimap[gdal]==0.8.2
 GDAL==2.1.3
